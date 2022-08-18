@@ -14,15 +14,15 @@ const ItemContainer = () => {
       <Divider />
       <Membership />
       <ItemTitle title={["월 구독료"]} />
-      <ItemFee height={268} />
+      <ItemFee height={268} type="A" />
       <ItemTitle title={["결제단위", "이용범위"]} />
-      <ItemFee height={202} />
+      <ItemFee height={202} type="B" />
       <ItemTitle title={["무료기간", "제휴혜택"]} />
-      <ItemFee height={202} />
+      <ItemFee height={202} type="B" />
       <ItemTitle title={["부가기능"]} />
-      <ItemFee height={107} />
+      <ItemFee height={107} type="C" />
       <ItemTitle title={["컨텐츠수"]} />
-      <ItemFee height={221} />
+      <ItemFee height={281} type="D" />
       <ItemFooterContainer />
     </>
   );
