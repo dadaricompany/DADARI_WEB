@@ -4,3 +4,6 @@ export { default as Membership } from "./Membership";
 export { default as Description } from "./Description";
 export { default as Divider } from "./Divider";
 export { default as ItemFooter } from "./ItemFooter";
+
+export { default as ItemFeeContent } from "./ItemFeeContent";
+export { default as ItemFeeDoughnut } from "./ItemFeeDoughnut";
