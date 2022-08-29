@@ -85,7 +85,7 @@ const ItemFeeDoughnut = () => {
 
   return (
     <StyledItemFeeDoughnut>
-      <canvas id='doughnutChart' width="80" height="80" />
+<canvas id='doughnutChart' width="80" height="80" />
       <p>약 70,000 개</p>
       <StyledItemFeeDescription>
         <StyledItemFeeDescriptionContent>

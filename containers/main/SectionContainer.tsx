@@ -1,7 +1,7 @@
 import { Catchphrase, SubTitle } from "components/main";
 import { BoxListContainer, BoxMainContainer } from ".";
 
-const SectionContainer = () => {
+const SectionContainer = ({ item }: { item: any }) => {
   return (
     <>
       <Catchphrase />
