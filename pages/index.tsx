@@ -9,7 +9,7 @@ const Home: NextPage = ({ main }: any) => {
     <>
       <Meta title={"다다리 - 다다리 나가는 구독 서비스 비교 플랫폼"} />
       <HomeTemplate>
-        <SectionContainer />
+        <SectionContainer item={main} />
       </HomeTemplate>
     </>
   );
