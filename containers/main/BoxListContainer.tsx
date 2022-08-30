@@ -1,7 +1,7 @@
 import { BoxListTemplate } from "components/main";
 import BoxContainer from "./BoxContainer";
 
-const BoxListContainer = () => {
+const BoxListContainer = ({item}:{item:any}) => {
   return (
     <BoxListTemplate>
       <BoxContainer />

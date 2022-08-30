@@ -97,34 +97,39 @@ const StyledBtnFront = styled.div`
   align-items: center;
 `;
 const MainBox = ({
+  item,
   moveList,
 }: {
+  item: any
   moveList: (e: MouseEvent<HTMLElement>) => void;
 }) => {
-  return (
-    <StyledMainBox>
-      <StyledMainBoxBack />
-      <StyledMainBoxFront>
-        <StyledMainBoxLeft>
-          <StyledIcon>
-            <StyledIconBack />
-            <StyledIconFront>
-              <IconMovie iWidth={20} iHeight={20} />
-            </StyledIconFront>
-          </StyledIcon>
-          <StyledTitle>OTT</StyledTitle>
-        </StyledMainBoxLeft>
-        <StyledMainBoxRight>
-          <MainBoxIconList />
-          <StyledBtn onClick={moveList}>
-            <StyledBtnBack />
-            <StyledBtnFront>
-              <IconArrowR iWidth={26} iHeight={26} />
-            </StyledBtnFront>
-          </StyledBtn>
-        </StyledMainBoxRight>
-      </StyledMainBoxFront>
-    </StyledMainBox>
-  );
+  //TODO : item 없을떄 스켈레톤 코드 넣어야됨
+  return !item ? <>
+  </> :
+    (
+      <StyledMainBox>
+        <StyledMainBoxBack />
+        <StyledMainBoxFront>
+          <StyledMainBoxLeft>
+            <StyledIcon>
+              <StyledIconBack />
+              <StyledIconFront>
+                <IconMovie iWidth={20} iHeight={20} />
+              </StyledIconFront>
+            </StyledIcon>
+            <StyledTitle>{item.nameKr}</StyledTitle>
+          </StyledMainBoxLeft>
+          <StyledMainBoxRight>
+            <MainBoxIconList />
+            <StyledBtn onClick={moveList}>
+              <StyledBtnBack />
+              <StyledBtnFront>
+                <IconArrowR iWidth={26} iHeight={26} />
+              </StyledBtnFront>
+            </StyledBtn>
+          </StyledMainBoxRight>
+        </StyledMainBoxFront>
+      </StyledMainBox>
+    );
 };
 export default MainBox;
