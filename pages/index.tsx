@@ -1,4 +1,4 @@
-import { selectMainList } from "api/modules/get";
+import { selectMainList } from "api/modules/main";
 import Meta from "components/common/Meta";
 import HomeTemplate from "components/template/HomeTemplate";
 import SectionContainer from "containers/main/SectionContainer";
@@ -21,7 +21,7 @@ export const getServerSideProps: GetServerSideProps = async (props) => {
   const { data } = await selectMainList();
   return {
     props: {
-      main: data,
+      main: data.main,
     },
   };
 };

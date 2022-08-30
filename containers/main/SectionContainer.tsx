@@ -6,9 +6,9 @@ const SectionContainer = ({ item }: { item: any }) => {
     <>
       <Catchphrase />
       <SubTitle sub={"지금 바로 비교해보세요"} />
-      <BoxMainContainer />
+      <BoxMainContainer item={item[0]}/>
       <SubTitle sub={"이런 구독도 있어요"} />
-      <BoxListContainer />
+      <BoxListContainer item={item}/>
     </>
   );
 };
