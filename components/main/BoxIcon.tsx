@@ -22,12 +22,18 @@ const StyledBoxText = styled.span`
   color: #bcc2d6;
 `;
 
-const BoxIcon = ({ type }: { type: string }) => {
+const BoxIcon = ({ type, item }: { type: string; item: any }) => {
   return type == "icon" ? (
-    <StyledBoxIcon></StyledBoxIcon>
+    <StyledBoxIcon>
+      <img
+        src={`http://52.79.72.35:4000/${item.logoPath}`}
+        width="18"
+        height="18"
+      />
+    </StyledBoxIcon>
   ) : (
     <StyledBoxIcon>
-      <StyledBoxText>+2</StyledBoxText>
+      <StyledBoxText>+{item}</StyledBoxText>
     </StyledBoxIcon>
   );
 };

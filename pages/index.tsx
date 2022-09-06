@@ -4,12 +4,12 @@ import HomeTemplate from "components/template/HomeTemplate";
 import SectionContainer from "containers/main/SectionContainer";
 import type { GetServerSideProps, NextPage } from "next";
 
-const Home: NextPage = ({ main }: any) => {
+const Home: NextPage = ({ main, list }: any) => {
   return (
     <>
       <Meta title={"다다리 - 다다리 나가는 구독 서비스 비교 플랫폼"} />
       <HomeTemplate>
-        <SectionContainer item={main} />
+        <SectionContainer main={main} list={list} />
       </HomeTemplate>
     </>
   );
@@ -19,9 +19,13 @@ export default Home;
 
 export const getServerSideProps: GetServerSideProps = async (props) => {
   const { data } = await selectMainList();
+
+  const list = data.main;
+  const main = list && list.length && list.shift();
   return {
     props: {
-      main: data.main,
+      main: main,
+      list: list,
     },
   };
 };

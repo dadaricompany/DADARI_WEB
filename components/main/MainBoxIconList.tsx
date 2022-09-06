@@ -1,5 +1,6 @@
+import { Fragment } from "react";
 import styled from "styled-components";
-import MainBox from "./MainBoxIcon";
+import MainBoxIcon from "./MainBoxIcon";
 
 const StyledMainBoxIconList = styled.div`
   display: flex;
@@ -8,13 +9,24 @@ const StyledMainBoxIconList = styled.div`
     margin-left: -15px;
   }
 `;
-const MainBoxIconList = () => {
+const MainBoxIconList = ({ item }: { item: any }) => {
   return (
     <StyledMainBoxIconList>
-      <MainBox type="icon" />
-      <MainBox type="icon" />
-      <MainBox type="icon" />
-      <MainBox type="plus" />
+      {item && item.length ? (
+        item.map((value: any, index: number) => {
+          return index < 3 ? (
+            <Fragment key={index}>
+              <MainBoxIcon type="icon" item={value} />
+            </Fragment>
+          ) : (
+            <Fragment>
+              <MainBoxIcon type="plus" item={item.length} />
+            </Fragment>
+          );
+        })
+      ) : (
+        <Fragment></Fragment>
+      )}
     </StyledMainBoxIconList>
   );
 };

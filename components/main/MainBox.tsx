@@ -114,13 +114,13 @@ const MainBox = ({
             <StyledIcon>
               <StyledIconBack />
               <StyledIconFront>
-                <IconMovie iWidth={20} iHeight={20} />
+                <img src={`http://52.79.72.35:4000/${item.logoPath}`} width={20} height={20}/>
               </StyledIconFront>
             </StyledIcon>
             <StyledTitle>{item.nameKr}</StyledTitle>
           </StyledMainBoxLeft>
           <StyledMainBoxRight>
-            <MainBoxIconList />
+            <MainBoxIconList item={item.subscriptionServices}/>
             <StyledBtn onClick={moveList}>
               <StyledBtnBack />
               <StyledBtnFront>

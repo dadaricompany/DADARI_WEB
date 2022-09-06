@@ -8,7 +8,7 @@ const BoxMainContaier = ({ item }: { item: any }) => {
     e.preventDefault();
     router.push("/list");
   };
-
+  
   return <MainBox item={item} moveList={moveList} />;
 };
 export default BoxMainContaier;

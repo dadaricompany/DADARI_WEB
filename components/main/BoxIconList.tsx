@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import styled from "styled-components";
 import BoxIcon from "./BoxIcon";
 
@@ -8,13 +9,24 @@ const StyledBoxIconList = styled.div`
   }
 `;
 
-const BoxIconList = () => {
+const BoxIconList = ({ item }: any) => {
   return (
     <StyledBoxIconList>
-      <BoxIcon type="icon" />
-      <BoxIcon type="icon" />
-      <BoxIcon type="icon" />
-      <BoxIcon type="plus" />
+      {item && item.length ? (
+        item.map((value: any, index: number) => {
+          return index < 3 ? (
+            <Fragment key={index}>
+              <BoxIcon type="icon" item={value} />
+            </Fragment>
+          ) : (
+            <Fragment>
+              <BoxIcon type="plus" item={item.length} />
+            </Fragment>
+          );
+        })
+      ) : (
+        <Fragment></Fragment>
+      )}
     </StyledBoxIconList>
   );
 };
