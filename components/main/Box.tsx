@@ -50,17 +50,23 @@ const StyledBoxBottomBtn = styled.div`
 `;
 const Box = ({
   moveList,
+  item,
 }: {
   moveList: (e: MouseEvent<HTMLElement>) => void;
+  item: any;
 }) => {
   return (
     <StyledBox>
       <StyledBoxIcon>
-        <IconMovie iWidth={20} iHeight={20} />
+        <img
+          src={`http://52.79.72.35:4000/${item.logoPath}`}
+          width={20}
+          height={20}
+        />
       </StyledBoxIcon>
-      <StyledBoxText>음악</StyledBoxText>
+      <StyledBoxText>{item.nameKr}</StyledBoxText>
       <StyledBoxBottom>
-        <BoxIconList />
+        <BoxIconList item={item.subscriptionServices}/>
         <StyledBoxBottomBtn onClick={moveList}>
           <IconArrowR iWidth={26} iHeight={26} />
         </StyledBoxBottomBtn>

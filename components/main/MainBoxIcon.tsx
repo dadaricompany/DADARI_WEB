@@ -22,12 +22,18 @@ const StyledMainBoxText = styled.span`
   text-align: center;
   color: #bcc2d6;
 `;
-const MainBoxIcon = ({ type }: { type: string }) => {
+const MainBoxIcon = ({ type, item }: { type: string; item: any }) => {
   return type == "icon" ? (
-    <StyledMainBoxIcon></StyledMainBoxIcon>
+    <StyledMainBoxIcon>
+      <img
+        src={`http://52.79.72.35:4000/${item.logoPath}`}
+        width="18"
+        height="18"
+      />
+    </StyledMainBoxIcon>
   ) : (
     <StyledMainBoxIcon>
-      <StyledMainBoxText>+2</StyledMainBoxText>
+      <StyledMainBoxText>+{item}</StyledMainBoxText>
     </StyledMainBoxIcon>
   );
 };
