@@ -6,7 +6,7 @@ const BoxMainContaier = ({ item }: { item: any }) => {
   const router = useRouter();
   const moveList = (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    router.push("/list");
+    router.push(`/list?id=${item.id}`);
   };
   
   return <MainBox item={item} moveList={moveList} />;
