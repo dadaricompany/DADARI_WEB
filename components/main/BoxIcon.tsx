@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import Image from "next/image";
 const StyledBoxIcon = styled.div`
   width: 30px;
   height: 30px;
@@ -25,11 +25,11 @@ const StyledBoxText = styled.span`
 const BoxIcon = ({ type, item }: { type: string; item: any }) => {
   return type == "icon" ? (
     <StyledBoxIcon>
-      <img
-        src={`http://52.79.72.35:4000/${item.smallLogoPath}`}
+      <Image src={`http://52.79.72.35:4000/${item.smallLogoPath}`}
         width="18"
         height="18"
-      />
+        loading="lazy"
+        alt="" />
     </StyledBoxIcon>
   ) : (
     <StyledBoxIcon>

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { MouseEvent } from "react";
+import Image from 'next/image'
+
 const StyledCategoryItem = styled.div<{ selected: boolean }>`
   width: 70px;
   height: 112px;
@@ -43,9 +45,10 @@ const CategoryItem = ({ id, item, moveList }: { id: any, item: any, moveList: (i
   return (
     <StyledCategoryItem onClick={moveList(item.id)} selected={item.id == id}>
       <StyledCategoryIcon>
-        <img src={`http://52.79.72.35:4000/${item.bigLogoPath}`}
+        <Image src={`http://52.79.72.35:4000/${item.bigLogoPath}`}
           width={30}
-          height={30} />
+          height={30}
+          alt={'logo'} />
       </StyledCategoryIcon>
       <StyledCategoryTitle selected={item.id == id}>
         <span>{item.nameKr}</span>

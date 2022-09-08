@@ -1,6 +1,8 @@
 import { IconPlus } from "components/icons";
 import styled from "styled-components";
 import { MouseEvent } from "react";
+import Image from 'next/image'
+
 const StyledSectionItem = styled.div`
   height: 248px;
   border: 1px solid #68708d;
@@ -12,7 +14,6 @@ const StyledSectionItem = styled.div`
   position: relative;
 `;
 
-const StyledSectionItemLogo = styled.img``;
 
 const StyledSectionItemTitle = styled.p`
   align-self: flex-start;
@@ -62,10 +63,11 @@ const SectionItem = ({
 }) => {
   return (
     <StyledSectionItem onClick={moveDetail}>
-      <StyledSectionItemLogo
-        src={`http://52.79.72.35:4000/${item.bigLogoPath}`}
+      <Image src={`http://52.79.72.35:4000/${item.bigLogoPath}`}
         width={110}
         height={110}
+        alt={''}
+        loading="lazy"
       />
       <StyledSectionItemTitle>{item.nameKr}</StyledSectionItemTitle>
       <StyledSectionDescripton>
