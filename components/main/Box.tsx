@@ -59,7 +59,7 @@ const Box = ({
     <StyledBox>
       <StyledBoxIcon>
         <img
-          src={`http://52.79.72.35:4000/${item.logoPath}`}
+          src={`http://52.79.72.35:4000/${item.smallLogoPath}`}
           width={20}
           height={20}
         />

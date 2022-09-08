@@ -6,7 +6,7 @@ const HeaderListContainer = () => {
   const router = useRouter();
   const moveBack = (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    router.back();
+    router.replace('/')
   };
   const moveSearch = (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();

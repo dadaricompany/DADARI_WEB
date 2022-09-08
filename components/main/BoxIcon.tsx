@@ -26,7 +26,7 @@ const BoxIcon = ({ type, item }: { type: string; item: any }) => {
   return type == "icon" ? (
     <StyledBoxIcon>
       <img
-        src={`http://52.79.72.35:4000/${item.logoPath}`}
+        src={`http://52.79.72.35:4000/${item.smallLogoPath}`}
         width="18"
         height="18"
       />

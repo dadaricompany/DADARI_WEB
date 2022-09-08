@@ -1,3 +1,4 @@
+import { Fragment, MouseEvent } from "react";
 import styled from "styled-components";
 import ListPopupItem from "./ListPopupItem";
 
@@ -37,11 +38,17 @@ const StyeldListPopupBtn = styled.div`
     color: #fff;
   }
 `;
-const ListPopup = () => {
+const ListPopup = ({
+  deleteDetail,
+  item
+}: {
+  deleteDetail: (item: any) => (e: MouseEvent<HTMLElement>) => void,
+  item: any
+}) => {
   return (
-    <StyledListPopup>
-      <ListPopupItem />
-      <ListPopupItem />
+    <StyledListPopup >
+      <ListPopupItem item={item[0]} deleteDetail={deleteDetail}/>
+      <ListPopupItem item={item[1]} deleteDetail={deleteDetail}/>
       <StyeldListPopupBtn>
         <span>비교하기</span>
       </StyeldListPopupBtn>

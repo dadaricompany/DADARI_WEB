@@ -1,6 +1,6 @@
+import { Fragment, MouseEvent } from "react";
 import styled from "styled-components";
 import CategoryItem from "./CategoryItem";
-
 const StyledCategoryHeight = styled.div`
   height: 152px;
   display: flex;
@@ -20,19 +20,24 @@ const StyledScrollCategoryList = styled.div`
     margin-left: 8px;
   }
 `;
-const CategoryList = () => {
+const CategoryList = ({
+  item,
+  moveList,
+}: {
+  item: any
+  moveList: (e: MouseEvent<HTMLElement>) => void;
+}) => {
   return (
     <StyledCategoryHeight>
       <StyledCategoryList>
         <StyledScrollCategoryList>
-          <CategoryItem />
-          <CategoryItem />
-          <CategoryItem />
-          <CategoryItem />
-          <CategoryItem />
-          <CategoryItem />
-          <CategoryItem />
-          <CategoryItem />
+          {
+            item.map((v: any, i: number) => {
+              return <Fragment key={i}>
+                <CategoryItem item={v} moveList={moveList} />
+              </Fragment>
+            })
+          }
         </StyledScrollCategoryList>
       </StyledCategoryList>
     </StyledCategoryHeight>
