@@ -21,11 +21,13 @@ const StyledScrollCategoryList = styled.div`
   }
 `;
 const CategoryList = ({
+  id,
   item,
   moveList,
 }: {
-  item: any
-  moveList: (e: MouseEvent<HTMLElement>) => void;
+  id: any,
+  item: any,
+  moveList: (item: any) => (e: MouseEvent<HTMLElement>) => void;
 }) => {
   return (
     <StyledCategoryHeight>
@@ -34,7 +36,7 @@ const CategoryList = ({
           {
             item.map((v: any, i: number) => {
               return <Fragment key={i}>
-                <CategoryItem item={v} moveList={moveList} />
+                <CategoryItem item={v} id={id} moveList={moveList} />
               </Fragment>
             })
           }
