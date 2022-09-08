@@ -22,9 +22,9 @@ const CategoryContainer = () => {
     setList(result);
   }
 
-  const moveList = (e: MouseEvent<HTMLElement>) => {
+  const moveList = (item: any) => (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    setId(String(e.currentTarget.dataset.id))
+    setId(String(item))
   }
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const CategoryContainer = () => {
 
   return (
     <>
-      <CategoryList item={list.categories} moveList={moveList} />
+      <CategoryList item={list.categories} moveList={moveList} id={id} />
       {/* <SubCategoryList /> */}
       <SectionContainer item={list.subscriptionServices} />
       <Footer />

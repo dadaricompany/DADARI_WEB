@@ -5,7 +5,7 @@ const StyledSectionItem = styled.div`
   height: 248px;
   border: 1px solid #68708d;
   border-radius: 15px;
-  padding: 14px 10px 10px 14px;
+  padding: 14px 10px 14px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
