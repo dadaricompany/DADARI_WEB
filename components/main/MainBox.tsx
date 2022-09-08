@@ -2,6 +2,8 @@ import { IconArrowR, IconMovie } from "components/icons";
 import styled from "styled-components";
 import MainBoxIconList from "./MainBoxIconList";
 import { MouseEvent } from "react";
+import Image from 'next/image'
+
 const StyledMainBox = styled.div`
   position: relative;
 `;
@@ -114,13 +116,13 @@ const MainBox = ({
             <StyledIcon>
               <StyledIconBack />
               <StyledIconFront>
-                <img src={`http://52.79.72.35:4000/${item.smallLogoPath}`} width={20} height={20}/>
+                <Image src={`http://52.79.72.35:4000/${item.smallLogoPath}`} width={20} height={20} loading="lazy" alt="logo" />
               </StyledIconFront>
             </StyledIcon>
             <StyledTitle>{item.nameKr}</StyledTitle>
           </StyledMainBoxLeft>
           <StyledMainBoxRight>
-            <MainBoxIconList item={item.subscriptionServices}/>
+            <MainBoxIconList item={item.subscriptionServices} />
             <StyledBtn onClick={moveList}>
               <StyledBtnBack />
               <StyledBtnFront>

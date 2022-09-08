@@ -2,6 +2,8 @@ import { IconArrowR, IconMovie } from "components/icons";
 import styled from "styled-components";
 import BoxIconList from "./BoxIconList";
 import { MouseEvent } from "react";
+import Image from "next/image";
+
 const StyledBox = styled.div`
   width: 150px;
   height: 169px;
@@ -58,15 +60,13 @@ const Box = ({
   return (
     <StyledBox>
       <StyledBoxIcon>
-        <img
-          src={`http://52.79.72.35:4000/${item.smallLogoPath}`}
+        <Image src={`http://52.79.72.35:4000/${item.smallLogoPath}`}
           width={20}
-          height={20}
-        />
+          height={20} loading="lazy" alt="" />
       </StyledBoxIcon>
       <StyledBoxText>{item.nameKr}</StyledBoxText>
       <StyledBoxBottom>
-        <BoxIconList item={item.subscriptionServices}/>
+        <BoxIconList item={item.subscriptionServices} />
         <StyledBoxBottomBtn onClick={moveList}>
           <IconArrowR iWidth={26} iHeight={26} />
         </StyledBoxBottomBtn>
