@@ -12,6 +12,7 @@ const SectionContainer = ({ item }: any) => {
   const selectDetail = (item: any) => (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
     e.stopPropagation();
+    if(selectedList.length > 1) return;
     setSelectedList([...selectedList, item])
   };
   const deleteDetail = (item: any) => (e: MouseEvent<HTMLElement>) => {
