@@ -3,31 +3,51 @@ import { Footer } from "components/base";
 import { CategoryList, SubCategoryList } from "components/list";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-// import ListPopup from "components/list/ListPopup";
+import { MouseEvent } from "react";
 import SectionContainer from "./SectionContainer";
 
 const CategoryContainer = () => {
   const router = useRouter();
   const queries = router.query;
-  const [category, setCategory] = useState(null);
+  const [id, setId] = useState("");
+  const [list, setList] = useState({ categories: [], subcategories: [], subscriptionServices: [] });
 
-  const getCategory = async (id: any) => {
+  const getList = async (id: any) => {
     const { data } = await selectListList(id);
-    setCategory(data);
-  };
+    let result = { categories: [], subcategories: [], subscriptionServices: [] }
+    result['categories'] = data.categories ?? [];
+    result['subcategories'] = data.subcategories ?? [];
+    result['subscriptionServices'] = data.subscriptionServices ?? [];
+
+    setList(result);
+  }
+
+  const moveList = (e: MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    setId(String(e.currentTarget.dataset.id))
+  }
+
   useEffect(() => {
     if (!router.isReady) return;
-    getCategory(queries.id);
-  }, [router.isReady]);
-  useEffect(()=>{
-    if(!category) return;
-    console.log(category)
-  },[category])
+    setId(String(queries.id));
+  }, [queries.id, router.isReady]);
+
+  useEffect(() => {
+    if (!id) return;
+    getList(id);
+  }, [id])
+
+  useEffect(() => {
+    if (!list) return;
+    //TODO
+    // console.log(list)
+  }, [list])
+
   return (
     <>
-      <CategoryList />
-      <SubCategoryList />
-      <SectionContainer />
+      <CategoryList item={list.categories} moveList={moveList} />
+      {/* <SubCategoryList /> */}
+      <SectionContainer item={list.subscriptionServices} />
       <Footer />
     </>
   );

@@ -12,11 +12,8 @@ const StyledSectionItem = styled.div`
   position: relative;
 `;
 
-const StyledSectionItemLogo = styled.div`
-  height: 110px;
-  width: 110px;
-  background: url(assets/image/ico-yogipass.png) no-repeat center top / cover;
-`;
+const StyledSectionItemLogo = styled.img``;
+
 const StyledSectionItemTitle = styled.p`
   align-self: flex-start;
   margin: 20px 0 8px 0;
@@ -56,20 +53,28 @@ const StyledSectionItemBtn = styled.div`
 `;
 const SectionItem = ({
   moveDetail,
+  selectDetail,
+  item
 }: {
-  moveDetail: (e: MouseEvent<HTMLElement>) => void;
+  moveDetail: (e: MouseEvent<HTMLElement>) => void,
+  selectDetail: (item: any) => (e: MouseEvent<HTMLElement>) => void,
+  item: any
 }) => {
   return (
     <StyledSectionItem onClick={moveDetail}>
-      <StyledSectionItemLogo></StyledSectionItemLogo>
-      <StyledSectionItemTitle>요기요</StyledSectionItemTitle>
+      <StyledSectionItemLogo
+        src={`http://52.79.72.35:4000/${item.bigLogoPath}`}
+        width={110}
+        height={110}
+      />
+      <StyledSectionItemTitle>{item.nameKr}</StyledSectionItemTitle>
       <StyledSectionDescripton>
-        배달앱 최초 멤버십 할인 구독 서비스
+        {item.description}
       </StyledSectionDescripton>
-      <StyledSectionItemBtn>
+      <StyledSectionItemBtn onClick={selectDetail(item)}>
         <IconPlus iWidth={32} iHeight={32} />
       </StyledSectionItemBtn>
-    </StyledSectionItem>
+    </StyledSectionItem >
   );
 };
 export default SectionItem;

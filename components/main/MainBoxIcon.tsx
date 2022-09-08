@@ -4,7 +4,6 @@ const StyledMainBoxIcon = styled.div`
   width: 30px;
   height: 30px;
   margin: 0 5px 0 0;
-  padding: 0 2px 1px 0;
   border-radius: 50%;
   border: solid 2px #8246fa;
   background-color: #2d344b;
@@ -26,7 +25,7 @@ const MainBoxIcon = ({ type, item }: { type: string; item: any }) => {
   return type == "icon" ? (
     <StyledMainBoxIcon>
       <img
-        src={`http://52.79.72.35:4000/${item.logoPath}`}
+        src={`http://52.79.72.35:4000/${item.smallLogoPath}`}
         width="18"
         height="18"
       />

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { MouseEvent } from "react";
 const StyledCategoryItem = styled.div`
   width: 70px;
   height: 112px;
@@ -8,6 +8,9 @@ const StyledCategoryItem = styled.div`
   background-color: #2d344b;
 `;
 const StyledCategoryIcon = styled.div`
+  display:flex;
+  justify-content:center;
+  align-items:center;
   height: 52px;
   border-radius: 50%;
   background: #fff;
@@ -29,14 +32,18 @@ const StyledCategoryTitle = styled.div`
     color: #afb9da;
   }
 `;
-const CategoryItem = () => {
+const CategoryItem = ({ item, moveList }: { item: any, moveList: (e: MouseEvent<HTMLElement>) => void; }) => {
   return (
-    <StyledCategoryItem>
-      <StyledCategoryIcon></StyledCategoryIcon>
+    <StyledCategoryItem data-id={item.id} onClick={moveList}>
+      <StyledCategoryIcon>
+        <img src={`http://52.79.72.35:4000/${item.bigLogoPath}`}
+          width={30}
+          height={30} />
+      </StyledCategoryIcon>
       <StyledCategoryTitle>
-        <span>음악</span>
+        <span>{item.nameKr}</span>
       </StyledCategoryTitle>
-    </StyledCategoryItem>
+    </StyledCategoryItem >
   );
 };
 export default CategoryItem;
