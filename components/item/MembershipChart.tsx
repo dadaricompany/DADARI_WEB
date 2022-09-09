@@ -1,6 +1,6 @@
-import styled from "styled-components";
-
-const StyledMembershipChart = styled.div`
+import { Fragment } from "react";
+import styled, { css } from "styled-components";
+const StyledMembershipChartOne = styled.div<{ item: any }>`
   height: 38px;
   position: relative;
   overflow: hidden;
@@ -18,22 +18,132 @@ const StyledMembershipChart = styled.div`
   }
   input[type="radio"]:nth-child(1):checked ~ .toggle_option_slider {
     ::after {
-      content: "베이직";
+      content: "${(props) => props.item[0].name}";
+    }
+    left: 0;
+  }
+  label {
+    flex-grow: 1;
+    height: 100%;
+    border-radius: 22px;
+    cursor: pointer;
+  }
+  .toggle_option_slider {
+    width: 100%;
+    height: 38px;
+    border-radius: 22px;
+    box-shadow: 0 2px 20px 0 rgba(130, 70, 250, 0.58),
+      inset 1px 1px 2px 0 rgba(255, 255, 255, 0.3);
+    background-color: #8246fa;
+    position: absolute;
+    transition: all 0.4s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: -0.29px;
+    font-size: 15px;
+  }
+`;
+
+const StyledMembershipChartTwo = styled.div<{ item: any }>`
+  height: 38px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  background-color: #2d344b;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  & > * {
+    float: left;
+  }
+  input[type="radio"] {
+    display: none;
+  }
+  input[type="radio"]:nth-child(1):checked ~ .toggle_option_slider {
+    ::after {
+      content: "${(props) => props.item[0].name}";
     }
     left: 0;
   }
   input[type="radio"]:nth-child(2):checked ~ .toggle_option_slider {
     ::after {
-      content: "프리미엄";
+      content: "${(props) => props.item[1].name}";
     }
-    left: 33%;
+    left: 50%;
   }
-  input[type="radio"]:nth-child(3):checked ~ .toggle_option_slider {
-    ::after {
-      content: "플래티넘";
-    }
-    left: 66.7%;
+  label {
+    flex-grow: 1;
+    height: 100%;
+    border-radius: 22px;
+    cursor: pointer;
   }
+  .toggle_option_slider {
+    width: 50%;
+    height: 38px;
+    border-radius: 22px;
+    box-shadow: 0 2px 20px 0 rgba(130, 70, 250, 0.58),
+      inset 1px 1px 2px 0 rgba(255, 255, 255, 0.3);
+    background-color: #8246fa;
+    position: absolute;
+    transition: all 0.4s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: -0.29px;
+    font-size: 15px;
+  }
+`;
+const StyledMembershipChartThree = styled.div<{ item: any }>`
+  height: 38px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  background-color: #2d344b;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  & > * {
+    float: left;
+  }
+  input[type="radio"] {
+    display: none;
+  }
+  ${(props) => {
+    return css`
+      input[type="radio"]:nth-child(1):checked ~ .toggle_option_slider {
+        ::after {
+          content: "${props.item[0].name}";
+        }
+        left: 0;
+      }
+      input[type="radio"]:nth-child(2):checked ~ .toggle_option_slider {
+        ::after {
+          content: "${props.item[1].name}";
+        }
+        left: 33%;
+      }
+      input[type="radio"]:nth-child(3):checked ~ .toggle_option_slider {
+        ::after {
+          content: "${props.item[2].name}";
+        }
+        left: 66.7%;
+      }
+    `;
+  }};
+
   label {
     flex-grow: 1;
     height: 100%;
@@ -61,42 +171,225 @@ const StyledMembershipChart = styled.div`
     font-size: 15px;
   }
 `;
+const StyledMembershipChartFour = styled.div<{ item: any }>`
+  height: 38px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  background-color: #2d344b;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  & > * {
+    float: left;
+  }
+  input[type="radio"] {
+    display: none;
+  }
+  ${(props) => {
+    return css`
+      input[type="radio"]:nth-child(1):checked ~ .toggle_option_slider {
+        ::after {
+          content: "${props.item[0].name}";
+        }
+        left: 0;
+      }
+      input[type="radio"]:nth-child(2):checked ~ .toggle_option_slider {
+        ::after {
+          content: "${props.item[1].name}";
+        }
+        left: 25%;
+      }
+      input[type="radio"]:nth-child(3):checked ~ .toggle_option_slider {
+        ::after {
+          content: "${props.item[2].name}";
+        }
+        left: 50%;
+      }
+      input[type="radio"]:nth-child(4):checked ~ .toggle_option_slider {
+        ::after {
+          content: "${props.item[3].name}";
+        }
+        left: 75%;
+      }
+    `;
+  }};
+
+  label {
+    flex-grow: 1;
+    height: 100%;
+    border-radius: 22px;
+    cursor: pointer;
+  }
+  .toggle_option_slider {
+    width: 25%;
+    height: 38px;
+    border-radius: 22px;
+    box-shadow: 0 2px 20px 0 rgba(130, 70, 250, 0.58),
+      inset 1px 1px 2px 0 rgba(255, 255, 255, 0.3);
+    background-color: #8246fa;
+    position: absolute;
+    transition: all 0.4s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: -0.29px;
+    font-size: 15px;
+  }
+`;
 const changeState = (e: any) => {
   e.currentTarget.control.checked = true;
 };
-const MembershipChart = () => {
-  return (
-    <StyledMembershipChart>
-      <input
-        type="radio"
-        className="toggle_option"
-        id="first_toggle"
-        name="toggle_option"
-        defaultChecked
-      />
-      <input
-        type="radio"
-        className="toggle_option"
-        id="second_toggle"
-        name="toggle_option"
-      />
-      <input
-        type="radio"
-        className="toggle_option"
-        id="third_toggle"
-        name="toggle_option"
-      />
-      <label htmlFor="first_toggle" onClick={changeState}>
-        <p></p>
-      </label>
-      <label htmlFor="second_toggle" onClick={changeState}>
-        <p></p>
-      </label>
-      <label htmlFor="third_toggle" onClick={changeState}>
-        <p></p>
-      </label>
+
+const MembershipChart = ({ item }: any) => {
+  return item && item.length && item.length == 1 ? (
+    <StyledMembershipChartOne item={item}>
+      {item.map((v: any, i: number) => {
+        return i == 0 ? (
+          <Fragment key={i}>
+            <input
+              type="radio"
+              className="toggle_option"
+              id={"toggle" + i}
+              name="toggle_option"
+              defaultChecked
+            />
+          </Fragment>
+        ) : (
+          <Fragment key={i}>
+            <input
+              type="radio"
+              className="toggle_option"
+              id={"toggle" + i}
+              name="toggle_option"
+            />
+          </Fragment>
+        );
+      })}
+      {item.map((v: any, i: number) => {
+        return (
+          <Fragment key={i}>
+            <label htmlFor={"toggle" + i} onClick={changeState}>
+              <p></p>
+            </label>
+          </Fragment>
+        );
+      })}
       <div className="toggle_option_slider"></div>
-    </StyledMembershipChart>
+    </StyledMembershipChartOne>
+  ) : item.length == 2 ? (
+    <StyledMembershipChartTwo item={item}>
+      {item.map((v: any, i: number) => {
+        return i == 0 ? (
+          <Fragment key={i}>
+            <input
+              type="radio"
+              className="toggle_option"
+              id={"toggle" + i}
+              name="toggle_option"
+              defaultChecked
+            />
+          </Fragment>
+        ) : (
+          <Fragment key={i}>
+            <input
+              type="radio"
+              className="toggle_option"
+              id={"toggle" + i}
+              name="toggle_option"
+            />
+          </Fragment>
+        );
+      })}
+      {item.map((v: any, i: number) => {
+        return (
+          <Fragment key={i}>
+            <label htmlFor={"toggle" + i} onClick={changeState}>
+              <p></p>
+            </label>
+          </Fragment>
+        );
+      })}
+      <div className="toggle_option_slider"></div>
+    </StyledMembershipChartTwo>
+  ) : item && item.length && item.length == 3 ? (
+    <StyledMembershipChartThree item={item}>
+      {item.map((v: any, i: number) => {
+        return i == 0 ? (
+          <Fragment key={i}>
+            <input
+              type="radio"
+              className="toggle_option"
+              id={"toggle" + i}
+              name="toggle_option"
+              defaultChecked
+            />
+          </Fragment>
+        ) : (
+          <Fragment key={i}>
+            <input
+              type="radio"
+              className="toggle_option"
+              id={"toggle" + i}
+              name="toggle_option"
+            />
+          </Fragment>
+        );
+      })}
+      {item.map((v: any, i: number) => {
+        return (
+          <Fragment key={i}>
+            <label htmlFor={"toggle" + i} onClick={changeState}>
+              <p></p>
+            </label>
+          </Fragment>
+        );
+      })}
+      <div className="toggle_option_slider"></div>
+    </StyledMembershipChartThree>
+  ) : item.length == 4 ? (
+    <StyledMembershipChartFour item={item}>
+      {item.map((v: any, i: number) => {
+        return i == 0 ? (
+          <Fragment key={i}>
+            <input
+              type="radio"
+              className="toggle_option"
+              id={"toggle" + i}
+              name="toggle_option"
+              defaultChecked
+            />
+          </Fragment>
+        ) : (
+          <Fragment key={i}>
+            <input
+              type="radio"
+              className="toggle_option"
+              id={"toggle" + i}
+              name="toggle_option"
+            />
+          </Fragment>
+        );
+      })}
+      {item.map((v: any, i: number) => {
+        return (
+          <Fragment key={i}>
+            <label htmlFor={"toggle" + i} onClick={changeState}>
+              <p></p>
+            </label>
+          </Fragment>
+        );
+      })}
+      <div className="toggle_option_slider"></div>
+    </StyledMembershipChartFour>
+  ) : (
+    <></>
   );
 };
 export default MembershipChart;

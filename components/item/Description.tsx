@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Image from "next/image";
 
 const StyledDescription = styled.div`
   height: 338px;
@@ -12,11 +13,6 @@ const StyledDescriptionLogo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  div {
-    width: 100px;
-    height: 100px;
-    background: url(../assets/image/ico-netflix.png) no-repeat center top / cover;
-  }
 `;
 const StyledDescriptionTitle = styled.p`
   height: 28px;
@@ -43,6 +39,7 @@ const StyledDescriptionSubTitle = styled.p`
   color: #fff;
 `;
 const StyledDescriptionDesc = styled.p`
+  width: 100%;
   height: 65px;
   overflow: auto;
   margin: 0;
@@ -54,18 +51,20 @@ const StyledDescriptionDesc = styled.p`
   letter-spacing: -0.5px;
   color: #9194a9;
 `;
-const Description = () => {
+const Description = ({ titleKr, titleEng, desc, image }: any) => {
   return (
     <StyledDescription>
       <StyledDescriptionLogo>
-        <div></div>
+        <Image
+          src={`http://52.79.72.35:4000/${image}`}
+          width={100}
+          height={100}
+          alt={"logo"}
+        />
       </StyledDescriptionLogo>
-      <StyledDescriptionTitle>넷플릭스</StyledDescriptionTitle>
-      <StyledDescriptionSubTitle>Netflix</StyledDescriptionSubTitle>
-      <StyledDescriptionDesc>
-        넷플릭스는 TV 프로그램과 영화를 인터넷 연결 지원 디바이스에서 광고 없이
-        시청할 수 있는 멤버십 기반 스트리밍 서비스입니다.
-      </StyledDescriptionDesc>
+      <StyledDescriptionTitle>{titleKr}</StyledDescriptionTitle>
+      <StyledDescriptionSubTitle>{titleEng}</StyledDescriptionSubTitle>
+      <StyledDescriptionDesc>{desc}</StyledDescriptionDesc>
     </StyledDescription>
   );
 };

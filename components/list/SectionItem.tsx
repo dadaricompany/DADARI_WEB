@@ -1,7 +1,7 @@
 import { IconPlus } from "components/icons";
 import styled from "styled-components";
 import { MouseEvent } from "react";
-import Image from 'next/image'
+import Image from "next/image";
 
 const StyledSectionItem = styled.div`
   height: 248px;
@@ -13,7 +13,6 @@ const StyledSectionItem = styled.div`
   align-items: center;
   position: relative;
 `;
-
 
 const StyledSectionItemTitle = styled.p`
   align-self: flex-start;
@@ -55,28 +54,26 @@ const StyledSectionItemBtn = styled.div`
 const SectionItem = ({
   moveDetail,
   selectDetail,
-  item
+  item,
 }: {
-  moveDetail: (e: MouseEvent<HTMLElement>) => void,
-  selectDetail: (item: any) => (e: MouseEvent<HTMLElement>) => void,
-  item: any
+  moveDetail: (item: any) => (e: MouseEvent<HTMLElement>) => void;
+  selectDetail: (item: any) => (e: MouseEvent<HTMLElement>) => void;
+  item: any;
 }) => {
   return (
-    <StyledSectionItem onClick={moveDetail}>
-      <Image src={`http://52.79.72.35:4000/${item.bigLogoPath}`}
+    <StyledSectionItem onClick={moveDetail(item.id)}>
+      <Image
+        src={`http://52.79.72.35:4000/${item.bigLogoPath}`}
         width={110}
         height={110}
-        alt={''}
         loading="lazy"
       />
       <StyledSectionItemTitle>{item.nameKr}</StyledSectionItemTitle>
-      <StyledSectionDescripton>
-        {item.description}
-      </StyledSectionDescripton>
+      <StyledSectionDescripton>{item.description}</StyledSectionDescripton>
       <StyledSectionItemBtn onClick={selectDetail(item)}>
         <IconPlus iWidth={32} iHeight={32} />
       </StyledSectionItemBtn>
-    </StyledSectionItem >
+    </StyledSectionItem>
   );
 };
 export default SectionItem;

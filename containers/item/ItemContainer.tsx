@@ -7,12 +7,17 @@ import {
 } from "components/item";
 import ItemFooterContainer from "./ItemFooterContainer";
 
-const ItemContainer = () => {
+const ItemContainer = ({ item }: any) => {
   return (
     <>
-      <Description />
+      <Description
+        titleKr={item.nameKr}
+        titleEng={item.nameEng}
+        desc={item.description}
+        image={item.bigLogoPath}
+      />
       <Divider />
-      <Membership />
+      <Membership item={item.memberships} />
       <ItemTitle title={["월 구독료"]} />
       <ItemFee height={268} type="A" />
       <ItemTitle title={["결제단위", "이용범위"]} />

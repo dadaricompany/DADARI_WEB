@@ -30,14 +30,14 @@ const StyledMembershipDetail = styled.p`
   letter-spacing: -0.25px;
   color: #9194a9;
   margin: 22px 0 0 0;
-  text-align:center;
-  text-decoration:underline;
+  text-align: center;
+  text-decoration: underline;
 `;
-const Membership = () => {
+const Membership = ({ item }: any) => {
   return (
     <StyeldMemberShip>
       <StyledMemberShipTitle>멤버십</StyledMemberShipTitle>
-      <MembershipChart />
+      <MembershipChart item={item}/>
       <StyledMembershipDetail>정책 자세히보기</StyledMembershipDetail>
     </StyeldMemberShip>
   );
