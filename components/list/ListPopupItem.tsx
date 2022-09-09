@@ -1,22 +1,19 @@
 import styled from "styled-components";
 import { MouseEvent } from "react";
-import Image from "next/image";
-import { borderRadius } from "polished";
 
 const StyledListPopupItem = styled.div`
   display: flex;
   flex-direction: column;
-  position:relative;
+  position: relative;
 `;
 const StyledDeletePopupItem = styled.div`
-    width: 26px;
-    height: 26px;
-    padding: 5px;
-    border-radius:50%;
-    background-color: #68708d;
-    position:absolute;
-    right:-10px;
-    top:-10px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgb(103, 112, 140);
+  position: absolute;
+  right: -10px;
+  top: -10px;
 `;
 const StyledListPopupItemIcon = styled.div`
   border-radius: 18px;
@@ -37,22 +34,37 @@ const StyledListPopupItemText = styled.p`
 
 const ListPopupItem = ({
   deleteDetail,
-  item
+  item,
 }: {
-  deleteDetail: (item: any) => (e: MouseEvent<HTMLElement>) => void,
-  item: any
+  deleteDetail: (item: any) => (e: MouseEvent<HTMLElement>) => void;
+  item: any;
 }) => {
   return (
     <StyledListPopupItem className="popup_item">
-      {item && <StyledDeletePopupItem onClick={deleteDetail(item)}></StyledDeletePopupItem>}
-      {item && item.bigLogoPath ? <Image src={`http://52.79.72.35:4000/${item.bigLogoPath}`} style={{
-        borderRadius: '18px',
-        width: '72px',
-        height: '72px'
-      }}
-        width={20}
-        height={20} loading="lazy" alt="" /> : <StyledListPopupItemIcon></StyledListPopupItemIcon>}
-      <StyledListPopupItemText>{item && item.nameKr ? item.nameKr : '선택'}</StyledListPopupItemText>
+      {item && (
+        <StyledDeletePopupItem
+          onClick={deleteDetail(item)}
+        ></StyledDeletePopupItem>
+      )}
+      {item && item.bigLogoPath ? (
+        <img
+          src={`http://52.79.72.35:4000/${item.bigLogoPath}`}
+          style={{
+            borderRadius: "18px",
+            width: "72px",
+            height: "72px",
+          }}
+          width={20}
+          height={20}
+          loading="lazy"
+          alt=""
+        />
+      ) : (
+        <StyledListPopupItemIcon></StyledListPopupItemIcon>
+      )}
+      <StyledListPopupItemText>
+        {item && item.nameKr ? item.nameKr : "선택"}
+      </StyledListPopupItemText>
     </StyledListPopupItem>
   );
 };
