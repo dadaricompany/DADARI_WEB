@@ -37,6 +37,7 @@ const StyledSectionDescripton = styled.p`
   font-style: normal;
   line-height: 1.36;
   letter-spacing: -0.5px;
+  overflow: hidden;
   color: #bcc2d6;
 `;
 const StyledSectionItemBtn = styled.div`
