@@ -5,9 +5,17 @@ import {
   ItemTitle,
   Membership,
 } from "components/item";
+import { Fragment, useEffect, useState } from "react";
 import ItemFooterContainer from "./ItemFooterContainer";
 
 const ItemContainer = ({ item }: any) => {
+  const [selected, setSelected] = useState([]);
+
+  useEffect(() => {
+    if (item.length == 0) return;
+    setSelected(item.memberships[0].comparisonValues);
+  }, [item]);
+
   return (
     <>
       <Description
@@ -18,16 +26,30 @@ const ItemContainer = ({ item }: any) => {
       />
       <Divider />
       <Membership item={item.memberships} />
-      <ItemTitle title={["월 구독료"]} />
-      <ItemFee height={268} type="A" />
-      <ItemTitle title={["결제단위", "이용범위"]} />
-      <ItemFee height={202} type="B" />
-      <ItemTitle title={["무료기간", "제휴혜택"]} />
-      <ItemFee height={202} type="B" />
-      <ItemTitle title={["부가기능"]} />
-      <ItemFee height={107} type="C" />
-      <ItemTitle title={["컨텐츠수"]} />
-      <ItemFee height={281} type="D" />
+      {selected &&
+        selected.map((v: any, i: number) => {
+          return v.length == 2 ? (
+            <Fragment key={i}>
+              <ItemTitle
+                title={[v[0].comparisonItem.name, v[1].comparisonItem.name]}
+              />
+              <ItemFee
+                type={v[0].comparisonItem.type}
+                item={[v[0].comparisonItem, v[1].comparisonItem]}
+                value={v[0]}
+              />
+            </Fragment>
+          ) : (
+            <Fragment key={i}>
+              <ItemTitle title={[v[0].comparisonItem.name]} />
+              <ItemFee
+                type={v[0].comparisonItem.type}
+                item={[v[0].comparisonItem]}
+                value={v[0]}
+              />
+            </Fragment>
+          );
+        })}
       <ItemFooterContainer />
     </>
   );

@@ -14,6 +14,7 @@ const CategoryContainer = () => {
 
   const getList = async (id: any) => {
     const { data } = await selectListList(id);
+    console.log(data)
     let result = { categories: [], subcategories: [], subscriptionServices: [] }
     result['categories'] = data.categories ?? [];
     result['subcategories'] = data.subcategories ?? [];

@@ -1,29 +1,57 @@
 import styled from "styled-components";
-import { ItemFeeContent, ItemFeeDoughnut } from "./";
+import { ItemFeeNumber, ItemFeeText, ItemFeeDoughnut } from "./";
 
-const StyledItemFee = styled.div<{ height: number }>`
+const StyledItemFee = styled.div<{ height: number; len: number }>`
+  display: flex;
   background-color: rgba(255, 0, 255, 0);
   height: ${(props) => props.height}px;
+  div {
+    width: ${(props) => 100 / props.len}%;
+  }
 `;
-const ItemFee = ({ height, type }: { height: number; type: string }) => {
+const ItemFee = ({
+  type,
+  item,
+  value,
+}: {
+  type: string;
+  item: any;
+  value: any;
+}) => {
+  console.log(item.length);
+  console.log(type);
+  console.log(value);
   const ItemFeeType = () => {
     switch (type) {
-      case "A":
-        return <></>;
-      case "B":
-        return <></>;
-      case "C":
-        return <></>;
-      case "D":
-        return <ItemFeeDoughnut />;
+      case "NUMBER":
+        return (
+          <StyledItemFee height={107} len={item.length}>
+            <ItemFeeNumber item={value.value}></ItemFeeNumber>
+          </StyledItemFee>
+        );
+      case "TEXT":
+        return item.length == 1 ? (
+          <StyledItemFee height={202} len={item.length}>
+            <ItemFeeText item={value.value}></ItemFeeText>
+          </StyledItemFee>
+        ) : (
+          <StyledItemFee height={202} len={item.length}>
+            <ItemFeeText item={value.value}></ItemFeeText>
+            <ItemFeeText item={value.value}></ItemFeeText>
+          </StyledItemFee>
+        );
+      case "BAR":
+        return <StyledItemFee height={268} len={item.length}></StyledItemFee>;
+      case "DOUGHNUT":
+        return (
+          <StyledItemFee height={281} len={item.length}>
+            <ItemFeeDoughnut />
+          </StyledItemFee>
+        );
       default:
         return <></>;
     }
   };
-  return (
-    <StyledItemFee height={height}>
-      <ItemFeeType />
-    </StyledItemFee>
-  );
+  return <ItemFeeType />;
 };
 export default ItemFee;
