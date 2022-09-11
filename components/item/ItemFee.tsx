@@ -18,9 +18,6 @@ const ItemFee = ({
   item: any;
   value: any;
 }) => {
-  console.log(item.length);
-  console.log(type);
-  console.log(value);
   const ItemFeeType = () => {
     switch (type) {
       case "NUMBER":
