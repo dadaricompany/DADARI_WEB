@@ -1,8 +1,10 @@
+import { Fragment } from "react";
 import styled from "styled-components";
 import SubCategoryItem from "./SubCategoryItem";
+import { MouseEvent } from "react";
 
 const StyledSubCategoryHeight = styled.div`
-  height: 58px; ;
+  height: 58px;
   display: flex;
   align-items: center;
   background: #000;
@@ -23,18 +25,30 @@ const StyledScrollSubCategoryList = styled.div`
     margin-left: 7px;
   }
 `;
-const SubCategoryList = () => {
+const SubCategoryList = ({
+  item,
+  onClickHashtags,
+}: {
+  item: any;
+  onClickHashtags: (e: MouseEvent<HTMLElement>) => void;
+}) => {
   return (
     <StyledSubCategoryHeight>
       <StyledSubCategoryList>
         <StyledScrollSubCategoryList>
-          <SubCategoryItem />
-          <SubCategoryItem />
-          <SubCategoryItem />
-          <SubCategoryItem />
-          <SubCategoryItem />
-          <SubCategoryItem />
-          <SubCategoryItem />
+          {item &&
+            item.length &&
+            item.map((v: any, i: number) => {
+              return (
+                <Fragment key={i}>
+                  <SubCategoryItem
+                    item={v}
+                    id={i}
+                    onClickHashtags={onClickHashtags}
+                  />
+                </Fragment>
+              );
+            })}
         </StyledScrollSubCategoryList>
       </StyledSubCategoryList>
     </StyledSubCategoryHeight>

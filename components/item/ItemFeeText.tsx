@@ -25,9 +25,9 @@ const ItemFeeText = ({ item }: any) => {
       <StyledItemFeeImg width={32} height={32}></StyledItemFeeImg>
       <StyledItemContent>
         {item &&
-          item.split("\n").map((v: any) => {
+          item.split("\n").map((v: any, i: number) => {
             return (
-              <span>
+              <span key={i}>
                 {v}
                 <br />
               </span>

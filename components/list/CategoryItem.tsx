@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { MouseEvent } from "react";
-import Image from 'next/image'
+import Image from "next/image";
 
 const StyledCategoryItem = styled.div<{ selected: boolean }>`
   width: 70px;
@@ -9,14 +9,16 @@ const StyledCategoryItem = styled.div<{ selected: boolean }>`
   border-radius: 35px;
   background-color: #2d344b;
   ${(props) => {
-    return props.selected && 'background-image: linear-gradient(135deg, #ac66ff, #7435ff); box-shadow: 0 10px 20px 0 rgba(126, 37, 255, 0.6), inset 1px 1px 3px 0 rgba(248, 213, 255, 0.2);'
+    return (
+      props.selected &&
+      "background-image: linear-gradient(135deg, #ac66ff, #7435ff); box-shadow: 0 10px 20px 0 rgba(126, 37, 255, 0.6), inset 1px 1px 3px 0 rgba(248, 213, 255, 0.2);"
+    );
   }}
-  
 `;
 const StyledCategoryIcon = styled.div`
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 52px;
   border-radius: 50%;
   background: #fff;
@@ -37,23 +39,35 @@ const StyledCategoryTitle = styled.div<{ selected: boolean }>`
     text-align: center;
     color: #afb9da;
     ${(props) => {
-    return props.selected && 'color:#fff !important; font-weight:500 !important; '
-  }}
+      return (
+        props.selected && "color:#fff !important; font-weight:500 !important; "
+      );
+    }}
   }
 `;
-const CategoryItem = ({ id, item, moveList }: { id: any, item: any, moveList: (item: any) => (e: MouseEvent<HTMLElement>) => void; }) => {
+const CategoryItem = ({
+  id,
+  item,
+  moveList,
+}: {
+  id: any;
+  item: any;
+  moveList: (item: any) => (e: MouseEvent<HTMLElement>) => void;
+}) => {
   return (
     <StyledCategoryItem onClick={moveList(item.id)} selected={item.id == id}>
       <StyledCategoryIcon>
-        <Image src={`http://52.79.72.35:4000/${item.bigLogoPath}`}
+        <Image
+          src={`http://52.79.72.35:4000/${item.bigLogoPath}`}
           width={30}
           height={30}
-          alt={'logo'} />
+          alt={"logo"}
+        />
       </StyledCategoryIcon>
       <StyledCategoryTitle selected={item.id == id}>
         <span>{item.nameKr}</span>
       </StyledCategoryTitle>
-    </StyledCategoryItem >
+    </StyledCategoryItem>
   );
 };
 export default CategoryItem;
