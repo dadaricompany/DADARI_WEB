@@ -62,7 +62,7 @@ const ItemContainer = ({ item }: any) => {
             </Fragment>
           );
         })}
-      <ItemFooterContainer url={item.mainUrl} goToURL={goToURL} />
+      {item && <ItemFooterContainer url={item.mainUrl} goToURL={goToURL} item={item} />}
     </>
   );
 };
