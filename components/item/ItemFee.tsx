@@ -37,9 +37,9 @@ const ItemFee = ({
             <ItemFeeText item={value.value}></ItemFeeText>
           </StyledItemFee>
         );
-      case "BAR":
+      case "BARCHART":
         return <StyledItemFee height={268} len={item.length}></StyledItemFee>;
-      case "DOUGHNUT":
+      case "DOUGHNUTCHART":
         return (
           <StyledItemFee height={281} len={item.length}>
             <ItemFeeDoughnut />

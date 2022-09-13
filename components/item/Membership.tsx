@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import MembershipChart from "./MembershipChart";
+import { ChangeEvent, MouseEvent } from "react";
 
 const StyeldMemberShip = styled.div`
   height: 202px;
@@ -33,12 +34,17 @@ const StyledMembershipDetail = styled.p`
   text-align: center;
   text-decoration: underline;
 `;
-const Membership = ({ item }: any) => {
+const Membership = ({ item, goToURL, url, changeMemberShip }: {
+  item: any,
+  url: string,
+  goToURL: (url: string) => (e: MouseEvent<HTMLElement>) => void;
+  changeMemberShip: (e: MouseEvent<HTMLElement>) => void;
+}) => {
   return (
     <StyeldMemberShip>
       <StyledMemberShipTitle>멤버십</StyledMemberShipTitle>
-      <MembershipChart item={item}/>
-      <StyledMembershipDetail>정책 자세히보기</StyledMembershipDetail>
+      <MembershipChart item={item} changeMemberShip={changeMemberShip} />
+      <StyledMembershipDetail onClick={goToURL(url)}>정책 자세히보기</StyledMembershipDetail>
     </StyeldMemberShip>
   );
 };

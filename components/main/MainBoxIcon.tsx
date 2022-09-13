@@ -10,6 +10,7 @@ const StyledMainBoxIcon = styled.div`
   background-color: #2d344b;
   display: flex;
   justify-content: center;
+  z-index:999;
   align-items: center;
 `;
 const StyledMainBoxText = styled.span`

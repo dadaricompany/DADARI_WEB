@@ -77,9 +77,13 @@ const StyledItemPopupBoxConfirm = styled.div`
   align-items: center;
 `;
 const ItemPopup = ({
+  url,
   closePopup,
+  goToURL
 }: {
+  url: string,
   closePopup: (e: MouseEvent<HTMLElement>) => void;
+  goToURL: (url: string) => (e: MouseEvent<HTMLElement>) => void;
 }) => {
   return (
     <StyledItemPopup id="ItemPopup">
@@ -92,7 +96,7 @@ const ItemPopup = ({
           <StyledItemPopupBoxCancel onClick={closePopup}>
             <span>취소</span>
           </StyledItemPopupBoxCancel>
-          <StyledItemPopupBoxConfirm>
+          <StyledItemPopupBoxConfirm onClick={goToURL(url)}>
             <span>확인</span>
           </StyledItemPopupBoxConfirm>
         </StyledItemPopupBoxBottom>

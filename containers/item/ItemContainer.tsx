@@ -7,12 +7,22 @@ import {
 } from "components/item";
 import { Fragment, useEffect, useState } from "react";
 import ItemFooterContainer from "./ItemFooterContainer";
+import Router from "next/router";
+import { MouseEvent } from "react";
 
 const ItemContainer = ({ item }: any) => {
   const [selected, setSelected] = useState([]);
 
+  const changeMemberShip = (e: any) => {
+    setSelected(item.memberships[e.currentTarget.control.id.slice(6)].comparisonValues)
+  }
+
+  const goToURL = (url: string) => (e: MouseEvent<HTMLElement>) => {
+    Router.push(url);
+  }
+
   useEffect(() => {
-    if (item.length == 0) return;
+    if (item.length == 0 || !item.memberships[0] || !item.memberships[0].comparisonValues) return;
     setSelected(item.memberships[0].comparisonValues);
   }, [item]);
 
@@ -25,10 +35,11 @@ const ItemContainer = ({ item }: any) => {
         image={item.bigLogoPath}
       />
       <Divider />
-      <Membership item={item.memberships} />
+      <Membership item={item.memberships} goToURL={goToURL} url={item.policyUrl} changeMemberShip={changeMemberShip} />
       {selected &&
         selected.map((v: any, i: number) => {
           return v.length == 2 ? (
+            v[0] && v[0].comparisonItem &&
             <Fragment key={i}>
               <ItemTitle
                 title={[v[0].comparisonItem.name, v[1].comparisonItem.name]}
@@ -40,6 +51,7 @@ const ItemContainer = ({ item }: any) => {
               />
             </Fragment>
           ) : (
+            v[0] && v[0].comparisonItem &&
             <Fragment key={i}>
               <ItemTitle title={[v[0].comparisonItem.name]} />
               <ItemFee
@@ -50,7 +62,7 @@ const ItemContainer = ({ item }: any) => {
             </Fragment>
           );
         })}
-      <ItemFooterContainer />
+      <ItemFooterContainer url={item.mainUrl} goToURL={goToURL} />
     </>
   );
 };

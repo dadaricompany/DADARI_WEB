@@ -14,7 +14,7 @@ const StyledSection = styled.main`
   flex-grow: 1;
   overflow-x: hidden;
   overflow-y: auto;
-  background: #111320 url(assets/image/bg_main.png) no-repeat right top /
+  background: #111320 url(http://localhost:3000/assets/image/bg_main.png) no-repeat right top /
     contain;
 `;
 

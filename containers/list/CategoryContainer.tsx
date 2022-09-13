@@ -1,8 +1,7 @@
 import { selectListList } from "api/modules/list";
 import { Footer } from "components/base";
 import { CategoryList, SubCategoryList } from "components/list";
-import { useRouter } from "next/router";
-import Item from "pages/item/[id]";
+import { Router, useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { MouseEvent } from "react";
 import SectionContainer from "./SectionContainer";
@@ -17,9 +16,9 @@ const CategoryContainer = () => {
     subscriptionServices: [],
   });
 
+
   const getList = async (id: any) => {
     const { data } = await selectListList(id);
-
     let result = {
       categories: [],
       hashtags: [],
