@@ -71,7 +71,7 @@ const ItemFooter = ({
   selectCmpare
 }: {
   openPopup: (e: MouseEvent<HTMLElement>) => void;
-  selectCmpare: (item: any) => void;
+  selectCmpare:  (e: MouseEvent<HTMLElement>) => void;
 }) => {
   return (
     <StyledItemFooter>
@@ -81,7 +81,7 @@ const ItemFooter = ({
       </StyledItemFooterSub>
       <StyledItemFooterBtnZone>
         <StyledItemGo onClick={openPopup}>서비스 바로가기</StyledItemGo>
-        <StyledItemAdd >비교함 담기</StyledItemAdd>
+        <StyledItemAdd onClick={selectCmpare} >비교함 담기</StyledItemAdd>
       </StyledItemFooterBtnZone>
     </StyledItemFooter>
   );

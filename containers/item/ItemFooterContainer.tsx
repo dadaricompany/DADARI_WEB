@@ -4,9 +4,10 @@ import { MouseEvent } from "react";
 import { compareState } from "store/state";
 import { useRecoilState } from "recoil";
 import { selectListList } from "api/modules/list";
+import Router from "next/router";
 
-const ItemFooterContainer = ({ url, goToURL }: { url: string, goToURL: (url: string) => (e: MouseEvent<HTMLElement>) => void; }) => {
-  const [compare, setCompare] = useRecoilState(compareState)
+const ItemFooterContainer = ({ item, url, goToURL }: { item: any, url: string, goToURL: (url: string) => (e: MouseEvent<HTMLElement>) => void; }) => {
+  const [compare, setCompare] = useRecoilState<any>(compareState)
 
   const openPopup = (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -15,10 +16,13 @@ const ItemFooterContainer = ({ url, goToURL }: { url: string, goToURL: (url: str
       _itemPopup.style.display = "flex";
     }
   };
-  const selectCmpare = (item: any) => (e: MouseEvent<HTMLElement>) => {
+  const selectCmpare = async (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
     e.stopPropagation();
     if (compare.length > 1) return;
+    const { data } = await selectListList(item.categoryId);
+    setCompare([...compare, ...data.subscriptionServices.filter((v: any) => v.id == item.id)])
+    Router.back();
   };
 
   const closePopup = (e: MouseEvent<HTMLElement>) => {
