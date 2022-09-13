@@ -1,9 +1,11 @@
 import { ListPopup, SectionGridTemplate, SectionItem } from "components/list";
 import { useRouter } from "next/router";
-import { Fragment, MouseEvent, useState } from "react";
-
+import { Fragment, MouseEvent } from "react";
+import { useRecoilState } from "recoil";
+import { compareState } from "store/state";
 const SectionContainer = ({ item }: any) => {
-  const [selectedList, setSelectedList] = useState<any>([]);
+
+  const [compare, setCompare] = useRecoilState<any>(compareState);
   const router = useRouter();
 
   const moveDetail = (item: any) => (e: MouseEvent<HTMLElement>) => {
@@ -13,13 +15,13 @@ const SectionContainer = ({ item }: any) => {
   const selectDetail = (item: any) => (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
     e.stopPropagation();
-    if (selectedList.length > 1) return;
-    setSelectedList([...selectedList, item]);
+    if (compare.length > 1) return;
+    setCompare([...compare, item])
   };
   const deleteDetail = (item: any) => (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
     e.stopPropagation();
-    setSelectedList(selectedList.filter((v: any) => v.id != item.id));
+    setCompare(compare.filter((v: any) => v.id != item.id))
   };
 
   return (
@@ -39,8 +41,8 @@ const SectionContainer = ({ item }: any) => {
           })}
       </SectionGridTemplate>
 
-      {selectedList.length > 0 && (
-        <ListPopup item={selectedList} deleteDetail={deleteDetail} />
+      {compare.length > 0 && (
+        <ListPopup item={compare} deleteDetail={deleteDetail} />
       )}
     </>
   );

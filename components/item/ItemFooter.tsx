@@ -66,11 +66,12 @@ const StyledItemAdd = styled.div`
   letter-spacing: -0.5px;
   color: #fff;
 `;
-
 const ItemFooter = ({
   openPopup,
+  selectCmpare
 }: {
   openPopup: (e: MouseEvent<HTMLElement>) => void;
+  selectCmpare: (item: any) => void;
 }) => {
   return (
     <StyledItemFooter>
@@ -80,7 +81,7 @@ const ItemFooter = ({
       </StyledItemFooterSub>
       <StyledItemFooterBtnZone>
         <StyledItemGo onClick={openPopup}>서비스 바로가기</StyledItemGo>
-        <StyledItemAdd>비교함 담기</StyledItemAdd>
+        <StyledItemAdd >비교함 담기</StyledItemAdd>
       </StyledItemFooterBtnZone>
     </StyledItemFooter>
   );

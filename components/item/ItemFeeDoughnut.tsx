@@ -26,19 +26,22 @@ const StyledItemFeeDoughnut = styled.div`
 `;
 
 const StyledItemFeeDescription = styled.div`
+  width:150px;
+  margin:0 auto;
   display:flex;
   flex-direction: column;
   margin:13px 0 0 0;
 `
 const StyledItemFeeDescriptionContent = styled.div`
   display: flex;
+  justify-content:center;
   align-items: center;
   div+div{
     margin-left:4px;
   }
 `
 const StyledItemFeeDescriptionColor = styled.div<{ color: string }>`
-  width: 10px;
+  width: 10px !important;
   height: 10px;
   border-radius: 3px;
   background-color: ${(props) => props.color};
@@ -51,6 +54,7 @@ const StyledItemFeeDescriptionText = styled.div`
   line-height: 1.38;
   letter-spacing: -0.25px;
   color: #9194a9;
+  width:fit-content !important;
 `
 
 const ItemFeeDoughnut = () => {
@@ -85,19 +89,19 @@ const ItemFeeDoughnut = () => {
 
   return (
     <StyledItemFeeDoughnut>
-<canvas id='doughnutChart' width="80" height="80" />
+      <canvas id='doughnutChart' width="80" height="80" />
       <p>약 70,000 개</p>
       <StyledItemFeeDescription>
         <StyledItemFeeDescriptionContent>
-          <StyledItemFeeDescriptionColor color={"#8246fa"}/>
+          <StyledItemFeeDescriptionColor color={"#8246fa"} />
           <StyledItemFeeDescriptionText>영화 (10%)</StyledItemFeeDescriptionText>
         </StyledItemFeeDescriptionContent>
         <StyledItemFeeDescriptionContent>
-          <StyledItemFeeDescriptionColor color={"rgb(255, 205, 86)"}/>
+          <StyledItemFeeDescriptionColor color={"rgb(255, 205, 86)"} />
           <StyledItemFeeDescriptionText>애니 (22%)</StyledItemFeeDescriptionText>
         </StyledItemFeeDescriptionContent>
         <StyledItemFeeDescriptionContent>
-          <StyledItemFeeDescriptionColor color={"#2d344b"}/>
+          <StyledItemFeeDescriptionColor color={"#2d344b"} />
           <StyledItemFeeDescriptionText>기타 (68%)</StyledItemFeeDescriptionText>
         </StyledItemFeeDescriptionContent>
       </StyledItemFeeDescription>

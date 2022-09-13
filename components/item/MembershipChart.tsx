@@ -1,5 +1,7 @@
-import { Fragment } from "react";
+import { ChangeEvent, Fragment, useEffect } from "react";
 import styled, { css } from "styled-components";
+import { MouseEvent } from "react";
+
 const StyledMembershipChartOne = styled.div<{ item: any }>`
   height: 38px;
   position: relative;
@@ -246,8 +248,7 @@ const StyledMembershipChartFour = styled.div<{ item: any }>`
 const changeState = (e: any) => {
   e.currentTarget.control.checked = true;
 };
-
-const MembershipChart = ({ item }: any) => {
+const MembershipChart = ({ item, changeMemberShip }: { item: any, changeMemberShip: (e: MouseEvent<HTMLElement>) => void; }) => {
   return item && item.length && item.length == 1 ? (
     <StyledMembershipChartOne item={item}>
       {item.map((v: any, i: number) => {
@@ -275,7 +276,10 @@ const MembershipChart = ({ item }: any) => {
       {item.map((v: any, i: number) => {
         return (
           <Fragment key={i}>
-            <label htmlFor={"toggle" + i} onClick={changeState}>
+            <label htmlFor={"toggle" + i} onClick={(e: any) => {
+              changeState(e);
+              changeMemberShip(e);
+            }}>
               <p></p>
             </label>
           </Fragment>
@@ -310,7 +314,10 @@ const MembershipChart = ({ item }: any) => {
       {item.map((v: any, i: number) => {
         return (
           <Fragment key={i}>
-            <label htmlFor={"toggle" + i} onClick={changeState}>
+            <label htmlFor={"toggle" + i} onClick={(e: any) => {
+              changeState(e);
+              changeMemberShip(e);
+            }}>
               <p></p>
             </label>
           </Fragment>
@@ -345,7 +352,10 @@ const MembershipChart = ({ item }: any) => {
       {item.map((v: any, i: number) => {
         return (
           <Fragment key={i}>
-            <label htmlFor={"toggle" + i} onClick={changeState}>
+            <label htmlFor={"toggle" + i} onClick={(e: any) => {
+              changeState(e);
+              changeMemberShip(e);
+            }}>
               <p></p>
             </label>
           </Fragment>
@@ -380,7 +390,10 @@ const MembershipChart = ({ item }: any) => {
       {item.map((v: any, i: number) => {
         return (
           <Fragment key={i}>
-            <label htmlFor={"toggle" + i} onClick={changeState}>
+            <label htmlFor={"toggle" + i} onClick={(e: any) => {
+              changeState(e);
+              changeMemberShip(e);
+            }}>
               <p></p>
             </label>
           </Fragment>
