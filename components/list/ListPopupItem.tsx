@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { MouseEvent } from "react";
+import { IconX } from "components/icons";
 
 const StyledListPopupItem = styled.div`
   display: flex;
@@ -14,11 +15,16 @@ const StyledDeletePopupItem = styled.div`
   position: absolute;
   right: -10px;
   top: -10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 const StyledListPopupItemIcon = styled.div`
   border-radius: 18px;
   width: 72px;
   height: 72px;
+  border: 1px dashed #68708d;
+  background-color: rgba(145, 148, 169, 0.12);
 `;
 const StyledListPopupItemText = styled.p`
   margin: 10px 0 0 0;
@@ -42,9 +48,9 @@ const ListPopupItem = ({
   return (
     <StyledListPopupItem className="popup_item">
       {item && (
-        <StyledDeletePopupItem
-          onClick={deleteDetail(item)}
-        ></StyledDeletePopupItem>
+        <StyledDeletePopupItem onClick={deleteDetail(item)}>
+          <IconX />
+        </StyledDeletePopupItem>
       )}
       {item && item.bigLogoPath ? (
         <img

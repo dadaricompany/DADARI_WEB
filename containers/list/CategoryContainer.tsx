@@ -16,7 +16,6 @@ const CategoryContainer = () => {
     subscriptionServices: [],
   });
 
-
   const getList = async (id: any) => {
     const { data } = await selectListList(id);
     let result = {
@@ -29,6 +28,7 @@ const CategoryContainer = () => {
       data.hashtags.map((v: any) => {
         return {
           name: v.name,
+          id: v.id,
           checked: false,
         };
       }) ?? [];
@@ -51,8 +51,17 @@ const CategoryContainer = () => {
     hashs[num].checked
       ? (hashs[num].checked = false)
       : (hashs[num].checked = true);
-    console.log(hashs.reduce((acc: string, cur: any) => acc + cur.id, "").split("").join(","))
-    const { data } = await selectListList(id);
+
+    const { data } = await selectListList(
+      id,
+      hashs
+        .reduce(
+          (acc: string, cur: any) => (cur.checked ? acc + cur.id : acc),
+          ""
+        )
+        .split("")
+        .join(",")
+    );
     setList({
       categories: data.categories,
       hashtags: hashs,
