@@ -18,6 +18,7 @@ const ItemFee = ({
   item: any;
   value: any;
 }) => {
+  console.log(value);
   const ItemFeeType = () => {
     switch (type) {
       case "NUMBER":
@@ -33,8 +34,8 @@ const ItemFee = ({
           </StyledItemFee>
         ) : (
           <StyledItemFee height={202} len={item.length}>
-            <ItemFeeText item={value.value}></ItemFeeText>
-            <ItemFeeText item={value.value}></ItemFeeText>
+            <ItemFeeText item={value[0].value}></ItemFeeText>
+            <ItemFeeText item={value[1].value}></ItemFeeText>
           </StyledItemFee>
         );
       case "BARCHART":
