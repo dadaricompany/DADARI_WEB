@@ -1,7 +1,7 @@
 import { selectListList } from "api/modules/list";
 import { Footer } from "components/base";
 import { CategoryList, SubCategoryList } from "components/list";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { MouseEvent } from "react";
 import SectionContainer from "./SectionContainer";
@@ -43,7 +43,7 @@ const CategoryContainer = () => {
     setId(String(item));
   };
 
-  const onClickHashtags = (e: MouseEvent<HTMLElement>) => {
+  const onClickHashtags = async (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (!e.currentTarget.children) return;
     let num = Number(e.currentTarget.children[0].id.slice(9));
@@ -51,11 +51,12 @@ const CategoryContainer = () => {
     hashs[num].checked
       ? (hashs[num].checked = false)
       : (hashs[num].checked = true);
-
+    console.log(hashs.reduce((acc: string, cur: any) => acc + cur.id, "").split("").join(","))
+    const { data } = await selectListList(id);
     setList({
-      categories: list.categories,
+      categories: data.categories,
       hashtags: hashs,
-      subscriptionServices: list.subscriptionServices,
+      subscriptionServices: data.subscriptionServices,
     });
   };
 
