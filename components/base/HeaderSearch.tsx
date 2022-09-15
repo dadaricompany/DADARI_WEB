@@ -32,8 +32,10 @@ const StyledHeaderSearchBox = styled.input`
   color: #fff;
 `;
 const HeaderSearch = ({
+  onChangeSearchText,
   moveBack,
 }: {
+  onChangeSearchText: any
   moveBack: (e: MouseEvent<HTMLElement>) => void;
 }) => {
   return (
@@ -41,7 +43,7 @@ const HeaderSearch = ({
       <div onClick={moveBack}>
         <IconArrowL iWidth={32} iHeight={32} />
       </div>
-      <StyledHeaderSearchBox type={"text"} />
+      <StyledHeaderSearchBox type={"text"} onKeyUp={onChangeSearchText} />
     </StyledHeaderSearch>
   );
 };
