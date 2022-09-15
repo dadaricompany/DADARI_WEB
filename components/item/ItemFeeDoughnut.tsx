@@ -1,5 +1,5 @@
 import { Chart, registerables } from 'chart.js';
-import { useEffect, useRef } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 const StyledItemFeeDoughnut = styled.div`
   height: 100%;
@@ -56,10 +56,28 @@ const StyledItemFeeDescriptionText = styled.div`
   color: #9194a9;
   width:fit-content !important;
 `
+//TODO : 컴포넌트 디자인 과 기능 분리해야됨
+const ItemFeeDoughnut = ({ value }: any) => {
 
-const ItemFeeDoughnut = () => {
-  const canvasRef = useRef(null);
+  const [doughnutData, setDoughnutData] = useState<any>(null);
+
+  const getRandomColor = () => {
+    return "#" + Math.floor(Math.random() * 16777215).toString(16);
+  }
   useEffect(() => {
+    if (!value) return;
+    value['color'] = [];
+    for (let i = 0, len = value.data.length; i < len; i++) {
+      value['color'].push(getRandomColor());
+    }
+    console.log(value)
+    setDoughnutData(value);
+  }, [value])
+
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    if (!doughnutData) return;
     const canvas = document.getElementById('doughnutChart') as HTMLCanvasElement | null;
     const ctx = canvas?.getContext('2d');
     if (!ctx) return;
@@ -68,44 +86,30 @@ const ItemFeeDoughnut = () => {
       type: 'doughnut',
       data: {
         datasets: [{
-          data: [300, 50, 100],
-          backgroundColor: [
-            '#2d344b',
-            '#8246fa',
-            'rgb(255, 205, 86)'
-          ],
-          borderColor: [
-            '#2d344b',
-            '#8246fa',
-            'rgb(255, 205, 86)'
-          ]
+          data: doughnutData.data,
+          backgroundColor: doughnutData.color,
+          borderColor: doughnutData.color
         }]
       },
     });
     return () => {
       doughnutChart.destroy();
     }
-  }, [])
+  }, [doughnutData])
 
-  return (
-    <StyledItemFeeDoughnut>
-      <canvas id='doughnutChart' width="80" height="80" />
-      <p>약 70,000 개</p>
-      <StyledItemFeeDescription>
-        <StyledItemFeeDescriptionContent>
-          <StyledItemFeeDescriptionColor color={"#8246fa"} />
-          <StyledItemFeeDescriptionText>영화 (10%)</StyledItemFeeDescriptionText>
-        </StyledItemFeeDescriptionContent>
-        <StyledItemFeeDescriptionContent>
-          <StyledItemFeeDescriptionColor color={"rgb(255, 205, 86)"} />
-          <StyledItemFeeDescriptionText>애니 (22%)</StyledItemFeeDescriptionText>
-        </StyledItemFeeDescriptionContent>
-        <StyledItemFeeDescriptionContent>
-          <StyledItemFeeDescriptionColor color={"#2d344b"} />
-          <StyledItemFeeDescriptionText>기타 (68%)</StyledItemFeeDescriptionText>
-        </StyledItemFeeDescriptionContent>
-      </StyledItemFeeDescription>
-    </StyledItemFeeDoughnut>
-  );
+  return doughnutData && <StyledItemFeeDoughnut>
+    <canvas id='doughnutChart' width="80" height="80" />
+    <p>약 {doughnutData.data.reduce((cur: number, acc: number) => Number(cur) + Number(acc), 0).toLocaleString()} 개</p>
+    <StyledItemFeeDescription>
+      {doughnutData.data.map((v: any, i: number) => {
+        return <Fragment key={i}>
+          <StyledItemFeeDescriptionContent >
+            <StyledItemFeeDescriptionColor color={doughnutData.color[i]} />
+            <StyledItemFeeDescriptionText>{doughnutData.labels[i]} ({Math.floor(Number(v) / doughnutData.data.reduce((cur: number, acc: number) => Number(cur) + Number(acc), 0) * 100)}%)</StyledItemFeeDescriptionText>
+          </StyledItemFeeDescriptionContent>
+        </Fragment>
+      })}
+    </StyledItemFeeDescription>
+  </StyledItemFeeDoughnut>
 };
 export default ItemFeeDoughnut;

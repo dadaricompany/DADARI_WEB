@@ -11,7 +11,6 @@ import Router from "next/router";
 import { MouseEvent } from "react";
 
 const ItemContainer = ({ item }: any) => {
-  console.log(item);
   const [selected, setSelected] = useState([]);
 
   const changeMemberShip = (e: any) => {

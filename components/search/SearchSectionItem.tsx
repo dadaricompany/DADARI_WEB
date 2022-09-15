@@ -23,7 +23,6 @@ const StyledSectionTitle = styled.div`
 `;
 
 const SearchSectionItem = ({ item }: any) => {
-  console.log(item)
   return (
     <StyledSearchSectionItem>
       <StyledSectionTitle>
