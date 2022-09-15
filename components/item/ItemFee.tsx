@@ -18,7 +18,6 @@ const ItemFee = ({
   item: any;
   value: any;
 }) => {
-  console.log(value);
   const ItemFeeType = () => {
     switch (type) {
       case "NUMBER":
@@ -43,7 +42,7 @@ const ItemFee = ({
       case "DOUGHNUTCHART":
         return (
           <StyledItemFee height={281} len={item.length}>
-            <ItemFeeDoughnut />
+            <ItemFeeDoughnut value={value.value} />
           </StyledItemFee>
         );
       default:
