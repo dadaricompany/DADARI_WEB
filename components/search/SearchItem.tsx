@@ -1,5 +1,6 @@
 import styled from "styled-components";
-
+import Image from "next/image";
+import IconSearchPlus from "components/icons/IconSearchPlus";
 const StyledSearchItem = styled.div`
   display: flex;
   padding: 14px 24px;
@@ -11,12 +12,7 @@ const StyledSearchItemFront = styled.div`
   display: flex;
   align-items: center;
 `;
-const StyledSearchIcon = styled.div`
-  background: url(../../assets/image/netflix-mini.png) no-repeat center top /
-    cover;
-  height: 48px;
-  width: 48px;
-`;
+
 const StyledSearchContent = styled.div`
   margin-left: 12px;
   display: flex;
@@ -40,8 +36,9 @@ const StyledSearchSub = styled.p`
   font-style: normal;
   line-height: 1.38;
   letter-spacing: -0.25px;
-  text-align: center;
+  text-align: left;
   color: #bcc2d6;
+
 `;
 const StyledSearchBtn = styled.div`
   width: 32px;
@@ -53,17 +50,21 @@ const StyledSearchBtn = styled.div`
   justify-content: center;
 `;
 
-const SearchItem = () => {
+const SearchItem = ({ item }: any) => {
   return (
     <StyledSearchItem>
       <StyledSearchItemFront>
-        <StyledSearchIcon />
+        <Image src={`http://52.79.72.35:4000/${item.bigLogoPath}`}
+          width={48}
+          height={48} loading="lazy" alt="" />
         <StyledSearchContent>
-          <StyledSearchTitle>서비스명</StyledSearchTitle>
-          <StyledSearchSub>간단설명 한 줄 들어가는 곳</StyledSearchSub>
+          <StyledSearchTitle>{item.nameKr}</StyledSearchTitle>
+          <StyledSearchSub>{item.description.substr(0, 25)}{item.description.length > 24 && ' ..'}</StyledSearchSub>
         </StyledSearchContent>
       </StyledSearchItemFront>
-      <StyledSearchBtn />
+      <StyledSearchBtn>
+        <IconSearchPlus iWidth={24} iHeight={24} />
+      </StyledSearchBtn>
     </StyledSearchItem>
   );
 };

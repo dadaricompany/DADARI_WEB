@@ -1,4 +1,4 @@
-import SectionTemplate from "components/search/SectionTemplate";
+import SearchSectionItem from "components/search/SearchSectionItem";
 import HeaderSearchContainer from "containers/base/HeaderSearchContainer";
 import styled from "styled-components";
 
@@ -9,30 +9,12 @@ const StyledSearchTempalte = styled.div`
   height: 100%;
 `;
 
-const StyledSection = styled.main`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-  overflow-y: auto;
-`;
-const StyledSectionGap = styled.div`
-  height: 14px;
-  background: #000;
-`;
 
-const SearchTemplate = () => {
+
+const SearchTemplate = ({ children }: any) => {
   return (
     <StyledSearchTempalte>
-      <HeaderSearchContainer />
-      <StyledSection>
-        <SectionTemplate />
-        <StyledSectionGap />
-        <SectionTemplate />
-        <StyledSectionGap />
-        <SectionTemplate />
-        <StyledSectionGap />
-      </StyledSection>
+      {children}
     </StyledSearchTempalte>
   );
 };

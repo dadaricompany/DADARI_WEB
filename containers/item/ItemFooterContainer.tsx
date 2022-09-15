@@ -21,7 +21,9 @@ const ItemFooterContainer = ({ item, url, goToURL }: { item: any, url: string, g
     e.stopPropagation();
     if (compare.length > 1) return;
     const { data } = await selectListList(item.categoryId);
-    setCompare([...compare, ...data.subscriptionServices.filter((v: any) => v.id == item.id)])
+    const select = data.subscriptionServices.filter((v: any) => v.id == item.id);
+    if (select && select.length && compare.filter((v: any) => v.id == select[0].id).length) return;
+    setCompare([...compare, ...select])
     Router.back();
   };
 
