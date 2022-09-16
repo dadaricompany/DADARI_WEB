@@ -27,8 +27,8 @@ const MainBoxIcon = ({ type, item }: { type: string; item: any }) => {
   return type == "icon" ? (
     <StyledMainBoxIcon>
       <Image src={`http://52.79.72.35:4000/${item.smallLogoPath}`}
-        width="18"
-        height="18"
+        width="30"
+        height="30"
         loading="lazy"
         alt="" />
     </StyledMainBoxIcon>

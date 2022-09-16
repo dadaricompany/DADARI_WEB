@@ -1,10 +1,12 @@
 import SearchItemContainer from "containers/search/SearchItemContainer";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import styled from "styled-components";
+import SearchItemBtn from "./SearchItemBtn";
+import { MouseEvent } from "react";
 
 const StyledSearchSectionItem = styled.div`
-  height: 332px;
   display: flex;
+  transition: all 1s;
   flex-direction: column;
 `;
 const StyledSectionTitle = styled.div`
@@ -22,18 +24,27 @@ const StyledSectionTitle = styled.div`
   }
 `;
 
-const SearchSectionItem = ({ item }: any) => {
+const SearchSectionItem = ({ item, sectionState, onClickMore }: { item: any, sectionState: boolean, onClickMore: (e: MouseEvent<HTMLElement>) => void; }) => {
   return (
-    <StyledSearchSectionItem>
-      <StyledSectionTitle>
-        <p>{item && item.nameKr}</p>
-      </StyledSectionTitle>
-      {item.subscriptionServices && item.subscriptionServices.map((v: any, i: number) => {
-        return <Fragment key={i}>
-          <SearchItemContainer item={v} />
-        </Fragment>
-      })}
-    </StyledSearchSectionItem>
+    <>
+      <StyledSearchSectionItem>
+        <StyledSectionTitle>
+          <p>{item && item.nameKr}</p>
+        </StyledSectionTitle>
+        {item.subscriptionServices && item.subscriptionServices.slice(0, 2).map((v: any, i: number) => {
+          return <Fragment key={i}>
+            <SearchItemContainer item={v} />
+          </Fragment>
+        })}
+        {sectionState && item.subscriptionServices && item.subscriptionServices.slice(2).map((v: any, i: number) => {
+          return <Fragment key={i}>
+            <SearchItemContainer item={v} />
+          </Fragment>
+        })}
+      </StyledSearchSectionItem>
+      {item.subscriptionServices && item.subscriptionServices.length > 2 && <SearchItemBtn sectionState={sectionState} onClickMore={onClickMore} />}
+    </>
   );
+
 };
 export default SearchSectionItem;
