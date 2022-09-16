@@ -7,28 +7,16 @@ const StyledServiceInfoSectionDoughnut = styled.div`
   padding: 0 20px;
 `;
 const StyledServiceInfoSectionDoughnutItem = styled.div`
-  padding: 21px 0 33px;
   background-color: #2d344b;
   border-bottom-right-radius: 12px;
   border-bottom-left-radius: 12px;
-  display: grid;
-  grid-template-columns: 1fr 1px 1fr;
-`;
-const StyledServiceInfoSectionDoughnutItemData = styled.div`
+  padding: 27px 12px;
   display: flex;
   flex-direction: column;
-  padding: 0 25px;
-  canvas {
-    width: 80px;
-    height: 80px;
-  }
-`;
-const StyledDivider = styled.div`
-  opacity: 0.33;
-  background-color: #68708d;
+  align-items: center;
 `;
 const StyledDoughnutDsec = styled.p`
-  margin: 12px 0 13px;
+  margin-top: 12px;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -41,6 +29,7 @@ const StyledDoughnutDsec = styled.p`
 `;
 const StyledDoughnutContent = styled.div`
   width: 100%;
+  padding: 0 95px;
   display: flex;
   align-items: center;
 `;
@@ -65,23 +54,12 @@ const ServiceInfoSectionDoughnut = ({ title }: { title: string }) => {
     <StyledServiceInfoSectionDoughnut>
       <ServiceInfoSectionTitle title={title} />
       <StyledServiceInfoSectionDoughnutItem>
-        <StyledServiceInfoSectionDoughnutItemData>
-          <canvas id="doughnutChart" width="80" height="80" />
-          <StyledDoughnutDsec>약 70,000개</StyledDoughnutDsec>
-          <StyledDoughnutContent>
-            <StyledDoughnutContentColor color={"#ffffff"} />
-            <StyledDoughnutContentText>영화 (22%)</StyledDoughnutContentText>
-          </StyledDoughnutContent>
-        </StyledServiceInfoSectionDoughnutItemData>
-        <StyledDivider />
-        <StyledServiceInfoSectionDoughnutItemData>
-          <canvas id="doughnutChart2" width="80" height="80" />
-          <StyledDoughnutDsec>약 70,000개</StyledDoughnutDsec>
-          <StyledDoughnutContent>
-            <StyledDoughnutContentColor color={"#ffffff"} />
-            <StyledDoughnutContentText>영화 (22%)</StyledDoughnutContentText>
-          </StyledDoughnutContent>
-        </StyledServiceInfoSectionDoughnutItemData>
+        <canvas id="doughnutChart" width="80" height="80" />
+        <StyledDoughnutDsec>약 70,000개</StyledDoughnutDsec>
+        <StyledDoughnutContent>
+          <StyledDoughnutContentColor color={"#ffffff"} />
+          <StyledDoughnutContentText>영화 (22%)</StyledDoughnutContentText>
+        </StyledDoughnutContent>
       </StyledServiceInfoSectionDoughnutItem>
     </StyledServiceInfoSectionDoughnut>
   );

@@ -9,7 +9,7 @@ const SectionContainer = ({ item }: any) => {
 
   const moveDetail = (item: any) => (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    router.push(`/item/${item}`);
+    router.push(`/service/${item}`);
   };
   const selectDetail = (item: any) => (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
