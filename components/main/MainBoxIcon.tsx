@@ -1,17 +1,36 @@
 import styled from "styled-components";
-import Image from 'next/image'
+import Image from "next/image";
 
-const StyledMainBoxIcon = styled.div`
+const StyledMainBoxIcon = styled.div<{ src: any | null }>`
   width: 30px;
   height: 30px;
   margin: 0 5px 0 0;
   border-radius: 50%;
+  padding: 1px;
   border: solid 2px #8246fa;
   background-color: #2d344b;
   display: flex;
   justify-content: center;
-  z-index:999;
-  align-items: center;
+  z-index: 999;
+  background-image: url(${(props) => props.src});
+  background-size: 28px;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
+const StyledMainBoxNumber = styled.div`
+  width: 30px;
+  height: 30px;
+  margin: 0 5px 0 0;
+  border-radius: 50%;
+  padding: 1px;
+  border: solid 2px #8246fa;
+  background-color: #2d344b;
+  display: flex;
+  justify-content: center;
+  z-index: 999;
+  background-image: url(favicon.png);
+  background-size: 300px;
 `;
 const StyledMainBoxText = styled.span`
   font-size: 13px;
@@ -25,17 +44,19 @@ const StyledMainBoxText = styled.span`
 `;
 const MainBoxIcon = ({ type, item }: { type: string; item: any }) => {
   return type == "icon" ? (
-    <StyledMainBoxIcon>
-      <Image src={`http://52.79.72.35:4000/${item.smallLogoPath}`}
+    <StyledMainBoxIcon src={`http://52.79.72.35:4000/${item.smallLogoPath}`}>
+      {/* <Image
+        src={`http://52.79.72.35:4000/${item.smallLogoPath}`}
         width="30"
         height="30"
         loading="lazy"
-        alt="" />
+        alt=""
+      /> */}
     </StyledMainBoxIcon>
   ) : (
-    <StyledMainBoxIcon>
+    <StyledMainBoxNumber>
       <StyledMainBoxText>+{item}</StyledMainBoxText>
-    </StyledMainBoxIcon>
+    </StyledMainBoxNumber>
   );
 };
 export default MainBoxIcon;
