@@ -16,12 +16,18 @@ const StyledSection = styled.main`
   overflow-y: auto;
 `;
 
+const StyledSectionWrapper = styled.div`
+  display:flex;
+  flex-direction: column;
+  flex-grow:1;
+`
+
 const ItemTamplte = ({ children }: any) => {
   return (
     <StyledItemTempalte>
       <HeaderBaseContainer />
       <StyledSection>
-        <div>{children}</div>
+        <StyledSectionWrapper>{children}</StyledSectionWrapper>
       </StyledSection>
     </StyledItemTempalte>
   );

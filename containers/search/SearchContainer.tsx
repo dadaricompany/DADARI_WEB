@@ -4,6 +4,9 @@ import { Fragment, useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { debounce } from 'lodash-es'
 import { selectSearchList } from "api/modules/search";
+import SearchItemBtn from "components/search/SearchItemBtn";
+import SearchSectionItemContainer from "./SearchSectionItemContainer";
+
 const StyledSection = styled.main`
   flex-grow: 1;
   display: flex;
@@ -18,7 +21,7 @@ const StyledSectionGap = styled.div`
 const SearchContainer = () => {
     const [searchText, setSearchText] = useState('');
     const [searchList, setSearchList] = useState<Array<any> | null>(null);
-
+    const [listLength, setListLength] = useState(2);
     useEffect(() => {
         const fetchData = async () => {
             const { data } = await selectSearchList('');
@@ -36,16 +39,17 @@ const SearchContainer = () => {
         setSearchText(e.target.value);
         search(e.target.value);
     }
-
     return <>
         <HeaderSearchContainer onChangeSearchText={onChangeSearchText} />
         <StyledSection>
-            {searchList && searchList?.length && searchList.map((v: any, i: number) => {
-                return <Fragment key={i}>
-                    <SearchSectionItem item={v} />
-                    <StyledSectionGap />
-                </Fragment>
-            })}
+            {
+                searchList && searchList?.length && searchList.map((v: any, i: number) => {
+                    return <Fragment key={i}>
+                        <SearchSectionItemContainer item={v} />
+                        <StyledSectionGap />
+                    </Fragment>
+                })
+            }
         </StyledSection>
     </>
 }

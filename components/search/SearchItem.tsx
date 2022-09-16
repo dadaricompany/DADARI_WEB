@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 import IconSearchPlus from "components/icons/IconSearchPlus";
+
 const StyledSearchItem = styled.div`
   display: flex;
   padding: 14px 24px;
@@ -59,7 +60,7 @@ const SearchItem = ({ item }: any) => {
           height={48} loading="lazy" alt="" />
         <StyledSearchContent>
           <StyledSearchTitle>{item.nameKr}</StyledSearchTitle>
-          <StyledSearchSub>{item.description.substr(0, 25)}{item.description.length > 24 && ' ..'}</StyledSearchSub>
+          <StyledSearchSub>{item.description.substr(0, 20)}{item.description.length > 24 && ' ..'}</StyledSearchSub>
         </StyledSearchContent>
       </StyledSearchItemFront>
       <StyledSearchBtn>

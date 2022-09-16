@@ -2,8 +2,21 @@ import { ChangeEvent, Fragment, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { MouseEvent } from "react";
 
+const StyledMembershipChartWrapper = styled.div`
+  width:132px;
+`
+const StyledMembershipChartDummy = styled.div`
+  height: 34px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  background-color: #2d344b;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`
 const StyledMembershipChartOne = styled.div<{ item: any }>`
-  height: 38px;
+  height: 34px;
   position: relative;
   overflow: hidden;
   border-radius: 22px;
@@ -32,7 +45,7 @@ const StyledMembershipChartOne = styled.div<{ item: any }>`
   }
   .toggle_option_slider {
     width: 100%;
-    height: 38px;
+    height: 34px;
     border-radius: 22px;
     box-shadow: 0 2px 20px 0 rgba(130, 70, 250, 0.58), inset 1px 1px 2px 0 rgba(255, 255, 255, 0.3); 
     background-color: #8246fa;
@@ -50,9 +63,8 @@ const StyledMembershipChartOne = styled.div<{ item: any }>`
     font-size: 15px;
   }
 `;
-
 const StyledMembershipChartTwo = styled.div<{ item: any }>`
-  height: 38px;
+  height: 34px;
   position: relative;
   overflow: hidden;
   border-radius: 22px;
@@ -87,7 +99,7 @@ const StyledMembershipChartTwo = styled.div<{ item: any }>`
   }
   .toggle_option_slider {
     width: 50%;
-    height: 38px;
+    height: 34px;
     border-radius: 22px;
     box-shadow: 0 2px 20px 0 rgba(130, 70, 250, 0.58),
       inset 1px 1px 2px 0 rgba(255, 255, 255, 0.3);
@@ -107,7 +119,7 @@ const StyledMembershipChartTwo = styled.div<{ item: any }>`
   }
 `;
 const StyledMembershipChartThree = styled.div<{ item: any }>`
-  height: 38px;
+  height: 34px;
   position: relative;
   overflow: hidden;
   border-radius: 22px;
@@ -153,7 +165,7 @@ const StyledMembershipChartThree = styled.div<{ item: any }>`
   }
   .toggle_option_slider {
     width: 33.3%;
-    height: 38px;
+    height: 34px;
     border-radius: 22px;
     box-shadow: 0 2px 20px 0 rgba(130, 70, 250, 0.58),
       inset 1px 1px 2px 0 rgba(255, 255, 255, 0.3);
@@ -173,7 +185,7 @@ const StyledMembershipChartThree = styled.div<{ item: any }>`
   }
 `;
 const StyledMembershipChartFour = styled.div<{ item: any }>`
-  height: 38px;
+  height: 34px;
   position: relative;
   overflow: hidden;
   border-radius: 22px;
@@ -225,7 +237,7 @@ const StyledMembershipChartFour = styled.div<{ item: any }>`
   }
   .toggle_option_slider {
     width: 25%;
-    height: 38px;
+    height: 34px;
     border-radius: 22px;
     box-shadow: 0 2px 20px 0 rgba(130, 70, 250, 0.58),
       inset 1px 1px 2px 0 rgba(255, 255, 255, 0.3);
@@ -248,7 +260,7 @@ const changeState = (e: any) => {
   e.currentTarget.control.checked = true;
 };
 const MembershipChart = ({ item, changeMemberShip }: { item: any, changeMemberShip: (e: MouseEvent<HTMLElement>) => void; }) => {
-  return item && item.length && item.length == 1 ? (
+  return <StyledMembershipChartWrapper>{item && item.length && item.length == 1 ? (
     <StyledMembershipChartOne item={item}>
       {item.map((v: any, i: number) => {
         return i == 0 ? (
@@ -286,7 +298,7 @@ const MembershipChart = ({ item, changeMemberShip }: { item: any, changeMemberSh
       })}
       <div className="toggle_option_slider"></div>
     </StyledMembershipChartOne>
-  ) : item.length == 2 ? (
+  ) : item && item.length && item.length == 2 ? (
     <StyledMembershipChartTwo item={item}>
       {item.map((v: any, i: number) => {
         return i == 0 ? (
@@ -362,7 +374,7 @@ const MembershipChart = ({ item, changeMemberShip }: { item: any, changeMemberSh
       })}
       <div className="toggle_option_slider"></div>
     </StyledMembershipChartThree>
-  ) : item.length == 4 ? (
+  ) : item && item.length && item.length == 4 ? (
     <StyledMembershipChartFour item={item}>
       {item.map((v: any, i: number) => {
         return i == 0 ? (
@@ -401,7 +413,7 @@ const MembershipChart = ({ item, changeMemberShip }: { item: any, changeMemberSh
       <div className="toggle_option_slider"></div>
     </StyledMembershipChartFour>
   ) : (
-    <></>
-  );
+    <StyledMembershipChartDummy></StyledMembershipChartDummy>
+  )}</StyledMembershipChartWrapper>
 };
 export default MembershipChart;

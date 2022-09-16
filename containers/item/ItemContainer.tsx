@@ -12,11 +12,11 @@ import { MouseEvent } from "react";
 
 const ItemContainer = ({ item }: any) => {
   const [selected, setSelected] = useState([]);
-
   const changeMemberShip = (e: any) => {
     setSelected(
       item.memberships[e.currentTarget.control.id.slice(6)].comparisonValues
     );
+    console.log(item.memberships[e.currentTarget.control.id.slice(6)].comparisonValues)
   };
 
   const goToURL = (url: string) => (e: MouseEvent<HTMLElement>) => {
@@ -48,35 +48,39 @@ const ItemContainer = ({ item }: any) => {
         url={item.policyUrl}
         changeMemberShip={changeMemberShip}
       />
-      {selected &&
+      {selected && selected.length &&
         selected.map((v: any, i: number) => {
           return v.length == 2
             ? v[0] && v[0].comparisonItem && (
-                <Fragment key={i}>
-                  <ItemTitle
-                    title={[v[0].comparisonItem.name, v[1].comparisonItem.name]}
-                  />
-                  <ItemFee
-                    type={v[0].comparisonItem.type}
-                    item={[v[0].comparisonItem, v[1].comparisonItem]}
-                    value={[v[0], v[1]]}
-                  />
-                </Fragment>
-              )
-            : v[0] && v[0].comparisonItem && (
-                <Fragment key={i}>
-                  <ItemTitle title={[v[0].comparisonItem.name]} />
-                  <ItemFee
-                    type={v[0].comparisonItem.type}
-                    item={[v[0].comparisonItem]}
-                    value={v[0]}
-                  />
-                </Fragment>
-              );
+              <Fragment key={i}>
+                <ItemTitle
+                  title={[v[0].comparisonItem.name, v[1].comparisonItem.name]}
+                />
+                <ItemFee
+                  type={v[0].comparisonItem.type}
+                  item={[v[0].comparisonItem, v[1].comparisonItem]}
+                  value={[v[0], v[1]]}
+                />
+              </Fragment>
+            )
+            : v.length == 1 ? v[0] && v[0].comparisonItem && (
+              <Fragment key={i}>
+                <ItemTitle title={[v[0].comparisonItem.name]} />
+                <ItemFee
+                  type={v[0].comparisonItem.type}
+                  item={[v[0].comparisonItem]}
+                  value={v[0]}
+                />
+              </Fragment>
+            ) : <Fragment key={i}>
+              <div style={{ flexGrow: 1 }}></div>
+            </Fragment>
         })}
-      {item && (
-        <ItemFooterContainer url={item.mainUrl} goToURL={goToURL} item={item} />
-      )}
+      {
+        item && (
+          <ItemFooterContainer url={item.mainUrl} goToURL={goToURL} item={item} />
+        )
+      }
     </>
   );
 };

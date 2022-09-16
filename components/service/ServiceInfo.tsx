@@ -1,20 +1,20 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-const StyledDescription = styled.div`
+const StyledServiceInfo = styled.div`
   height: 338px;
   padding: 0 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
-const StyledDescriptionLogo = styled.div`
+const StyledServiceInfoLogo = styled.div`
   margin-top:40px;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-const StyledDescriptionTitle = styled.p`
+const StyledServiceInfoTitle = styled.p`
   z-index:999;
   height: 28px;
   margin: -10px 0 0 0;
@@ -27,7 +27,7 @@ const StyledDescriptionTitle = styled.p`
   text-align: center;
   color: #fff;
 `;
-const StyledDescriptionSubTitle = styled.p`
+const StyledServiceInfoSubTitle = styled.p`
   margin: 7px 0 27px 0;
   height: 20px;
   font-size: 15px;
@@ -39,7 +39,7 @@ const StyledDescriptionSubTitle = styled.p`
   text-align: center;
   color: #fff;
 `;
-const StyledDescriptionDesc = styled.p`
+const StyledServiceInfoDesc = styled.p`
   width: 100%;
   height: 65px;
   overflow: auto;
@@ -52,21 +52,21 @@ const StyledDescriptionDesc = styled.p`
   letter-spacing: -0.5px;
   color: #9194a9;
 `;
-const Description = ({ titleKr, titleEng, desc, image }: any) => {
+const ServiceInfo = ({ titleKr, titleEng, desc, image }: any) => {
   return (
-    <StyledDescription>
-      <StyledDescriptionLogo>
+    <StyledServiceInfo>
+      <StyledServiceInfoLogo>
         <Image
           src={`http://52.79.72.35:4000/${image}`}
           width={130}
           height={130}
           alt={"logo"}
         />
-      </StyledDescriptionLogo>
-      <StyledDescriptionTitle>{titleKr}</StyledDescriptionTitle>
-      <StyledDescriptionSubTitle>{titleEng}</StyledDescriptionSubTitle>
-      <StyledDescriptionDesc>{desc}</StyledDescriptionDesc>
-    </StyledDescription>
+      </StyledServiceInfoLogo>
+      <StyledServiceInfoTitle>{titleKr}</StyledServiceInfoTitle>
+      <StyledServiceInfoSubTitle>{titleEng}</StyledServiceInfoSubTitle>
+      <StyledServiceInfoDesc>{desc}</StyledServiceInfoDesc>
+    </StyledServiceInfo>
   );
 };
-export default Description;
+export default ServiceInfo;
