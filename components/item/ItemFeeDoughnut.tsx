@@ -70,7 +70,6 @@ const ItemFeeDoughnut = ({ value }: any) => {
     for (let i = 0, len = value.data.length; i < len; i++) {
       value['color'].push(getRandomColor());
     }
-    console.log(value)
     setDoughnutData(value);
   }, [value])
 

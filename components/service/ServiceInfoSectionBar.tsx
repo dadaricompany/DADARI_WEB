@@ -12,9 +12,9 @@ const StyledServiceInfoSectionBarItem = styled.div`
     border-bottom-right-radius: 12px;
     border-bottom-left-radius: 12px;
 `
-const ServiceInfoSectionBar = ({ title }: { title: string }) => {
+const ServiceInfoSectionBar = ({ item }: any) => {
     return <StyledServiceInfoSectionBar>
-        <ServiceInfoSectionTitle title={title} />
+        <ServiceInfoSectionTitle title={item.comparisonItem.name} path={item.comparisonItem.imgPath}/>
         <StyledServiceInfoSectionBarItem></StyledServiceInfoSectionBarItem>
     </StyledServiceInfoSectionBar>
 }

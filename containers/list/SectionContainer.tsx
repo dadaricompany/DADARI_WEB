@@ -7,6 +7,11 @@ const SectionContainer = ({ item }: any) => {
   const [compare, setCompare] = useRecoilState<any>(compareState);
   const router = useRouter();
 
+  const compareDetail = () => {
+    if (compare.length != 2) return;
+    router.push(`/compare/${compare[0].id},${compare[1].id}`);
+  };
+
   const moveDetail = (item: any) => (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
     router.push(`/service/${item}`);
@@ -16,7 +21,15 @@ const SectionContainer = ({ item }: any) => {
     e.stopPropagation();
     if (compare.length > 1) return;
     if (compare.filter((v: any) => v.id == item.id).length) return;
-    setCompare([...compare, item]);
+    setCompare([
+      ...compare,
+      {
+        id: item.id,
+        categoryId: item.categoryId,
+        defaultLogoPath: item.defaultLogoPath,
+        nameKr: item.nameKr,
+      },
+    ]);
   };
   const deleteDetail = (item: any) => (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -42,7 +55,7 @@ const SectionContainer = ({ item }: any) => {
       </SectionGridTemplate>
 
       {compare.length > 0 && (
-        <ListPopup item={compare} deleteDetail={deleteDetail} />
+        <ListPopup item={compare} compareDetail={compareDetail} deleteDetail={deleteDetail} />
       )}
     </>
   );

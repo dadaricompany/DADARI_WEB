@@ -60,10 +60,10 @@ const StyledDoughnutContentText = styled.span`
   letter-spacing: -0.25px;
   color: #9194a9;
 `;
-const ServiceInfoSectionDoughnut = ({ title }: { title: string }) => {
+const ServiceInfoSectionDoughnut = ({ title, items, path }: any) => {
   return (
     <StyledServiceInfoSectionDoughnut>
-      <ServiceInfoSectionTitle title={title} />
+      <ServiceInfoSectionTitle title={title} path={path} />
       <StyledServiceInfoSectionDoughnutItem>
         <StyledServiceInfoSectionDoughnutItemData>
           <canvas id="doughnutChart" width="80" height="80" />

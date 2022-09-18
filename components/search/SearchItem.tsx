@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 import IconSearchPlus from "components/icons/IconSearchPlus";
-
+import { MouseEvent } from "react";
 const StyledSearchItem = styled.div`
   display: flex;
   padding: 14px 24px;
@@ -39,7 +39,6 @@ const StyledSearchSub = styled.p`
   letter-spacing: -0.25px;
   text-align: left;
   color: #bcc2d6;
-
 `;
 const StyledSearchBtn = styled.div`
   width: 32px;
@@ -51,19 +50,34 @@ const StyledSearchBtn = styled.div`
   justify-content: center;
 `;
 
-const SearchItem = ({ item }: any) => {
+const SearchItem = ({
+  item,
+  onClickSearchItem,
+  onClickPlusBtn,
+}: {
+  item: any;
+  onClickSearchItem: (e: MouseEvent<HTMLElement>) => void;
+  onClickPlusBtn: (e: MouseEvent<HTMLElement>) => void;
+}) => {
   return (
-    <StyledSearchItem>
+    <StyledSearchItem onClick={onClickSearchItem}>
       <StyledSearchItemFront>
-        <Image src={`http://52.79.72.35:4000/${item.bigLogoPath}`}
+        <Image
+          src={`http://52.79.72.35:4000/${item.defaultLogoPath}`}
           width={48}
-          height={48} loading="lazy" alt="" />
+          height={48}
+          loading="lazy"
+          alt=""
+        />
         <StyledSearchContent>
           <StyledSearchTitle>{item.nameKr}</StyledSearchTitle>
-          <StyledSearchSub>{item.description.substr(0, 20)}{item.description.length > 24 && ' ..'}</StyledSearchSub>
+          <StyledSearchSub>
+            {item.description.substr(0, 20)}
+            {item.description.length > 24 && " .."}
+          </StyledSearchSub>
         </StyledSearchContent>
       </StyledSearchItemFront>
-      <StyledSearchBtn>
+      <StyledSearchBtn onClick={onClickPlusBtn}>
         <IconSearchPlus iWidth={24} iHeight={24} />
       </StyledSearchBtn>
     </StyledSearchItem>

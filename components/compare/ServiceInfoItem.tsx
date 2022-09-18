@@ -1,25 +1,20 @@
-import IconX32 from "components/icons/IconX32";
+import Image from "next/image";
+import Router from "next/router";
 import styled from "styled-components";
 import MembershipChart from "./MembershipChart";
 import ServiceInfoDetailBtn from "./ServiceInfoDetailBtn";
-
+import { MouseEvent } from "react";
+import MembershipChart2 from "./MembershipChart2";
 const StyledServiceInfoItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
   flex-grow: 1;
-`;
-const StyledDeleteItemLogo = styled.div`
-  position: absolute;
-  right: 25px;
-  top: 35px;
 `;
 const StyledServiceInfoItemLogo = styled.div`
   margin-top: 40px;
   width: 130px;
   height: 130px;
-  background: #000;
 `;
 
 const StyledServiceInfoTitle = styled.p`
@@ -43,17 +38,41 @@ const StyledServiceInfoEngTitle = styled.p`
   letter-spacing: -0.25px;
   color: #fff;
 `;
-const ServiceInfoItem = () => {
+const ServiceInfoItem = ({
+  item,
+  index,
+  changeMemberShip,
+}: {
+  item: any;
+  index: number;
+  changeMemberShip: (e: MouseEvent<HTMLElement>) => void;
+}) => {
   return (
     <StyledServiceInfoItem>
-      <StyledDeleteItemLogo>
-        <IconX32 />
-      </StyledDeleteItemLogo>
-      <StyledServiceInfoItemLogo></StyledServiceInfoItemLogo>
-      <StyledServiceInfoTitle>넷플릭스</StyledServiceInfoTitle>
-      <StyledServiceInfoEngTitle>Netflix</StyledServiceInfoEngTitle>
-      <MembershipChart item={{ data: [] }} changeMemberShip={() => {}} />
-      <ServiceInfoDetailBtn />
+      <StyledServiceInfoItemLogo>
+        <Image
+          src={`http://52.79.72.35:4000/${item.detailLogoPath}`}
+          width={130}
+          height={130}
+          alt={"logo"}
+        />
+      </StyledServiceInfoItemLogo>
+      <StyledServiceInfoTitle>{item.nameKr}</StyledServiceInfoTitle>
+      <StyledServiceInfoEngTitle>{item.nameEng}</StyledServiceInfoEngTitle>
+      {index == 0 ? (
+        <MembershipChart
+          item={item.memberships}
+          id={item.id}
+          changeMemberShip={() => {}}
+        />
+      ) : (
+        <MembershipChart2
+          item={item.memberships}
+          id={item.id}
+          changeMemberShip={() => {}}
+        />
+      )}
+      <ServiceInfoDetailBtn id={item.id} />
     </StyledServiceInfoItem>
   );
 };

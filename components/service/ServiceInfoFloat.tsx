@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import { MouseEvent } from "react";
 
 const StyledServiceInfoFloat = styled.div`
   position: fixed;
   width: 100%;
+  max-width: 768px;
   bottom: 0;
   height: 112px;
   padding: 41px 20px 21px;
@@ -49,12 +51,18 @@ const StyledItemAdd = styled.div`
   letter-spacing: -0.5px;
   color: #fff;
 `;
-const ServiceInfoFloat = () => {
+const ServiceInfoFloat = ({
+  openPopup,
+  selectCmpare,
+}: {
+  openPopup: (e: MouseEvent<HTMLElement>) => void;
+  selectCmpare: (e: MouseEvent<HTMLElement>) => void;
+}) => {
   return (
     <StyledServiceInfoFloat>
       <StyledServiceInfoFloatItem>
-        <StyledItemGo>서비스 바로가기</StyledItemGo>
-        <StyledItemAdd>비교함 담기</StyledItemAdd>
+        <StyledItemGo onClick={openPopup}>서비스 바로가기</StyledItemGo>
+        <StyledItemAdd onClick={selectCmpare}>비교함 담기</StyledItemAdd>
       </StyledServiceInfoFloatItem>
     </StyledServiceInfoFloat>
   );

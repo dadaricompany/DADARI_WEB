@@ -1,3 +1,4 @@
+import Router from "next/router";
 import styled from "styled-components";
 
 const StyledServiceInfoDetailBtn = styled.div`
@@ -9,7 +10,7 @@ const StyledServiceInfoDetailBtn = styled.div`
   justify-content: center;
   align-items: center;
   border: solid 1px #68708d;
-  span{
+  span {
     font-size: 15px;
     font-weight: 500;
     font-stretch: normal;
@@ -19,10 +20,14 @@ const StyledServiceInfoDetailBtn = styled.div`
     text-align: center;
     color: #bcc2d6;
   }
-`
-const ServiceInfoDetailBtn = () => {
-    return <StyledServiceInfoDetailBtn>
-        <span>상세보기</span>       
+`;
+const ServiceInfoDetailBtn = ({ id }: any) => {
+  return (
+    <StyledServiceInfoDetailBtn
+      onClick={() => Router.push(`/service/${id}`)}
+    >
+      <span>상세보기</span>
     </StyledServiceInfoDetailBtn>
-}
+  );
+};
 export default ServiceInfoDetailBtn;

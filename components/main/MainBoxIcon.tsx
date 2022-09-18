@@ -44,7 +44,7 @@ const StyledMainBoxText = styled.span`
 `;
 const MainBoxIcon = ({ type, item }: { type: string; item: any }) => {
   return type == "icon" ? (
-    <StyledMainBoxIcon src={`http://52.79.72.35:4000/${item.smallLogoPath}`}>
+    <StyledMainBoxIcon src={`http://52.79.72.35:4000/${item.defaultLogoPath}`}>
       {/* <Image
         src={`http://52.79.72.35:4000/${item.smallLogoPath}`}
         width="30"

@@ -22,10 +22,16 @@ const StyledServiceInfoTTitleText = styled.p`
   color: #bcc2d6;
 `;
 
-const ServiceInfoTTitle = ({ title }: { title: string }) => {
+const ServiceInfoTTitle = ({
+  title,
+  path,
+}: {
+  title: string;
+  path: string;
+}) => {
   return (
     <StyledServiceInfoTTitle>
-      <Image src="" width={30} height={30}></Image>
+      <Image src={`http://52.79.72.35:4000/${path}`} width={30} height={30}></Image>
       <StyledServiceInfoTTitleText>{title}</StyledServiceInfoTTitleText>
     </StyledServiceInfoTTitle>
   );
