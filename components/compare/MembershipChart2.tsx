@@ -2,10 +2,10 @@ import { ChangeEvent, Fragment, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { MouseEvent } from "react";
 
-const StyledMembershipChartWrapper = styled.div`
+const StyledMembershipChart2Wrapper = styled.div`
   width: 132px;
 `;
-const StyledMembershipChartDummy = styled.div`
+const StyledMembershipChart2Dummy = styled.div`
   height: 34px;
   position: relative;
   overflow: hidden;
@@ -15,7 +15,7 @@ const StyledMembershipChartDummy = styled.div`
   justify-content: space-around;
   align-items: center;
 `;
-const StyledMembershipChartOne = styled.div<{ item: any }>`
+const StyledMembershipChart2One = styled.div<{ item: any }>`
   height: 34px;
   position: relative;
   overflow: hidden;
@@ -28,10 +28,10 @@ const StyledMembershipChartOne = styled.div<{ item: any }>`
   & > * {
     float: left;
   }
-  input[name="toggle_option"] {
+  input[name="toggle_option2"] {
     display: none;
   }
-  input[name="toggle_option"]:nth-child(1):checked ~ .toggle_option_slider {
+  input[name="toggle_option2"]:nth-child(1):checked ~ .toggle_option_slider2 {
     ::after {
       content: "${(props) => props.item[0].name}";
     }
@@ -43,7 +43,7 @@ const StyledMembershipChartOne = styled.div<{ item: any }>`
     border-radius: 22px;
     cursor: pointer;
   }
-  .toggle_option_slider {
+  .toggle_option_slider2 {
     width: 100%;
     height: 34px;
     border-radius: 22px;
@@ -64,7 +64,7 @@ const StyledMembershipChartOne = styled.div<{ item: any }>`
     font-size: 13px;
   }
 `;
-const StyledMembershipChartTwo = styled.div<{ item: any }>`
+const StyledMembershipChart2Two = styled.div<{ item: any }>`
   height: 34px;
   position: relative;
   overflow: hidden;
@@ -77,16 +77,16 @@ const StyledMembershipChartTwo = styled.div<{ item: any }>`
   & > * {
     float: left;
   }
-  input[name="toggle_option"] {
+  input[name="toggle_option2"] {
     display: none;
   }
-  input[name="toggle_option"]:nth-child(1):checked ~ .toggle_option_slider {
+  input[name="toggle_option2"]:nth-child(1):checked ~ .toggle_option_slider2 {
     ::after {
       content: "${(props) => props.item[0].name}";
     }
     left: 0;
   }
-  input[name="toggle_option"]:nth-child(2):checked ~ .toggle_option_slider {
+  input[name="toggle_option2"]:nth-child(2):checked ~ .toggle_option_slider2 {
     ::after {
       content: "${(props) => props.item[1].name}";
     }
@@ -98,7 +98,7 @@ const StyledMembershipChartTwo = styled.div<{ item: any }>`
     border-radius: 22px;
     cursor: pointer;
   }
-  .toggle_option_slider {
+  .toggle_option_slider2 {
     width: 50%;
     height: 34px;
     border-radius: 22px;
@@ -119,7 +119,7 @@ const StyledMembershipChartTwo = styled.div<{ item: any }>`
     font-size: 13px;
   }
 `;
-const StyledMembershipChartThree = styled.div<{ item: any }>`
+const StyledMembershipChart2Three = styled.div<{ item: any }>`
   height: 34px;
   position: relative;
   overflow: hidden;
@@ -132,24 +132,24 @@ const StyledMembershipChartThree = styled.div<{ item: any }>`
   & > * {
     float: left;
   }
-  input[name="toggle_option"] {
+  input[name="toggle_option2"] {
     display: none;
   }
   ${(props) => {
     return css`
-      input[name="toggle_option"]:nth-child(1):checked ~ .toggle_option_slider {
+      input[name="toggle_option2"]:nth-child(1):checked ~ .toggle_option_slider2 {
         ::after {
           content: "${props.item[0].name}";
         }
         left: 0;
       }
-      input[name="toggle_option"]:nth-child(2):checked ~ .toggle_option_slider {
+      input[name="toggle_option2"]:nth-child(2):checked ~ .toggle_option_slider2 {
         ::after {
           content: "${props.item[1].name}";
         }
         left: 28%;
       }
-      input[name="toggle_option"]:nth-child(3):checked ~ .toggle_option_slider {
+      input[name="toggle_option2"]:nth-child(3):checked ~ .toggle_option_slider2 {
         ::after {
           content: "${props.item[2].name}";
         }
@@ -164,7 +164,7 @@ const StyledMembershipChartThree = styled.div<{ item: any }>`
     border-radius: 22px;
     cursor: pointer;
   }
-  .toggle_option_slider {
+  .toggle_option_slider2 {
     width: 45%;
     height: 34px;
     border-radius: 22px;
@@ -185,7 +185,7 @@ const StyledMembershipChartThree = styled.div<{ item: any }>`
     font-size: 13px;
   }
 `;
-const StyledMembershipChartFour = styled.div<{ item: any }>`
+const StyledMembershipChart2Four = styled.div<{ item: any }>`
   height: 34px;
   position: relative;
   overflow: hidden;
@@ -198,30 +198,30 @@ const StyledMembershipChartFour = styled.div<{ item: any }>`
   & > * {
     float: left;
   }
-  input[name="toggle_option"] {
+  input[name="toggle_option2"] {
     display: none;
   }
   ${(props) => {
     return css`
-      input[name="toggle_option"]:nth-child(1):checked ~ .toggle_option_slider {
+      input[name="toggle_option2"]:nth-child(1):checked ~ .toggle_option_slider2 {
         ::after {
           content: "${props.item[0].name}";
         }
         left: 0;
       }
-      input[name="toggle_option"]:nth-child(2):checked ~ .toggle_option_slider {
+      input[name="toggle_option2"]:nth-child(2):checked ~ .toggle_option_slider2 {
         ::after {
           content: "${props.item[1].name}";
         }
         left: 25%;
       }
-      input[name="toggle_option"]:nth-child(3):checked ~ .toggle_option_slider {
+      input[name="toggle_option2"]:nth-child(3):checked ~ .toggle_option_slider2 {
         ::after {
           content: "${props.item[2].name}";
         }
         left: 50%;
       }
-      input[name="toggle_option"]:nth-child(4):checked ~ .toggle_option_slider {
+      input[name="toggle_option2"]:nth-child(4):checked ~ .toggle_option_slider2 {
         ::after {
           content: "${props.item[3].name}";
         }
@@ -236,7 +236,7 @@ const StyledMembershipChartFour = styled.div<{ item: any }>`
     border-radius: 22px;
     cursor: pointer;
   }
-  .toggle_option_slider {
+  .toggle_option_slider2 {
     width: 25%;
     height: 34px;
     border-radius: 22px;
@@ -260,7 +260,7 @@ const StyledMembershipChartFour = styled.div<{ item: any }>`
 const changeState = (e: any) => {
   e.currentTarget.control.checked = true;
 };
-const MembershipChart = ({
+const MembershipChart2 = ({
   item,
   id,
   changeMemberShip,
@@ -270,17 +270,17 @@ const MembershipChart = ({
   changeMemberShip: (e: MouseEvent<HTMLElement>) => void;
 }) => {
   return (
-    <StyledMembershipChartWrapper>
+    <StyledMembershipChart2Wrapper>
       {item && item.length && item.length == 1 ? (
-        <StyledMembershipChartOne item={item}>
+        <StyledMembershipChart2One item={item}>
           {item.map((v: any, i: number) => {
             return i == 0 ? (
               <Fragment key={i}>
                 <input
                   type="radio"
                   className="toggle_option"
-                  id={id+"toggle" + i}
-                  name="toggle_option"
+                  id={id + "toggle" + i}
+                  name="toggle_option2"
                   defaultChecked
                 />
               </Fragment>
@@ -289,8 +289,8 @@ const MembershipChart = ({
                 <input
                   type="radio"
                   className="toggle_option"
-                  id={id+"toggle" + i}
-                  name="toggle_option"
+                  id={id + "toggle" + i}
+                  name="toggle_option2"
                 />
               </Fragment>
             );
@@ -299,7 +299,7 @@ const MembershipChart = ({
             return (
               <Fragment key={i}>
                 <label
-                  htmlFor={id+"toggle" + i}
+                  htmlFor={id + "toggle" + i}
                   onClick={(e: any) => {
                     changeState(e);
                     changeMemberShip(e);
@@ -310,18 +310,18 @@ const MembershipChart = ({
               </Fragment>
             );
           })}
-          <div className="toggle_option_slider"></div>
-        </StyledMembershipChartOne>
+          <div className="toggle_option_slider2"></div>
+        </StyledMembershipChart2One>
       ) : item && item.length && item.length == 2 ? (
-        <StyledMembershipChartTwo item={item}>
+        <StyledMembershipChart2Two item={item}>
           {item.map((v: any, i: number) => {
             return i == 0 ? (
               <Fragment key={i}>
                 <input
                   type="radio"
                   className="toggle_option"
-                  id={id+"toggle" + i}
-                  name="toggle_option"
+                  id={id + "toggle" + i}
+                  name="toggle_option2"
                   defaultChecked
                 />
               </Fragment>
@@ -330,8 +330,8 @@ const MembershipChart = ({
                 <input
                   type="radio"
                   className="toggle_option"
-                  id={id+"toggle" + i}
-                  name="toggle_option"
+                  id={id + "toggle" + i}
+                  name="toggle_option2"
                 />
               </Fragment>
             );
@@ -340,7 +340,7 @@ const MembershipChart = ({
             return (
               <Fragment key={i}>
                 <label
-                  htmlFor={id+"toggle" + i}
+                  htmlFor={id + "toggle" + i}
                   onClick={(e: any) => {
                     changeState(e);
                     changeMemberShip(e);
@@ -351,18 +351,18 @@ const MembershipChart = ({
               </Fragment>
             );
           })}
-          <div className="toggle_option_slider"></div>
-        </StyledMembershipChartTwo>
+          <div className="toggle_option_slider2"></div>
+        </StyledMembershipChart2Two>
       ) : item && item.length && item.length == 3 ? (
-        <StyledMembershipChartThree item={item}>
+        <StyledMembershipChart2Three item={item}>
           {item.map((v: any, i: number) => {
             return i == 0 ? (
               <Fragment key={i}>
                 <input
                   type="radio"
                   className="toggle_option"
-                  id={id+"toggle" + i}
-                  name="toggle_option"
+                  id={id + "toggle" + i}
+                  name="toggle_option2"
                   defaultChecked
                 />
               </Fragment>
@@ -371,8 +371,8 @@ const MembershipChart = ({
                 <input
                   type="radio"
                   className="toggle_option"
-                  id={id+"toggle" + i}
-                  name="toggle_option"
+                  id={id + "toggle" + i}
+                  name="toggle_option2"
                 />
               </Fragment>
             );
@@ -381,7 +381,7 @@ const MembershipChart = ({
             return (
               <Fragment key={i}>
                 <label
-                  htmlFor={id+"toggle" + i}
+                  htmlFor={id + "toggle" + i}
                   onClick={(e: any) => {
                     changeState(e);
                     changeMemberShip(e);
@@ -392,18 +392,18 @@ const MembershipChart = ({
               </Fragment>
             );
           })}
-          <div className="toggle_option_slider"></div>
-        </StyledMembershipChartThree>
+          <div className="toggle_option_slider2"></div>
+        </StyledMembershipChart2Three>
       ) : item && item.length && item.length == 4 ? (
-        <StyledMembershipChartFour item={item}>
+        <StyledMembershipChart2Four item={item}>
           {item.map((v: any, i: number) => {
             return i == 0 ? (
               <Fragment key={i}>
                 <input
                   type="radio"
                   className="toggle_option"
-                  id={id+"toggle" + i}
-                  name="toggle_option"
+                  id={id + "toggle" + i}
+                  name="toggle_option2"
                   defaultChecked
                 />
               </Fragment>
@@ -412,8 +412,8 @@ const MembershipChart = ({
                 <input
                   type="radio"
                   className="toggle_option"
-                  id={id+"toggle" + i}
-                  name="toggle_option"
+                  id={id + "toggle" + i}
+                  name="toggle_option2"
                 />
               </Fragment>
             );
@@ -422,7 +422,7 @@ const MembershipChart = ({
             return (
               <Fragment key={i}>
                 <label
-                  htmlFor={id+"toggle" + i}
+                  htmlFor={id + "toggle" + i}
                   onClick={(e: any) => {
                     changeState(e);
                     changeMemberShip(e);
@@ -433,12 +433,12 @@ const MembershipChart = ({
               </Fragment>
             );
           })}
-          <div className="toggle_option_slider"></div>
-        </StyledMembershipChartFour>
+          <div className="toggle_option_slider2"></div>
+        </StyledMembershipChart2Four>
       ) : (
-        <StyledMembershipChartDummy></StyledMembershipChartDummy>
+        <StyledMembershipChart2Dummy></StyledMembershipChart2Dummy>
       )}
-    </StyledMembershipChartWrapper>
+    </StyledMembershipChart2Wrapper>
   );
 };
-export default MembershipChart;
+export default MembershipChart2;

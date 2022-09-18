@@ -10,11 +10,11 @@ const StyledServiceInfoDoubleT = styled.div`
   padding: 0 20px;
 `;
 
-const ServiceInfoDoubleT = ({ title }: { title: string[] }) => {
+const ServiceInfoDoubleT = ({ item }: { item: any[] }) => {
   return (
     <StyledServiceInfoDoubleT>
-      <ServiceInfoT title={title[0]} />
-      <ServiceInfoT title={title[1]} />
+      <ServiceInfoT item={item[0]} />
+      <ServiceInfoT item={item[1]} />
     </StyledServiceInfoDoubleT>
   );
 };

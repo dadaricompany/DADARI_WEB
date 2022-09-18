@@ -3,29 +3,32 @@ import styled from "styled-components";
 import ListPopupItem from "./ListPopupItem";
 
 const StyledListPopup = styled.div`
-  height: 156px;
+  height: 78px;
   background-color: #2d344b;
   border-top-left-radius: 18px;
   border-top-right-radius: 18px;
-  padding: 26px 24px 0 24px;
+  padding: 0 20px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   position: fixed;
   bottom: 0;
   max-width: 768px;
   width: 100%;
+`;
+const StyledListPopupItemList = styled.div`
+  display: flex;
   div + div {
-    margin-left: 29px;
+    margin-left: 16px;
   }
 `;
 const StyeldListPopupBtn = styled.div`
-  margin-top: 30px;
-  width: 110px;
+  width: 86px;
   height: 36px;
   border-radius: 10px;
   background-color: #68708d;
   display: flex;
   justify-content: center;
+  align-self: center;
   align-items: center;
   span {
     font-size: 14px;
@@ -40,16 +43,20 @@ const StyeldListPopupBtn = styled.div`
 `;
 const ListPopup = ({
   deleteDetail,
-  item
+  compareDetail,
+  item,
 }: {
-  deleteDetail: (item: any) => (e: MouseEvent<HTMLElement>) => void,
-  item: any
+  deleteDetail: (item: any) => (e: MouseEvent<HTMLElement>) => void;
+  compareDetail: () => void;
+  item: any;
 }) => {
   return (
-    <StyledListPopup >
-      <ListPopupItem item={item[0]} deleteDetail={deleteDetail}/>
-      <ListPopupItem item={item[1]} deleteDetail={deleteDetail}/>
-      <StyeldListPopupBtn>
+    <StyledListPopup>
+      <StyledListPopupItemList>
+        <ListPopupItem item={item[0]} deleteDetail={deleteDetail} />
+        <ListPopupItem item={item[1]} deleteDetail={deleteDetail} />
+      </StyledListPopupItemList>
+      <StyeldListPopupBtn onClick={compareDetail}>
         <span>비교하기</span>
       </StyeldListPopupBtn>
     </StyledListPopup>
