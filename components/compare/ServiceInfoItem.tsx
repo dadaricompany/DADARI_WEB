@@ -42,14 +42,16 @@ const ServiceInfoItem = ({
   item,
   index,
   changeMemberShip,
+  removeCompare
 }: {
   item: any;
   index: number;
-  changeMemberShip: (e: MouseEvent<HTMLElement>) => void;
+  changeMemberShip: (index: number) => (e: MouseEvent<HTMLElement>) => void;
+  removeCompare: (id: any) => void;
 }) => {
-  return (
+  return item && (
     <StyledServiceInfoItem>
-      <StyledServiceInfoItemLogo>
+      <StyledServiceInfoItemLogo onClick={() => removeCompare(item.id)}>
         <Image
           src={`http://52.79.72.35:4000/${item.detailLogoPath}`}
           width={130}
@@ -63,13 +65,13 @@ const ServiceInfoItem = ({
         <MembershipChart
           item={item.memberships}
           id={item.id}
-          changeMemberShip={() => {}}
+          changeMemberShip={changeMemberShip(index)}
         />
       ) : (
         <MembershipChart2
           item={item.memberships}
           id={item.id}
-          changeMemberShip={() => {}}
+          changeMemberShip={changeMemberShip(index)}
         />
       )}
       <ServiceInfoDetailBtn id={item.id} />

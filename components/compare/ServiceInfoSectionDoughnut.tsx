@@ -1,6 +1,8 @@
+import { Fragment, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { ChartColor } from "styles/Color";
 import ServiceInfoSectionTitle from "./ServiceInfoSectionTitle";
-
+import { Chart, registerables } from "chart.js";
 const StyledServiceInfoSectionDoughnut = styled.div`
   margin-top: 22px;
   width: 100%;
@@ -17,10 +19,11 @@ const StyledServiceInfoSectionDoughnutItem = styled.div`
 const StyledServiceInfoSectionDoughnutItemData = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 0 25px;
   canvas {
-    width: 80px;
-    height: 80px;
+    width: 80px !important;
+    height: 80px !important;
   }
 `;
 const StyledDivider = styled.div`
@@ -61,26 +64,148 @@ const StyledDoughnutContentText = styled.span`
   color: #9194a9;
 `;
 const ServiceInfoSectionDoughnut = ({ title, items, path }: any) => {
+  const [doughnutData1, setDoughnutData1] = useState<any>(null);
+  const [doughnutData2, setDoughnutData2] = useState<any>(null);
+  const canvasRef1 = useRef(null);
+  const canvasRef2 = useRef(null);
+
+
+  useEffect(() => {
+    if (!items || !items[0] || !items[1]) return;
+    let item1 = JSON.parse(items[0]);
+    let item2 = JSON.parse(items[1]);
+
+    item1["color"] = [];
+    for (let i = 0, len = item1.data.length; i < len; i++) {
+      item1["color"].push(ChartColor[i]);
+    }
+    item2["color"] = [];
+    for (let i = 0, len = item2.data.length; i < len; i++) {
+      item2["color"].push(ChartColor[i]);
+    }
+    setDoughnutData1(item1);
+    setDoughnutData2(item2);
+  }, [items]);
+
+  useEffect(() => {
+    if (!doughnutData1) return;
+    const canvas = document.getElementById(
+      "doughnutChart1"
+    ) as HTMLCanvasElement | null;
+    const ctx = canvas?.getContext("2d");
+    if (!ctx) return;
+    Chart.register(...registerables);
+    const doughnutChart1 = new Chart(ctx, {
+      type: "doughnut",
+      data: {
+        datasets: [
+          {
+            data: doughnutData1.data,
+            backgroundColor: doughnutData1.color,
+            borderColor: doughnutData1.color,
+          },
+        ],
+      },
+    });
+    return () => {
+      doughnutChart1.destroy();
+    };
+  }, [doughnutData1]);
+
+  useEffect(() => {
+    if (!doughnutData2) return;
+    const canvas = document.getElementById(
+      "doughnutChart2"
+    ) as HTMLCanvasElement | null;
+    const ctx = canvas?.getContext("2d");
+    if (!ctx) return;
+    Chart.register(...registerables);
+    const doughnutChart2 = new Chart(ctx, {
+      type: "doughnut",
+      data: {
+        datasets: [
+          {
+            data: doughnutData2.data,
+            backgroundColor: doughnutData2.color,
+            borderColor: doughnutData2.color,
+          },
+        ],
+      },
+    });
+    return () => {
+      doughnutChart2.destroy();
+    };
+  }, [doughnutData2]);
   return (
     <StyledServiceInfoSectionDoughnut>
       <ServiceInfoSectionTitle title={title} path={path} />
       <StyledServiceInfoSectionDoughnutItem>
         <StyledServiceInfoSectionDoughnutItemData>
-          <canvas id="doughnutChart" width="80" height="80" />
-          <StyledDoughnutDsec>약 70,000개</StyledDoughnutDsec>
-          <StyledDoughnutContent>
-            <StyledDoughnutContentColor color={"#ffffff"} />
-            <StyledDoughnutContentText>영화 (22%)</StyledDoughnutContentText>
-          </StyledDoughnutContent>
+          <canvas id="doughnutChart1" width="80" height="80" />
+          <StyledDoughnutDsec> 약
+            {doughnutData1 && doughnutData1.data
+              .reduce(
+                (cur: number, acc: number) => Number(cur) + Number(acc),
+                0
+              )
+              .toLocaleString()}
+            개</StyledDoughnutDsec>
+          {doughnutData1 && doughnutData1.data.map((v: any, i: number) => {
+            return (
+              <Fragment key={i}>
+                <StyledDoughnutContent>
+                  <StyledDoughnutContentColor color={doughnutData1.color[i]} />
+                  <StyledDoughnutContentText>
+                    {doughnutData1.labels[i]} (
+                    {Math.floor(
+                      (Number(v) /
+                        doughnutData1.data.reduce(
+                          (cur: number, acc: number) =>
+                            Number(cur) + Number(acc),
+                          0
+                        )) *
+                      100
+                    )}
+                    %)
+                  </StyledDoughnutContentText>
+                </StyledDoughnutContent>
+              </Fragment>
+            );
+          })}
         </StyledServiceInfoSectionDoughnutItemData>
         <StyledDivider />
         <StyledServiceInfoSectionDoughnutItemData>
           <canvas id="doughnutChart2" width="80" height="80" />
-          <StyledDoughnutDsec>약 70,000개</StyledDoughnutDsec>
-          <StyledDoughnutContent>
-            <StyledDoughnutContentColor color={"#ffffff"} />
-            <StyledDoughnutContentText>영화 (22%)</StyledDoughnutContentText>
-          </StyledDoughnutContent>
+          <StyledDoughnutDsec>약
+            {doughnutData2 && doughnutData2.data
+              .reduce(
+                (cur: number, acc: number) => Number(cur) + Number(acc),
+                0
+              )
+              .toLocaleString()}
+            개</StyledDoughnutDsec>
+          {doughnutData2 && doughnutData2.data.map((v: any, i: number) => {
+            return (
+              <Fragment key={i}>
+                <StyledDoughnutContent>
+                  <StyledDoughnutContentColor color={doughnutData2.color[i]} />
+                  <StyledDoughnutContentText>
+                    {doughnutData2.labels[i]} (
+                    {Math.floor(
+                      (Number(v) /
+                        doughnutData2.data.reduce(
+                          (cur: number, acc: number) =>
+                            Number(cur) + Number(acc),
+                          0
+                        )) *
+                      100
+                    )}
+                    %)
+                  </StyledDoughnutContentText>
+                </StyledDoughnutContent>
+              </Fragment>
+            );
+          })}
         </StyledServiceInfoSectionDoughnutItemData>
       </StyledServiceInfoSectionDoughnutItem>
     </StyledServiceInfoSectionDoughnut>
