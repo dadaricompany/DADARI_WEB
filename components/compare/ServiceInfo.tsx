@@ -7,20 +7,24 @@ const StyledServiceInfo = styled.div`
 const ServiceInfo = ({
   compare,
   changeMemberShip,
+  removeCompare,
 }: {
   compare: any;
-  changeMemberShip: (e: MouseEvent<HTMLElement>) => void;
+  changeMemberShip: (index: number) => (e: MouseEvent<HTMLElement>) => void;
+  removeCompare: (id: any) => void;
 }) => {
   return (
     <StyledServiceInfo>
       <ServiceInfoItem
         item={compare[0]}
         changeMemberShip={changeMemberShip}
+        removeCompare={removeCompare}
         index={0}
       />
       <ServiceInfoItem
         item={compare[1]}
         changeMemberShip={changeMemberShip}
+        removeCompare={removeCompare}
         index={1}
       />
     </StyledServiceInfo>

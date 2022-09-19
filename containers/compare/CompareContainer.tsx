@@ -4,25 +4,36 @@ import ServiceInfoBump from "components/compare/ServiceInfoBump";
 import ServiceInfoSectionBar from "components/compare/ServiceInfoSectionBar";
 import ServiceInfoSectionDoughnut from "components/compare/ServiceInfoSectionDoughnut";
 import ServiceInfoSectionText from "components/compare/ServiceInfoSectionText";
+import Router from "next/router";
 import { Fragment, useEffect, useState } from "react";
-
+import { useRecoilState } from "recoil";
+import { compareState } from "store/state";
 const CompareConatiner = ({ item }: any) => {
-  const [compare, setCompare] = useState();
+  const [compareItem, setCompareItem] = useState();
   const [selected, setSelected] = useState<any>();
-
+  const [compare, setCompare] = useRecoilState<any>(compareState);
   useEffect(() => {
     if (!item) return;
-    setCompare(item);
+    setCompareItem(item);
     setSelected([item[0].memberships[0], item[1].memberships[0]]);
   }, [item]);
 
-  const changeMemberShip = () => {};
-  return compare ? (
+  const removeCompare = (id: any) => {
+    setCompare(compare.filter((v: any) => v.id != id));
+    Router.back();
+  }
+  const changeMemberShip = (index: number) => (e: any) => {
+    if (index == 0) {
+      setSelected([item[0].memberships[Number(e.currentTarget.control.id.split("toggle")[1])], selected[1]])
+    } else {
+      setSelected([selected[0], item[1].memberships[Number(e.currentTarget.control.id.split("toggle")[1])]])
+    }
+  };
+  return compareItem ? (
     <>
-      <ServiceInfo compare={compare} changeMemberShip={changeMemberShip} />
+      <ServiceInfo compare={compareItem} removeCompare={removeCompare} changeMemberShip={changeMemberShip} />
       {selected &&
         selected[0].comparisonValues.map((v: any, i: number) => {
-          console.log(selected[1].comparisonValues[i].value);
           return (
             <Fragment key={i}>
               {v.comparisonItem.type == "BARCHART" ? (
@@ -56,14 +67,6 @@ const CompareConatiner = ({ item }: any) => {
             </Fragment>
           );
         })}
-      {/* <ServiceInfoSectionBar title={"월 구독료"} />
-      <ServiceInfoSectionText title={"제공 서비스"} />
-      <ServiceInfoSectionText title={"동시 접속 가능 인원"} />
-      <ServiceInfoSectionText title={"결제단위"} />
-      <ServiceInfoSectionText title={"이용범위"} />
-      <ServiceInfoSectionText title={"무료기간"} />
-      <ServiceInfoSectionText title={"부가기능 및 기타 강점"} />
-      <ServiceInfoSectionDoughnut title={"컨텐츠 수"} /> */}
       <ServiceInfoBump />
       <Footer />
     </>
