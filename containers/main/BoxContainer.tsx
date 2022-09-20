@@ -1,13 +1,21 @@
-import Box from "components/main/Box";
+import { MouseEvent, useCallback } from "react";
 import { useRouter } from "next/router";
-import { MouseEvent } from "react";
 
-const BoxContainer = ({ item }: { item: any }) => {
+import Box from "components/main/Box";
+
+type Props = {
+  item: any
+};
+
+const BoxContainer: React.FC<Props> = ({ item }) => {
+
   const router = useRouter();
-  const moveList = (e: MouseEvent<HTMLElement>) => {
+
+  const onClickLink = useCallback((e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
     router.push(`/list?id=${item.id}`);
-  };
-  return <Box moveList={moveList} item={item}/>;
+  }, []);
+
+  return <Box onClickLink={onClickLink} item={item} />;
 };
 export default BoxContainer;

@@ -1,6 +1,6 @@
-import { Fragment } from "react";
 import styled from "styled-components";
-import MainBoxIcon from "./MainBoxIcon";
+
+import MainBoxIconListItem from "./MainBoxIconListItem";
 
 const StyledMainBoxIconList = styled.div`
   display: flex;
@@ -9,24 +9,16 @@ const StyledMainBoxIconList = styled.div`
     margin-left: -15px;
   }
 `;
-const MainBoxIconList = ({ item }: { item: any }) => {
+
+type Props = {
+  item: any
+};
+
+const MainBoxIconList: React.FC<Props> = ({ item }) => {
   return (
     <StyledMainBoxIconList>
-      {item && item.length ? (
-        item.map((value: any, index: number) => {
-          return index < 3 ? (
-            <Fragment key={index}>
-              <MainBoxIcon type="icon" item={value} />
-            </Fragment>
-          ) : (
-            <Fragment>
-              <MainBoxIcon type="plus" item={item.length} />
-            </Fragment>
-          );
-        })
-      ) : (
-        <Fragment></Fragment>
-      )}
+      {item &&
+        item.map((value: any, index: number) => <MainBoxIconListItem type={index < 3 ? "icon" : "plus"} item={index < 3 ? value : item.length} key={index} />)}
     </StyledMainBoxIconList>
   );
 };

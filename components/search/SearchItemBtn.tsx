@@ -1,6 +1,7 @@
-import { IconArrowD } from "components/icons";
-import styled from "styled-components";
 import { MouseEvent } from "react";
+import styled from "styled-components";
+
+import { IconArrowD } from "components/icons";
 
 const StyledSearchItemBtn = styled.div`
     height:46px;
@@ -17,13 +18,11 @@ const StyledSearchItemBtn = styled.div`
         transition: all .5s;
     }
 `;
-
-const SearchItemBtn = (
-    { onClickMore, sectionState }: {
-        onClickMore: (e: MouseEvent<HTMLElement>) => void;
-        sectionState: boolean;
-    }
-) => {
+type Props = {
+    onClickMore: (e: MouseEvent<HTMLElement>) => void;
+    sectionState: boolean;
+}
+const SearchItemBtn: React.FC<Props> = ({ onClickMore, sectionState }) => {
     return <StyledSearchItemBtn onClick={onClickMore}>
         <IconArrowD iWidth={26} iHeight={26} className={sectionState ? 'up' : 'down'} />
     </StyledSearchItemBtn>

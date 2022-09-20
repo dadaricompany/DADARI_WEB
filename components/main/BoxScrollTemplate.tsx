@@ -14,11 +14,16 @@ const StyledScrollBox = styled.div`
   }
 `;
 
-const BoxListTemplate = ({ children }: any) => {
+type Props = {
+  children: any
+};
+
+const BoxScrollTemplate: React.FC<Props> = ({ children }) => {
   return (
     <StyledBoxList>
       <StyledScrollBox>{children}</StyledScrollBox>
     </StyledBoxList>
   );
 };
-export default BoxListTemplate;
+
+export default BoxScrollTemplate;

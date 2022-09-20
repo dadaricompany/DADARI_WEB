@@ -1,13 +1,13 @@
-import { IconArrowR, IconMovie } from "components/icons";
-import styled from "styled-components";
-import MainBoxIconList from "./MainBoxIconList";
 import { MouseEvent } from "react";
+import styled from "styled-components";
 import Image from 'next/image'
+
+import { IconArrowR } from "components/icons";
+import MainBoxIconList from "./MainBoxIconList";
 
 const StyledMainBox = styled.div`
   position: relative;
 `;
-
 const StyledMainBoxBack = styled.div`
   margin: 0 20px;
   height: 64px;
@@ -20,7 +20,6 @@ const StyledMainBoxBack = styled.div`
   margin-top: 13px;
   opacity: 0.8;
 `;
-
 const StyledMainBoxFront = styled.div`
   position: absolute;
   top: 0;
@@ -32,20 +31,16 @@ const StyledMainBoxFront = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-
 const StyledMainBoxLeft = styled.div`
   display: flex;
   align-items: center;
 `;
-
 const StyledMainBoxRight = styled.div`
   display: flex;
 `;
-
 const StyledIcon = styled.div`
   position: relative;
 `;
-
 const StyledIconBack = styled.div`
   width: 40px;
   height: 40px;
@@ -55,7 +50,6 @@ const StyledIconBack = styled.div`
     inset 1px 1px 3px 0 rgba(248, 213, 255, 0.2);
   background-color: #fff;
 `;
-
 const StyledIconFront = styled.div`
   position: absolute;
   width: 40px;
@@ -65,7 +59,6 @@ const StyledIconFront = styled.div`
   align-items: center;
   top: 0;
 `;
-
 const StyledTitle = styled.span`
   font-size: 17px;
   line-height: 1.35;
@@ -76,11 +69,9 @@ const StyledTitle = styled.span`
   color: #fff;
   margin-left: 16px;
 `;
-
 const StyledBtn = styled.div`
   position: relative;
 `;
-
 const StyledBtnBack = styled.div`
   width: 30px;
   height: 30px;
@@ -88,7 +79,6 @@ const StyledBtnBack = styled.div`
   border-radius: 6px;
   background-color: #fff;
 `;
-
 const StyledBtnFront = styled.div`
   position: absolute;
   top: 0;
@@ -98,12 +88,15 @@ const StyledBtnFront = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const MainBox = ({
-  item,
-  moveList,
-}: {
-  item: any
+
+type Props = {
+  item: any,
   moveList: (e: MouseEvent<HTMLElement>) => void;
+};
+
+const MainBox: React.FC<Props> = ({
+  item,
+  moveList
 }) => {
   //TODO : item 없을떄 스켈레톤 코드 넣어야됨
   return !item ? <>

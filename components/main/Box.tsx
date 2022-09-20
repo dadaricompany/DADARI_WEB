@@ -1,8 +1,9 @@
-import { IconArrowR, IconMovie } from "components/icons";
-import styled from "styled-components";
-import BoxIconList from "./BoxIconList";
 import { MouseEvent } from "react";
+import styled from "styled-components";
 import Image from "next/image";
+
+import { IconArrowR } from "components/icons";
+import BoxIconList from "./BoxIconList";
 
 const StyledBox = styled.div`
   width: 150px;
@@ -23,8 +24,7 @@ const StyledBoxIcon = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
-const StyledBoxText = styled.p`
+const StyledBoxTitle = styled.p`
   margin: 19px 0 22px 0;
   font-size: 17px;
   font-weight: normal;
@@ -34,14 +34,12 @@ const StyledBoxText = styled.p`
   letter-spacing: -0.5px;
   color: #fff;
 `;
-
-const StyledBoxBottom = styled.div`
+const StyledBoxContents = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: centere;
 `;
-
-const StyledBoxBottomBtn = styled.div`
+const StyledBoxLinkBtn = styled.div`
   width: 30px;
   height: 30px;
   display: flex;
@@ -50,12 +48,15 @@ const StyledBoxBottomBtn = styled.div`
   border-radius: 6px;
   background-color: #2f334e;
 `;
-const Box = ({
-  moveList,
+
+type Props = {
+  item: any,
+  onClickLink: (e: MouseEvent<HTMLElement>) => void
+};
+
+const Box: React.FC<Props> = ({
   item,
-}: {
-  moveList: (e: MouseEvent<HTMLElement>) => void;
-  item: any;
+  onClickLink
 }) => {
   return (
     <StyledBox>
@@ -64,13 +65,13 @@ const Box = ({
           width={20}
           height={20} loading="lazy" alt="" />
       </StyledBoxIcon>
-      <StyledBoxText>{item.nameKr}</StyledBoxText>
-      <StyledBoxBottom>
+      <StyledBoxTitle>{item.nameKr}</StyledBoxTitle>
+      <StyledBoxContents>
         <BoxIconList item={item.subscriptionServices} />
-        <StyledBoxBottomBtn onClick={moveList}>
+        <StyledBoxLinkBtn onClick={onClickLink}>
           <IconArrowR iWidth={26} iHeight={26} />
-        </StyledBoxBottomBtn>
-      </StyledBoxBottom>
+        </StyledBoxLinkBtn>
+      </StyledBoxContents>
     </StyledBox>
   );
 };

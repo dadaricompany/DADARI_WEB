@@ -1,8 +1,8 @@
-import SearchItemContainer from "containers/search/SearchItemContainer";
-import { Fragment, useEffect } from "react";
-import styled from "styled-components";
-import SearchItemBtn from "./SearchItemBtn";
 import { MouseEvent } from "react";
+import styled from "styled-components";
+
+import SearchItemBtn from "./SearchItemBtn";
+import SearchItemContainer from "containers/search/SearchItemContainer";
 
 const StyledSearchSectionItem = styled.div`
   display: flex;
@@ -24,27 +24,24 @@ const StyledSectionTitle = styled.div`
   }
 `;
 
-const SearchSectionItem = ({ item, sectionState, onClickMore }: { item: any, sectionState: boolean, onClickMore: (e: MouseEvent<HTMLElement>) => void; }) => {
+type Props = {
+  item: any,
+  sectionState: boolean,
+  onClickMore: (e: MouseEvent<HTMLElement>) => void;
+};
+
+const SearchSectionItem: React.FC<Props> = ({ item, sectionState, onClickMore }) => {
   return (
     <>
       <StyledSearchSectionItem>
         <StyledSectionTitle>
           <p>{item && item.nameKr}</p>
         </StyledSectionTitle>
-        {item.subscriptionServices && item.subscriptionServices.slice(0, 3).map((v: any, i: number) => {
-          return <Fragment key={i}>
-            <SearchItemContainer item={v} />
-          </Fragment>
-        })}
-        {sectionState && item.subscriptionServices && item.subscriptionServices.slice(3).map((v: any, i: number) => {
-          return <Fragment key={i}>
-            <SearchItemContainer item={v} />
-          </Fragment>
-        })}
+        {item.subscriptionServices && item.subscriptionServices.slice(0, 3).map((v: any, i: number) => <SearchItemContainer item={v} key={i} />)}
+        {sectionState && item.subscriptionServices && item.subscriptionServices.slice(3).map((v: any, i: number) => <SearchItemContainer item={v} key={i} />)}
       </StyledSearchSectionItem>
       {item.subscriptionServices && item.subscriptionServices.length > 3 && <SearchItemBtn sectionState={sectionState} onClickMore={onClickMore} />}
     </>
   );
-
 };
 export default SearchSectionItem;

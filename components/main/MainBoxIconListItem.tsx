@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Image from "next/image";
 
 const StyledMainBoxIcon = styled.div<{ src: any | null }>`
   width: 30px;
@@ -17,7 +16,6 @@ const StyledMainBoxIcon = styled.div<{ src: any | null }>`
   background-repeat: no-repeat;
   background-position: center;
 `;
-
 const StyledMainBoxNumber = styled.div`
   width: 30px;
   height: 30px;
@@ -42,14 +40,19 @@ const StyledMainBoxText = styled.span`
   text-align: center;
   color: #bcc2d6;
 `;
-const MainBoxIcon = ({ type, item }: { type: string; item: any }) => {
+
+type Props = {
+  type: String,
+  item: any
+}
+
+const MainBoxIconListItem: React.FC<Props> = ({ type, item }) => {
   return type == "icon" ? (
-    <StyledMainBoxIcon src={`http://52.79.72.35:4000/${item.defaultLogoPath}`}>
-    </StyledMainBoxIcon>
+    <StyledMainBoxIcon src={`http://52.79.72.35:4000/${item.defaultLogoPath}`} />
   ) : (
     <StyledMainBoxNumber>
       <StyledMainBoxText>+{item}</StyledMainBoxText>
     </StyledMainBoxNumber>
   );
 };
-export default MainBoxIcon;
+export default MainBoxIconListItem;

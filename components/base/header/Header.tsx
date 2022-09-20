@@ -18,17 +18,17 @@ const StyledHeaderLogo = styled.div`
 `;
 
 type Props = {
-    moveLogo: (e: MouseEvent<HTMLElement>) => void;
-    children: JSX.Element | JSX.Element[]
+  moveLogo: (e: MouseEvent<HTMLElement>) => void;
+  children: JSX.Element | JSX.Element[]
 };
 
 const Header: React.FC<Props> = ({ moveLogo, children }) => {
-    return <StyledHeader>
-        <StyledHeaderLogo onClick={moveLogo}>
-            <IconArrowL iWidth={32} iHeight={32} />
-        </StyledHeaderLogo>
-        {children}
-    </StyledHeader>
+  return <StyledHeader>
+    <StyledHeaderLogo onClick={moveLogo}>
+      <IconArrowL iWidth={32} iHeight={32} />
+    </StyledHeaderLogo>
+    {children}
+  </StyledHeader>
 };
 
 export default Header;

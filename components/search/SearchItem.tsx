@@ -1,7 +1,9 @@
-import styled from "styled-components";
-import Image from "next/image";
-import IconSearchPlus from "components/icons/IconSearchPlus";
 import { MouseEvent } from "react";
+import Image from "next/image";
+import styled from "styled-components";
+
+import IconSearchPlus from "components/icons/IconSearchPlus";
+
 const StyledSearchItem = styled.div`
   display: flex;
   padding: 14px 24px;
@@ -50,14 +52,16 @@ const StyledSearchBtn = styled.div`
   justify-content: center;
 `;
 
-const SearchItem = ({
+type Props = {
+  item: any
+  onClickSearchItem: (e: MouseEvent<HTMLElement>) => void;
+  onClickPlusBtn: (e: MouseEvent<HTMLElement>) => void;
+};
+
+const SearchItem: React.FC<Props> = ({
   item,
   onClickSearchItem,
   onClickPlusBtn,
-}: {
-  item: any;
-  onClickSearchItem: (e: MouseEvent<HTMLElement>) => void;
-  onClickPlusBtn: (e: MouseEvent<HTMLElement>) => void;
 }) => {
   return (
     <StyledSearchItem onClick={onClickSearchItem}>
