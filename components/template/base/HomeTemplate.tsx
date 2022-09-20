@@ -23,7 +23,7 @@ const HomeTemplate = ({ children }: any) => {
       <HeaderContainer>
         <SearchIconModuleContainer />
       </HeaderContainer>
-      <StyledSection url={`http://localhost:3000/assets/image/bg_main.png`}>{children}</StyledSection>
+      <StyledSection url={`http://localhost:3000/assets/image/bg_main.webp`}>{children}</StyledSection>
       <Footer />
     </StyledMainTempalte>
   );

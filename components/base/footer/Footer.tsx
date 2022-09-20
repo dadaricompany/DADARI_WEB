@@ -26,13 +26,13 @@ const StyledCopyright = styled.span`
 `;
 
 const Footer: React.FC = () => {
-    return (
-        <StyledFooter>
-            <StyledTeamName>DADARI</StyledTeamName>
-            <StyledCopyright>
-                Copyright © 2022 toy 3 All Rights Reserved.
-            </StyledCopyright>
-        </StyledFooter>
-    );
+  return (
+    <StyledFooter>
+      <StyledTeamName>DADARI</StyledTeamName>
+      <StyledCopyright>
+        Copyright © 2022 toy 3 All Rights Reserved.
+      </StyledCopyright>
+    </StyledFooter>
+  );
 };
 export default Footer;
