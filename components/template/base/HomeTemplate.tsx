@@ -9,12 +9,17 @@ const StyledMainTempalte = styled.div`
   height: 100%;
 `;
 
-const StyledSection = styled.main<{ url: string }>`
+const StyledSection = styled.main<{ url: string, backup: string }>`
   flex-grow: 1;
   overflow-x: hidden;
   overflow-y: auto;
   background: #111320 url(${(props) => props.url}) no-repeat right top /
     contain;
+  
+  ::before{
+    background: #111320 url(${(props) => props.backup}) no-repeat right top /
+    contain;
+  }
 `;
 
 const HomeTemplate = ({ children }: any) => {
@@ -23,7 +28,7 @@ const HomeTemplate = ({ children }: any) => {
       <HeaderContainer>
         <SearchIconModuleContainer />
       </HeaderContainer>
-      <StyledSection url={`http://localhost:3000/assets/image/bg_main.webp`}>{children}</StyledSection>
+      <StyledSection url={`http://localhost:3000/assets/image/bg_main.webp`} backup={`http://localhost:3000/assets/image/bg_main.png`}>{children}</StyledSection>
       <Footer />
     </StyledMainTempalte>
   );
