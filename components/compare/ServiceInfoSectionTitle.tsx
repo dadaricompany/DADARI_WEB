@@ -16,7 +16,7 @@ const StyledServiceInfoSectionTitleGroup = styled.div`
   margin-left: -10px;
   span {
     font-size: 15px;
-    font-weight: normal;
+    font-weight: 300;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.33;

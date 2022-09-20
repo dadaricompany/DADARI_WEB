@@ -33,7 +33,7 @@ const StyledDivider = styled.div`
 const StyledDoughnutDsec = styled.p`
   margin: 12px 0 13px;
   font-size: 14px;
-  font-weight: normal;
+  font-weight: 300;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.36;
