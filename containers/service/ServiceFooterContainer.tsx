@@ -1,11 +1,10 @@
 import ServiceInfoFloat from "components/service/ServiceInfoFloat";
-import ItemPopup from "components/item/ItemPopup";
 import { MouseEvent } from "react";
 import { compareState } from "store/state";
 import { useRecoilState } from "recoil";
-import { selectListList } from "api/modules/list";
 import Router from "next/router";
 import ServiceInfoPopup from "components/service/ServiceInfoPopup";
+
 const ServiceFooterContainer = ({
   item,
   url,

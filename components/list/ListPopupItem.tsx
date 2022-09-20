@@ -16,7 +16,7 @@ const StyledListPopupItemIcon = styled.div`
 const StyledListPopupItemText = styled.p`
   margin: 0 0 0 8px;
   font-size: 15px;
-  font-weight: normal;
+  font-weight: 300;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.33;

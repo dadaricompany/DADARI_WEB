@@ -56,7 +56,7 @@ const StyledMembershipChart2One = styled.div<{ item: any }>`
     justify-content: center;
     align-items: center;
     color: #fff;
-    font-weight: normal;
+    font-weight: 300;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.2;
@@ -111,7 +111,7 @@ const StyledMembershipChart2Two = styled.div<{ item: any }>`
     justify-content: center;
     align-items: center;
     color: #fff;
-    font-weight: normal;
+    font-weight: 300;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.2;
@@ -177,7 +177,7 @@ const StyledMembershipChart2Three = styled.div<{ item: any }>`
     justify-content: center;
     align-items: center;
     color: #fff;
-    font-weight: normal;
+    font-weight: 300;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.2;
@@ -249,7 +249,7 @@ const StyledMembershipChart2Four = styled.div<{ item: any }>`
     justify-content: center;
     align-items: center;
     color: #fff;
-    font-weight: normal;
+    font-weight: 300;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.2;

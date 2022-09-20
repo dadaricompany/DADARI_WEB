@@ -31,7 +31,7 @@ const StyledServiceInfoSubTitle = styled.p`
   margin: 7px 0 27px 0;
   height: 20px;
   font-size: 15px;
-  font-weight: normal;
+  font-weight: 300;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.33;

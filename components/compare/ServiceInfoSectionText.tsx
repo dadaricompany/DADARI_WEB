@@ -17,7 +17,7 @@ const StyledServiceInfoSectionTextItemData = styled.div`
   padding: 0 12px;
   width: 50%;
   font-size: 14px;
-  font-weight: normal;
+  font-weight: 300;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.36;

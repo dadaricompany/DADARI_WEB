@@ -25,7 +25,7 @@ const StyledServiceInfoSectionDoughnutItem = styled.div`
 const StyledDoughnutDsec = styled.p`
   margin-top: 12px;
   font-size: 14px;
-  font-weight: normal;
+  font-weight: 300;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.36;

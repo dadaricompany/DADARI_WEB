@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Router from "next/router";
+import IconX32 from "components/icons/IconX32";
 import styled from "styled-components";
 import MembershipChart from "./MembershipChart";
 import ServiceInfoDetailBtn from "./ServiceInfoDetailBtn";
@@ -15,8 +15,15 @@ const StyledServiceInfoItemLogo = styled.div`
   margin-top: 40px;
   width: 130px;
   height: 130px;
+  position:relative;
+  
 `;
-
+const StyledDeleteItemLogo = styled.div`
+  position: absolute;
+  right: 0;
+  z-index:9999;
+  top: -10px;
+`;
 const StyledServiceInfoTitle = styled.p`
   margin: -10px 0 0 0;
   font-size: 19px;
@@ -31,7 +38,7 @@ const StyledServiceInfoTitle = styled.p`
 const StyledServiceInfoEngTitle = styled.p`
   margin: 8px 0 34px 0;
   font-size: 13px;
-  font-weight: normal;
+  font-weight: 300;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.38;
@@ -51,7 +58,10 @@ const ServiceInfoItem = ({
 }) => {
   return item && (
     <StyledServiceInfoItem>
-      <StyledServiceInfoItemLogo onClick={() => removeCompare(item.id)}>
+      <StyledServiceInfoItemLogo>
+        <StyledDeleteItemLogo  onClick={() => removeCompare(item.id)}>
+          <IconX32 />
+        </StyledDeleteItemLogo>
         <Image
           src={`http://52.79.72.35:4000/${item.detailLogoPath}`}
           width={130}
