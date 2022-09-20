@@ -1,9 +1,13 @@
 import { ListPopup, SectionGridTemplate, SectionItem } from "components/list";
 import { useRouter } from "next/router";
-import { Fragment, MouseEvent } from "react";
+import { Fragment, MouseEvent, useCallback } from "react";
 import { useRecoilState } from "recoil";
 import { compareState } from "store/state";
-const SectionContainer = ({ item }: any) => {
+
+type Props = {
+  item: any
+}
+const SectionContainer: React.FC<Props> = ({ item }) => {
   const [compare, setCompare] = useRecoilState<any>(compareState);
   const router = useRouter();
 
@@ -12,10 +16,11 @@ const SectionContainer = ({ item }: any) => {
     router.push(`/compare/${compare[0].id},${compare[1].id}`);
   };
 
-  const moveDetail = (item: any) => (e: MouseEvent<HTMLElement>) => {
+  const moveDetail = useCallback((item: any) => (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
     router.push(`/service/${item}`);
-  };
+  }, []);
+
   const selectDetail = (item: any) => (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
     e.stopPropagation();
@@ -31,6 +36,7 @@ const SectionContainer = ({ item }: any) => {
       },
     ]);
   };
+
   const deleteDetail = (item: any) => (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
     e.stopPropagation();

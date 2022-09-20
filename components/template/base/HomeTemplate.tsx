@@ -18,13 +18,14 @@ const StyledSection = styled.main<{ url: string }>`
 `;
 
 const HomeTemplate = ({ children }: any) => {
-  return (<StyledMainTempalte>
-    <HeaderContainer>
-      <SearchIconModuleContainer />
-    </HeaderContainer>
-    <StyledSection url={`http://localhost:3000/assets/image/bg_main.png`}>{children}</StyledSection>
-    <Footer />
-  </StyledMainTempalte>
+  return (
+    <StyledMainTempalte>
+      <HeaderContainer>
+        <SearchIconModuleContainer />
+      </HeaderContainer>
+      <StyledSection url={`http://localhost:3000/assets/image/bg_main.png`}>{children}</StyledSection>
+      <Footer />
+    </StyledMainTempalte>
   );
 };
 

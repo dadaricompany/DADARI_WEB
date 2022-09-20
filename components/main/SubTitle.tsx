@@ -10,7 +10,13 @@ const StyledSubTitle = styled.p`
   color: #fff;
   margin: 17px 0 17px 26px;
 `;
-const SubTitle = ({ sub }: { sub: String }) => {
-  return <StyledSubTitle>{sub}</StyledSubTitle>;
+
+type Props = {
+  context: String
 };
+
+const SubTitle: React.FC<Props> = ({ context }) => {
+  return <StyledSubTitle>{context}</StyledSubTitle>;
+};
+
 export default SubTitle;

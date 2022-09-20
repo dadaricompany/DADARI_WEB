@@ -1,22 +1,23 @@
-import { BoxListTemplate } from "components/main";
-import { Fragment } from "react";
+import { BoxScrollTemplate } from "components/main";
 import BoxContainer from "./BoxContainer";
 
-const BoxListContainer = ({ item }: { item: any }) => {
+type Props = {
+  item: any
+};
+
+const BoxListContainer: React.FC<Props> = ({ item }) => {
   return (
-    <BoxListTemplate>
+    <BoxScrollTemplate>
       {item && item.length ? (
         item.map((value: any, index: number) => {
           return (
-            <Fragment key={index}>
-              <BoxContainer item={value} />
-            </Fragment>
+            <BoxContainer item={value} key={index} />
           );
         })
       ) : (
         <BoxContainer item={item} />
       )}
-    </BoxListTemplate>
+    </BoxScrollTemplate>
   );
 };
 export default BoxListContainer;

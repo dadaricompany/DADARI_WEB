@@ -1,6 +1,6 @@
-import { Fragment } from "react";
 import styled from "styled-components";
-import BoxIcon from "./BoxIcon";
+
+import BoxIconListItem from "./BoxIconListItem";
 
 const StyledBoxIconList = styled.div`
   display: flex;
@@ -9,24 +9,16 @@ const StyledBoxIconList = styled.div`
   }
 `;
 
-const BoxIconList = ({ item }: any) => {
+type Props = {
+  item: any
+};
+
+const BoxIconList: React.FC<Props> = ({ item }) => {
   return (
     <StyledBoxIconList>
-      {item && item.length ? (
-        item.map((value: any, index: number) => {
-          return index < 3 ? (
-            <Fragment key={index}>
-              <BoxIcon type="icon" item={value} />
-            </Fragment>
-          ) : (
-            <Fragment>
-              <BoxIcon type="plus" item={item.length} />
-            </Fragment>
-          );
-        })
-      ) : (
-        <Fragment></Fragment>
-      )}
+      {item &&
+        item.map((value: any, index: number) => <BoxIconListItem type={index < 3 ? "icon" : "plus"} item={index < 3 ? value : item.length} key={index} />)
+      }
     </StyledBoxIconList>
   );
 };

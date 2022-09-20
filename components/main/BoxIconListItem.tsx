@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Image from "next/image";
+
 const StyledBoxIcon = styled.div<{ src: any | null }>`
   width: 30px;
   height: 30px;
@@ -26,7 +26,6 @@ const StyledBoxNumber = styled.div`
   align-items: center;
   z-index:999;
 `;
-
 const StyledBoxText = styled.span`
   font-size: 13px;
   font-weight: 500;
@@ -38,19 +37,19 @@ const StyledBoxText = styled.span`
   color: #bcc2d6;
 `;
 
-const BoxIcon = ({ type, item }: { type: string; item: any }) => {
+type Props = {
+  type: String,
+  item: any
+};
+
+const BoxIconListItem: React.FC<Props> = ({ type, item }) => {
   return type == "icon" ? (
-    <StyledBoxIcon src={`http://52.79.72.35:4000/${item.defaultLogoPath}`}>
-      {/* <Image src={`http://52.79.72.35:4000/${item.smallLogoPath}`}
-        width="18"
-        height="18"
-        loading="lazy"
-        alt="" /> */}
-    </StyledBoxIcon>
+    <StyledBoxIcon src={`http://52.79.72.35:4000/${item.defaultLogoPath}`} />
   ) : (
     <StyledBoxNumber>
       <StyledBoxText>+{item}</StyledBoxText>
     </StyledBoxNumber>
   );
 };
-export default BoxIcon;
+
+export default BoxIconListItem;

@@ -2,13 +2,14 @@ import { selectListList } from "api/modules/list";
 import { Footer } from "components/base";
 import { CategoryList, SubCategoryList } from "components/list";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { MouseEvent } from "react";
 import SectionContainer from "./SectionContainer";
 
 const CategoryContainer = () => {
   const router = useRouter();
   const queries = router.query;
+
   const [id, setId] = useState("");
   const [list, setList] = useState({
     categories: [],
@@ -16,7 +17,7 @@ const CategoryContainer = () => {
     subscriptionServices: [],
   });
 
-  const getList = async (id: any) => {
+  const getList = useCallback(async (id: any) => {
     const { data } = await selectListList(id);
     let result = {
       categories: [],
@@ -32,16 +33,14 @@ const CategoryContainer = () => {
           checked: false,
         };
       }) ?? [];
-
     result["subscriptionServices"] = data.subscriptionServices ?? [];
-
     setList(result);
-  };
+  }, []);
 
-  const moveList = (item: any) => (e: MouseEvent<HTMLElement>) => {
+  const moveList = useCallback((item: any) => (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
     setId(String(item));
-  };
+  }, []);
 
   const onClickHashtags = async (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -78,10 +77,6 @@ const CategoryContainer = () => {
     if (!id) return;
     getList(id);
   }, [id]);
-
-  useEffect(() => {
-    if (!list) return;
-  }, [list]);
 
   return (
     <>

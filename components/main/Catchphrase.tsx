@@ -4,7 +4,6 @@ const StyledCatchphrase = styled.div`
   padding: 31px 26px;
   height: 273px;
 `;
-
 const StyledCatchphraseText = styled.p`
   margin: 0;
   font-size: 30px;
@@ -20,7 +19,7 @@ const StyledCatchphraseText = styled.p`
   }
 `;
 
-const Catchphrase = () => {
+const Catchphrase: React.FC = () => {
   return (
     <StyledCatchphrase>
       <StyledCatchphraseText>
@@ -33,4 +32,5 @@ const Catchphrase = () => {
     </StyledCatchphrase>
   );
 };
+
 export default Catchphrase;
