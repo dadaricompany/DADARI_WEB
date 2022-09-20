@@ -1,5 +1,5 @@
-import Meta from "components/common/Meta";
-import ListTemplate from "components/template/ListTemplate";
+import Meta from "components/base/core/Meta";
+import ListTemplate from "components/template/base/ListTemplate";
 import CategoryContainer from "containers/list/CategoryContainer";
 import type { NextPage } from "next";
 

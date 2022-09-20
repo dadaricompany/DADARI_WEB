@@ -1,4 +1,5 @@
-import HeaderBaseContainer from "containers/base/HeaderBaseContainer";
+import HeaderContainer from "containers/base/header/HeaderContainer"
+import { Fragment } from "react";
 import styled from "styled-components";
 
 const StyledItemTempalte = styled.div`
@@ -25,7 +26,9 @@ const StyledSectionWrapper = styled.div`
 const ItemTamplte = ({ children }: any) => {
   return (
     <StyledItemTempalte>
-      <HeaderBaseContainer />
+      <HeaderContainer>
+        <Fragment></Fragment>
+      </HeaderContainer>
       <StyledSection>
         <StyledSectionWrapper>{children}</StyledSectionWrapper>
       </StyledSection>

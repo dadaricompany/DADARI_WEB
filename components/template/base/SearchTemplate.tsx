@@ -1,5 +1,3 @@
-import SearchSectionItem from "components/search/SearchSectionItem";
-import HeaderSearchContainer from "containers/base/HeaderSearchContainer";
 import styled from "styled-components";
 
 const StyledSearchTempalte = styled.div`

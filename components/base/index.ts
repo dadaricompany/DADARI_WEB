@@ -1,6 +1,5 @@
-//헤더
-// 1. 메인용 헤더
-export { default as HeaderMain } from "./HeaderMain";
-export { default as HeaderList } from "./HeaderList";
-//푸터
-export { default as Footer } from "./Footer";
+export { default as Header } from './header/Header'
+export { default as SearchBoxModule } from './header/modules/SearchBoxModule'
+export { default as SearchIconModule } from './header/modules/SearchIconModule'
+
+export { default as Footer } from './footer/Footer'

@@ -4,7 +4,7 @@ import { MouseEvent } from "react";
 const StyledSubCategoryItem = styled.div`
   border-radius: 25px;
   border: solid 1px #68708d;
-  padding: 6px 16px;
+  padding: 7px 16px 6px 16px;
   color: #fff;
   word-break: keep-all;
   display: flex;

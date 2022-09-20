@@ -1,8 +1,10 @@
 import Head from "next/head";
-interface MetaProps {
+
+type Props = {
   title: String;
-}
-const Meta = ({ title }: MetaProps) => {
+};
+
+const Meta: React.FC<Props> = ({ title }) => {
   return (
     <Head>
       <title>{title}</title>

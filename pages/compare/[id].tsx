@@ -1,6 +1,6 @@
 import { selectCompare } from "api/modules/compare";
-import Meta from "components/common/Meta";
-import BaseTemplate from "components/template/ItemTemplate";
+import Meta from "components/base/core/Meta";
+import BaseTemplate from "components/template/base/ItemTemplate";
 import CompareConatiner from "containers/compare/CompareContainer";
 import type { GetServerSideProps, NextPage } from "next";
 

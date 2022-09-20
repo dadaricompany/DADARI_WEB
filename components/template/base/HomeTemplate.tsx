@@ -1,9 +1,6 @@
 import styled from "styled-components";
-
 import { Footer } from "components/base";
-import HeaderMainContainer from "containers/base/HeaderMainContainer";
-import { Router, useRouter } from "next/router";
-import { useEffect } from "react";
+import { HeaderContainer, SearchIconModuleContainer } from "containers/base";
 
 const StyledMainTempalte = styled.div`
   background: #111320;
@@ -22,7 +19,9 @@ const StyledSection = styled.main<{ url: string }>`
 
 const HomeTemplate = ({ children }: any) => {
   return (<StyledMainTempalte>
-    <HeaderMainContainer />
+    <HeaderContainer>
+      <SearchIconModuleContainer />
+    </HeaderContainer>
     <StyledSection url={`http://localhost:3000/assets/image/bg_main.png`}>{children}</StyledSection>
     <Footer />
   </StyledMainTempalte>

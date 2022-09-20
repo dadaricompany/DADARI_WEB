@@ -1,5 +1,5 @@
-import Meta from "components/common/Meta";
-import SearchTemplate from "components/template/SearchTemplate";
+import Meta from "components/base/core/Meta";
+import SearchTemplate from "components/template/base/SearchTemplate";
 import SearchContainer from "containers/search/SearchContainer";
 import type { NextPage } from "next";
 
