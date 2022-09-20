@@ -1,4 +1,4 @@
-import Root from "components/common/Root";
+import Root from "components/base/core/Root";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 

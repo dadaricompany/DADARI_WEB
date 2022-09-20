@@ -1,6 +1,6 @@
 import { selectDetail } from "api/modules/detail";
-import Meta from "components/common/Meta";
-import BaseTemplate from "components/template/ItemTemplate";
+import Meta from "components/base/core/Meta";
+import BaseTemplate from "components/template/base/ItemTemplate";
 import ServiceContainer from "containers/service/ServiceContainer";
 import type { GetServerSideProps, NextPage } from "next";
 

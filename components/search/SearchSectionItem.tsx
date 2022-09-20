@@ -31,18 +31,18 @@ const SearchSectionItem = ({ item, sectionState, onClickMore }: { item: any, sec
         <StyledSectionTitle>
           <p>{item && item.nameKr}</p>
         </StyledSectionTitle>
-        {item.subscriptionServices && item.subscriptionServices.slice(0, 2).map((v: any, i: number) => {
+        {item.subscriptionServices && item.subscriptionServices.slice(0, 3).map((v: any, i: number) => {
           return <Fragment key={i}>
             <SearchItemContainer item={v} />
           </Fragment>
         })}
-        {sectionState && item.subscriptionServices && item.subscriptionServices.slice(2).map((v: any, i: number) => {
+        {sectionState && item.subscriptionServices && item.subscriptionServices.slice(3).map((v: any, i: number) => {
           return <Fragment key={i}>
             <SearchItemContainer item={v} />
           </Fragment>
         })}
       </StyledSearchSectionItem>
-      {item.subscriptionServices && item.subscriptionServices.length > 2 && <SearchItemBtn sectionState={sectionState} onClickMore={onClickMore} />}
+      {item.subscriptionServices && item.subscriptionServices.length > 3 && <SearchItemBtn sectionState={sectionState} onClickMore={onClickMore} />}
     </>
   );
 

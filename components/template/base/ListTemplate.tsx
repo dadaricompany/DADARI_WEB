@@ -1,4 +1,5 @@
-import HeaderListContainer from "containers/base/HeaderListContainer";
+import HeaderContainer from "containers/base/header/HeaderContainer";
+import SearchIconModuleContainer from "containers/base/header/modules/SearchIconModuleContainer";
 import styled from "styled-components";
 
 const StyledListTempalte = styled.div`
@@ -19,7 +20,9 @@ const StyledSection = styled.main`
 const ListTemplate = ({ children }: any) => {
   return (
     <StyledListTempalte>
-      <HeaderListContainer />
+      <HeaderContainer>
+        <SearchIconModuleContainer />
+      </HeaderContainer>
       <StyledSection>{children}</StyledSection>
     </StyledListTempalte>
   );

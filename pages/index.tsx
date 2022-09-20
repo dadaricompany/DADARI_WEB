@@ -1,6 +1,6 @@
 import { selectMainList } from "api/modules/main";
-import Meta from "components/common/Meta";
-import HomeTemplate from "components/template/HomeTemplate";
+import Meta from "components/base/core/Meta";
+import HomeTemplate from "components/template/base/HomeTemplate";
 import SectionContainer from "containers/main/SectionContainer";
 import type { GetServerSideProps, NextPage } from "next";
 

@@ -1,9 +1,9 @@
-import HeaderSearchContainer from "containers/base/HeaderSearchContainer";
-import { Fragment, useCallback, useEffect, useState } from "react";
+import { Fragment, KeyboardEvent, useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { debounce } from "lodash-es";
 import { selectSearchList } from "api/modules/search";
 import SearchSectionItemContainer from "./SearchSectionItemContainer";
+import { HeaderContainer, SearchBoxModuleContainer } from "containers/base";
 
 const StyledSection = styled.main`
   flex-grow: 1;
@@ -12,14 +12,16 @@ const StyledSection = styled.main`
   overflow-x: hidden;
   overflow-y: auto;
 `;
+
 const StyledSectionGap = styled.div`
   height: 14px;
   background: #000;
 `;
+
 const SearchContainer = () => {
   const [searchText, setSearchText] = useState("");
   const [searchList, setSearchList] = useState<Array<any> | null>(null);
-  const [listLength, setListLength] = useState(2);
+
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await selectSearchList("");
@@ -36,13 +38,17 @@ const SearchContainer = () => {
     []
   );
 
-  const onChangeSearchText = (e: any) => {
-    setSearchText(e.target.value);
-    search(e.target.value);
-  };
+  const onChangeSearchText = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
+    if (!e.target) return;
+    setSearchText((e.target as HTMLInputElement).value);
+    search((e.target as HTMLInputElement).value);
+  }, []);
+
   return (
     <>
-      <HeaderSearchContainer onChangeSearchText={onChangeSearchText} />
+      <HeaderContainer>
+        <SearchBoxModuleContainer onChangeSearchText={onChangeSearchText} />
+      </HeaderContainer>
       <StyledSection>
         {searchList &&
           searchList?.length &&
