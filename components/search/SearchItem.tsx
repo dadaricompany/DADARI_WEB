@@ -15,7 +15,6 @@ const StyledSearchItemFront = styled.div`
   display: flex;
   align-items: center;
 `;
-
 const StyledSearchContent = styled.div`
   margin-left: 12px;
   display: flex;
