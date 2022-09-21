@@ -14,11 +14,11 @@ const StyledScrollBox = styled.div`
   }
 `;
 
-type Props = {
-  children: any
+interface Props {
+  children: JSX.Element | JSX.Element[]
 };
 
-const BoxScrollTemplate: React.FC<Props> = ({ children }) => {
+const BoxScrollTemplate = ({ children }: Props) => {
   return (
     <StyledBoxList>
       <StyledScrollBox>{children}</StyledScrollBox>
