@@ -24,12 +24,11 @@ export default Home;
 export const getServerSideProps: GetServerSideProps = async (props) => {
   const { data } = await selectMainList();
   const { top, list } = MainConverter(data.main)
-  console.log(props.req.headers)
   return {
     props: {
       top: top,
       list: list,
-      baseURL: props.req.headers.referer,
+      baseURL: props.req.headers.host == 'localhost:3000' ? `http://${props.req.headers.host}` : `https://${props.req.headers.host}`,
     },
   };
 };
