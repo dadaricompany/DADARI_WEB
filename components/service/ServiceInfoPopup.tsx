@@ -6,7 +6,7 @@ const StyledServiceInfoPopup = styled.div`
   z-index: 1;
   z-index: 999999;
   position: absolute;
-  left: 0;
+  max-width:768px;
   top: 0;
   background-color: rgba(0, 0, 0, 0.8);
   display: none;
