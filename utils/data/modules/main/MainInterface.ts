@@ -23,6 +23,7 @@ export interface MainConvertInterface {
 export interface MainResInterface {
     top: MainConvertInterface,
     list: MainConvertInterface[]
+    baseURL?: string
 }
 export interface ServiceInterface {
 
