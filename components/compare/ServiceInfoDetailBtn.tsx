@@ -11,6 +11,7 @@ const StyledServiceInfoDetailBtn = styled.div`
   align-items: center;
   border: solid 1px #68708d;
   span {
+    margin-top:1px;
     font-size: 15px;
     font-weight: 500;
     font-stretch: normal;
