@@ -56,7 +56,7 @@ const SearchContainer = () => {
             return (
               <Fragment key={i}>
                 <SearchSectionItemContainer item={v} />
-                <StyledSectionGap />
+                {searchList?.length > 1 && <StyledSectionGap />}
               </Fragment>
             );
           })}

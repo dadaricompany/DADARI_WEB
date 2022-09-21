@@ -91,8 +91,7 @@ const ServiceInfoSectionBar = ({ title, items, path }: any) => {
             data: { data: barData1.data },
             backgroundColor: barData1.color,
             borderColor: barData1.color,
-            borderRadius: 10,
-            maxBarThickness: 33
+            maxBarThickness: 25
           },
         ],
       },
@@ -135,8 +134,7 @@ const ServiceInfoSectionBar = ({ title, items, path }: any) => {
             data: { data: barData2.data },
             backgroundColor: barData2.color,
             borderColor: barData2.color,
-            borderRadius: 10,
-            maxBarThickness: 33
+            maxBarThickness: 25
           },
         ],
       },
