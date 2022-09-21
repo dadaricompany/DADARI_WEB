@@ -190,7 +190,7 @@ const ServiceInfoSectionBar = ({ item }: any) => {
                 <StyledServiceInfoSectionBarDiv>
                     <canvas id="barChart1" width="80" height="80" />
                     <StyledServiceInfoSectionMoney>
-                        {String(item.value.data[0]).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원
+                        {String(item.value.data[0]).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
                     </StyledServiceInfoSectionMoney>
                     <StyledServiceInfoSectionTitle>
                         {item.value.labels[0]}
@@ -199,7 +199,7 @@ const ServiceInfoSectionBar = ({ item }: any) => {
                 <StyledServiceInfoSectionBarDiv>
                     <canvas id="barChart2" width="80" height="80" />
                     <StyledServiceInfoSectionMoney>
-                        {String(item.value.data[1]).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원
+                        {String(item.value.data[1]).replace(/\B(?=(\d{3})+(?!\d))/g, ","))}원
                     </StyledServiceInfoSectionMoney>
                     <StyledServiceInfoSectionTitle>
                         {item.value.labels[1]}
