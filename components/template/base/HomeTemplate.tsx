@@ -25,7 +25,7 @@ const StyledSection = styled.main<{ url: string, backup: string }>`
 interface Props {
   baseURL: string | undefined
   children: JSX.Element | JSX.Element[]
-}
+}``
 const HomeTemplate = ({ baseURL, children }: Props) => {
   return (
     <StyledMainTempalte>
