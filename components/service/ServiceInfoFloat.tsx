@@ -4,6 +4,7 @@ import { MouseEvent } from "react";
 const StyledServiceInfoFloat = styled.div`
   position: fixed;
   width: 100%;
+  z-index: 99999;
   max-width: 768px;
   bottom: 0;
   height: 112px;

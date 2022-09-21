@@ -31,7 +31,7 @@ const ServiceInfoTTitle = ({
 }) => {
   return (
     <StyledServiceInfoTTitle>
-      <Image src={`http://52.79.72.35:4000/${path}`} width={30} height={30}></Image>
+      <Image src={`https://dadari-api.com${path}`} width={30} height={30}></Image>
       <StyledServiceInfoTTitleText>{title}</StyledServiceInfoTTitleText>
     </StyledServiceInfoTTitle>
   );

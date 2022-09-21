@@ -16,7 +16,7 @@ const StyledServiceInfoSectionTitleGroup = styled.div`
   margin-left: -10px;
   span {
     font-size: 15px;
-    font-weight: 300;
+    font-weight: normal;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.33;
@@ -30,7 +30,7 @@ const ServiceInfoSectionTitle = ({ title, path }: any) => {
   return (
     <StyledServiceInfoSectionTitle>
       <StyledServiceInfoSectionTitleGroup>
-        <Image  src={`http://52.79.72.35:4000/${path}`} width={30} height={30}></Image>
+        <Image  src={`https://dadari-api.com${path}`} width={30} height={30}></Image>
         <span>{title}</span>
       </StyledServiceInfoSectionTitleGroup>
     </StyledServiceInfoSectionTitle>

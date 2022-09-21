@@ -16,7 +16,7 @@ const StyledListPopupItemIcon = styled.div`
 const StyledListPopupItemText = styled.p`
   margin: 0 0 0 8px;
   font-size: 15px;
-  font-weight: 300;
+  font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.33;
@@ -36,7 +36,7 @@ const ListPopupItem = ({
       {item && item.defaultLogoPath ? (
         <img
           onClick={deleteDetail(item)}
-          src={`http://52.79.72.35:4000/${item.defaultLogoPath}`}
+          src={`https://dadari-api.com${item.defaultLogoPath}`}
           style={{
             borderRadius: "9px",
             width: "36px",

@@ -42,7 +42,7 @@ const StyledServiceInfoMemberShipSliderOne = styled.div<{ item: any }>`
     justify-content: center;
     align-items: center;
     color: #fff;
-    font-weight: 300;
+    font-weight: normal;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.2;
@@ -97,7 +97,7 @@ const StyledServiceInfoMemberShipSliderTwo = styled.div<{ item: any }>`
     justify-content: center;
     align-items: center;
     color: #fff;
-    font-weight: 300;
+    font-weight: normal;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.2;
@@ -163,7 +163,7 @@ const StyledServiceInfoMemberShipSliderThree = styled.div<{ item: any }>`
     justify-content: center;
     align-items: center;
     color: #fff;
-    font-weight: 300;
+    font-weight: normal;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.2;
@@ -235,7 +235,7 @@ const StyledServiceInfoMemberShipSliderFour = styled.div<{ item: any }>`
     justify-content: center;
     align-items: center;
     color: #fff;
-    font-weight: 300;
+    font-weight: normal;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.2;

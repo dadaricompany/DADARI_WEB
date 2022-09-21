@@ -3,7 +3,8 @@ import styled from "styled-components";
 import Image from 'next/image'
 
 import { IconArrowR } from "components/icons";
-import MainBoxIconList from "./MainBoxIconList";
+import TopBoxIconList from "./TopBoxIconList";
+import { MainConvertInterface } from "utils/data/modules/main/MainInterface";
 
 const StyledMainBox = styled.div`
   position: relative;
@@ -89,42 +90,37 @@ const StyledBtnFront = styled.div`
   align-items: center;
 `;
 
-type Props = {
-  item: any,
-  moveList: (e: MouseEvent<HTMLElement>) => void;
+interface Props {
+  data: MainConvertInterface,
+  onClickLink: (e: MouseEvent<HTMLElement>) => void;
 };
 
-const MainBox: React.FC<Props> = ({
-  item,
-  moveList
-}) => {
-  //TODO : item 없을떄 스켈레톤 코드 넣어야됨
-  return !item ? <>
-  </> :
-    (
-      <StyledMainBox>
-        <StyledMainBoxBack />
-        <StyledMainBoxFront>
-          <StyledMainBoxLeft>
-            <StyledIcon>
-              <StyledIconBack />
-              <StyledIconFront>
-                <Image src={`http://52.79.72.35:4000/${item.smallLogoPath}`} width={20} height={20} loading="lazy" alt="logo" />
-              </StyledIconFront>
-            </StyledIcon>
-            <StyledTitle>{item.nameKr}</StyledTitle>
-          </StyledMainBoxLeft>
-          <StyledMainBoxRight>
-            <MainBoxIconList item={item.subscriptionServices} />
-            <StyledBtn onClick={moveList}>
-              <StyledBtnBack />
-              <StyledBtnFront>
-                <IconArrowR iWidth={26} iHeight={26} />
-              </StyledBtnFront>
-            </StyledBtn>
-          </StyledMainBoxRight>
-        </StyledMainBoxFront>
-      </StyledMainBox>
-    );
+const TopBox = ({
+  data,
+  onClickLink
+}: Props) => {
+  return <StyledMainBox>
+    <StyledMainBoxBack />
+    <StyledMainBoxFront>
+      <StyledMainBoxLeft>
+        <StyledIcon>
+          <StyledIconBack />
+          <StyledIconFront>
+            <Image src={`https://dadari-api.com${data.smallLogoPath}`} width={20} height={20} loading="lazy" alt="logo" />
+          </StyledIconFront>
+        </StyledIcon>
+        <StyledTitle>{data.nameKr}</StyledTitle>
+      </StyledMainBoxLeft>
+      <StyledMainBoxRight>
+        <TopBoxIconList item={data.subscriptionServices} />
+        <StyledBtn onClick={onClickLink}>
+          <StyledBtnBack />
+          <StyledBtnFront>
+            <IconArrowR iWidth={26} iHeight={26} />
+          </StyledBtnFront>
+        </StyledBtn>
+      </StyledMainBoxRight>
+    </StyledMainBoxFront>
+  </StyledMainBox>
 };
-export default MainBox;
+export default TopBox;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Footer } from "components/base";
 import { HeaderContainer, SearchIconModuleContainer } from "containers/base";
+import React from "react";
 
 const StyledMainTempalte = styled.div`
   background: #111320;
@@ -21,14 +22,17 @@ const StyledSection = styled.main<{ url: string, backup: string }>`
     contain;
   }
 `;
-
-const HomeTemplate = ({ children }: any) => {
+interface Props {
+  baseURL: string | undefined
+  children: JSX.Element | JSX.Element[]
+}``
+const HomeTemplate = ({ baseURL, children }: Props) => {
   return (
     <StyledMainTempalte>
       <HeaderContainer>
         <SearchIconModuleContainer />
       </HeaderContainer>
-      <StyledSection url={`http://localhost:3000/assets/image/bg_main.webp`} backup={`http://localhost:3000/assets/image/bg_main.png`}>{children}</StyledSection>
+      <StyledSection url={`${baseURL}assets/image/bg_main.webp`} backup={`${baseURL}assets/image/bg_main.png`}>{children}</StyledSection>
       <Footer />
     </StyledMainTempalte>
   );

@@ -76,7 +76,7 @@ const CategoryContainer = () => {
   useEffect(() => {
     if (!id) return;
     getList(id);
-  }, [id]);
+  }, [getList, id]);
 
   return (
     <>

@@ -32,7 +32,7 @@ const StyledSectionDescripton = styled.p`
   height: 57px;
   margin: 0;
   padding-right: 54px;
-  font-weight: 300;
+  font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.36;
@@ -64,7 +64,7 @@ const SectionItem = ({
   return (
     <StyledSectionItem onClick={moveDetail(item.id)}>
       <Image
-        src={`http://52.79.72.35:4000${item.listLogoPath}`}
+        src={`https://dadari-api.com${item.listLogoPath}`}
         width={110}
         height={110}
         loading="lazy"

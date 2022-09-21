@@ -170,13 +170,13 @@ const ServiceInfoSectionBar = ({ title, items, path }: any) => {
           <StyledServiceInfoSectionBarDiv>
             <canvas id="barChart1" width="80" height="80" />
             <StyledServiceInfoSectionMoney>
-              {String(items[0]).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원
+              {String(items[0]).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
             </StyledServiceInfoSectionMoney>
           </StyledServiceInfoSectionBarDiv>
           <StyledServiceInfoSectionBarDiv>
             <canvas id="barChart2" width="80" height="80" />
             <StyledServiceInfoSectionMoney>
-              {String(items[1]).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원
+              {String(items[1]).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
             </StyledServiceInfoSectionMoney>
           </StyledServiceInfoSectionBarDiv>
         </StyledServiceInfoSectionBarItemFront>

@@ -2,20 +2,20 @@ import { MouseEvent, useCallback } from "react";
 import { useRouter } from "next/router";
 
 import Box from "components/main/Box";
+import { MainConvertInterface } from "utils/data/modules/main/MainInterface";
 
-type Props = {
-  item: any
+interface Props {
+  data: MainConvertInterface
 };
 
-const BoxContainer: React.FC<Props> = ({ item }) => {
-
+const BoxContainer = ({ data }: Props) => {
   const router = useRouter();
 
   const onClickLink = useCallback((e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    router.push(`/list?id=${item.id}`);
+    router.push(`/list?id=${data.id}`);
   }, []);
 
-  return <Box onClickLink={onClickLink} item={item} />;
+  return <Box onClickLink={onClickLink} data={data} />;
 };
 export default BoxContainer;

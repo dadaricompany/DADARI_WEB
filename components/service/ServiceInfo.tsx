@@ -31,7 +31,7 @@ const StyledServiceInfoSubTitle = styled.p`
   margin: 7px 0 27px 0;
   height: 20px;
   font-size: 15px;
-  font-weight: 300;
+  font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.33;
@@ -57,7 +57,7 @@ const ServiceInfo = ({ titleKr, titleEng, desc, image }: any) => {
     <StyledServiceInfo>
       <StyledServiceInfoLogo>
         <Image
-          src={`http://52.79.72.35:4000/${image}`}
+          src={`https://dadari-api.com${image}`}
           width={130}
           height={130}
           alt={"logo"}

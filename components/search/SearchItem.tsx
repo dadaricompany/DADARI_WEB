@@ -66,7 +66,7 @@ const SearchItem: React.FC<Props> = ({
     <StyledSearchItem onClick={onClickSearchItem}>
       <StyledSearchItemFront>
         <Image
-          src={`http://52.79.72.35:4000/${item.defaultLogoPath}`}
+          src={`https://dadari-api.com${item.defaultLogoPath}`}
           width={48}
           height={48}
           loading="lazy"

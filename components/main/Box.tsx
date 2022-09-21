@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import { IconArrowR } from "components/icons";
 import BoxIconList from "./BoxIconList";
+import { MainConvertInterface } from "utils/data/modules/main/MainInterface";
 
 const StyledBox = styled.div`
   width: 150px;
@@ -49,25 +50,25 @@ const StyledBoxLinkBtn = styled.div`
   background-color: #2f334e;
 `;
 
-type Props = {
-  item: any,
+interface Props {
+  data: MainConvertInterface,
   onClickLink: (e: MouseEvent<HTMLElement>) => void
 };
 
-const Box: React.FC<Props> = ({
-  item,
+const Box = ({
+  data,
   onClickLink
-}) => {
+}: Props) => {
   return (
     <StyledBox>
       <StyledBoxIcon>
-        <Image src={`http://52.79.72.35:4000/${item.smallLogoPath}`}
+        <Image src={`https://dadari-api.com${data.smallLogoPath}`}
           width={20}
           height={20} loading="lazy" alt="" />
       </StyledBoxIcon>
-      <StyledBoxTitle>{item.nameKr}</StyledBoxTitle>
+      <StyledBoxTitle>{data.nameKr}</StyledBoxTitle>
       <StyledBoxContents>
-        <BoxIconList item={item.subscriptionServices} />
+        <BoxIconList item={data.subscriptionServices} />
         <StyledBoxLinkBtn onClick={onClickLink}>
           <IconArrowR iWidth={26} iHeight={26} />
         </StyledBoxLinkBtn>

@@ -58,7 +58,7 @@ const CategoryItem = ({
     <StyledCategoryItem onClick={moveList(item.id)} selected={item.id == id}>
       <StyledCategoryIcon>
         <Image
-          src={`http://52.79.72.35:4000/${item.bigLogoPath}`}
+          src={`https://dadari-api.com${item.bigLogoPath}`}
           width={30}
           height={30}
           alt={"logo"}

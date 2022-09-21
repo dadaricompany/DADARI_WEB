@@ -44,7 +44,7 @@ type Props = {
 
 const BoxIconListItem: React.FC<Props> = ({ type, item }) => {
   return type == "icon" ? (
-    <StyledBoxIcon src={`http://52.79.72.35:4000/${item.defaultLogoPath}`} />
+    <StyledBoxIcon src={`https://dadari-api.com${item.defaultLogoPath}`} />
   ) : (
     <StyledBoxNumber>
       <StyledBoxText>+{item}</StyledBoxText>
