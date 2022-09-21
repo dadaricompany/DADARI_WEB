@@ -25,7 +25,7 @@ const StyledServiceInfoSectionBarItemFront = styled.div`
 const StyledServiceInfoSectionMoney = styled.p`
     margin:20px 0 0 0;
     font-size: 17px;
-    font-weight: normal;
+    font-weight: bold;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.18;
@@ -36,7 +36,7 @@ const StyledServiceInfoSectionMoney = styled.p`
 const StyledServiceInfoSectionTitle = styled.p`
     margin:6px 0 0 0;
     font-size: 14px;
-    font-weight: 300;
+    font-weight: normal;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.36;

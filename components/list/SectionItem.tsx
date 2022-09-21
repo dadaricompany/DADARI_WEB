@@ -32,7 +32,7 @@ const StyledSectionDescripton = styled.p`
   height: 57px;
   margin: 0;
   padding-right: 54px;
-  font-weight: 300;
+  font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.36;

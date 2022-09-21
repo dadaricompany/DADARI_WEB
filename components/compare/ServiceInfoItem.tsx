@@ -38,7 +38,7 @@ const StyledServiceInfoTitle = styled.p`
 const StyledServiceInfoEngTitle = styled.p`
   margin: 8px 0 34px 0;
   font-size: 13px;
-  font-weight: 300;
+  font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.38;
