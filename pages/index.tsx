@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps = async (props) => {
     props: {
       top: top,
       list: list,
-      baseURL: props.req.headers.host == 'localhost:3000' ? `http://${props.req.headers.host}` : `https://${props.req.headers.host}`,
+      baseURL: props.req.headers.host == 'localhost:3000' ? `http://${props.req.headers.host}/` : `https://${props.req.headers.host}/`,
     },
   };
 };
