@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledMainBoxIcon = styled.div<{ src: any | null }>`
+const StyledTopBoxIcon = styled.div<{ src: any | null }>`
   width: 30px;
   height: 30px;
   margin: 0 5px 0 0;
@@ -16,7 +16,7 @@ const StyledMainBoxIcon = styled.div<{ src: any | null }>`
   background-repeat: no-repeat;
   background-position: center;
 `;
-const StyledMainBoxNumber = styled.div`
+const StyledTopBoxCount = styled.div`
   width: 30px;
   height: 30px;
   margin: 0 5px 0 0;
@@ -30,7 +30,7 @@ const StyledMainBoxNumber = styled.div`
   background-image: url(favicon.png);
   background-size: 300px;
 `;
-const StyledMainBoxText = styled.span`
+const StyledTopBoxCountText = styled.span`
   font-size: 13px;
   font-weight: 500;
   font-stretch: normal;
@@ -41,18 +41,18 @@ const StyledMainBoxText = styled.span`
   color: #bcc2d6;
 `;
 
-type Props = {
-  type: String,
+interface Props {
+  type: string,
   item: any
 }
 
-const MainBoxIconListItem: React.FC<Props> = ({ type, item }) => {
+const TopBoxIconListItem = ({ type, item }: Props) => {
   return type == "icon" ? (
-    <StyledMainBoxIcon src={`http://52.79.72.35:4000/${item.defaultLogoPath}`} />
+    <StyledTopBoxIcon src={`http://52.79.72.35:4000${item.defaultLogoPath}`} />
   ) : (
-    <StyledMainBoxNumber>
-      <StyledMainBoxText>+{item}</StyledMainBoxText>
-    </StyledMainBoxNumber>
+    <StyledTopBoxCount>
+      <StyledTopBoxCountText>+{item}</StyledTopBoxCountText>
+    </StyledTopBoxCount>
   );
 };
-export default MainBoxIconListItem;
+export default TopBoxIconListItem;

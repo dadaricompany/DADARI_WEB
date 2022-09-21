@@ -11,11 +11,11 @@ const StyledSubTitle = styled.p`
   margin: 17px 0 17px 26px;
 `;
 
-type Props = {
+interface Props {
   context: String
 };
 
-const SubTitle: React.FC<Props> = ({ context }) => {
+const SubTitle = ({ context }: Props) => {
   return <StyledSubTitle>{context}</StyledSubTitle>;
 };
 

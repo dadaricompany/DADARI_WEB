@@ -19,7 +19,7 @@ const SectionContainer: React.FC<Props> = ({ item }) => {
   const moveDetail = useCallback((item: any) => (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
     router.push(`/service/${item}`);
-  }, []);
+  }, [router]);
 
   const selectDetail = (item: any) => (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();

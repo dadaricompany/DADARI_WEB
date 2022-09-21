@@ -1,22 +1,19 @@
 import { BoxScrollTemplate } from "components/main";
+import { MainConvertInterface } from "utils/data/modules/main/MainInterface";
 import BoxContainer from "./BoxContainer";
 
-type Props = {
-  item: any
+interface Props {
+  data: MainConvertInterface[]
 };
 
-const BoxListContainer: React.FC<Props> = ({ item }) => {
+const BoxListContainer = ({ data }: Props) => {
   return (
     <BoxScrollTemplate>
-      {item && item.length ? (
-        item.map((value: any, index: number) => {
-          return (
-            <BoxContainer item={value} key={index} />
-          );
-        })
-      ) : (
-        <BoxContainer item={item} />
-      )}
+      {data.map((value: MainConvertInterface, index: number) => {
+        return (
+          <BoxContainer data={value} key={index} />
+        );
+      })}
     </BoxScrollTemplate>
   );
 };
