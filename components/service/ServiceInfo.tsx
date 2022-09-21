@@ -57,7 +57,7 @@ const ServiceInfo = ({ titleKr, titleEng, desc, image }: any) => {
     <StyledServiceInfo>
       <StyledServiceInfoLogo>
         <Image
-          src={`http://52.79.72.35:4000/${image}`}
+          src={`https://dadari-api.com${image}`}
           width={130}
           height={130}
           alt={"logo"}

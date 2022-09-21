@@ -2,7 +2,7 @@ import axios from "axios";
 
 const service = axios.create({
   timeout: 3000,
-  baseURL: "http://52.79.72.35:4000/",
+  baseURL: "https://dadari-api.com/",
   withCredentials: true,
 });
 

@@ -106,7 +106,7 @@ const TopBox = ({
         <StyledIcon>
           <StyledIconBack />
           <StyledIconFront>
-            <Image src={`http://52.79.72.35:4000${data.smallLogoPath}`} width={20} height={20} loading="lazy" alt="logo" />
+            <Image src={`https://dadari-api.com${data.smallLogoPath}`} width={20} height={20} loading="lazy" alt="logo" />
           </StyledIconFront>
         </StyledIcon>
         <StyledTitle>{data.nameKr}</StyledTitle>

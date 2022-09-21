@@ -62,7 +62,7 @@ const Box = ({
   return (
     <StyledBox>
       <StyledBoxIcon>
-        <Image src={`http://52.79.72.35:4000${data.smallLogoPath}`}
+        <Image src={`https://dadari-api.com${data.smallLogoPath}`}
           width={20}
           height={20} loading="lazy" alt="" />
       </StyledBoxIcon>

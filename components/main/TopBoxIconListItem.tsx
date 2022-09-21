@@ -48,7 +48,7 @@ interface Props {
 
 const TopBoxIconListItem = ({ type, item }: Props) => {
   return type == "icon" ? (
-    <StyledTopBoxIcon src={`http://52.79.72.35:4000${item.defaultLogoPath}`} />
+    <StyledTopBoxIcon src={`https://dadari-api.com${item.defaultLogoPath}`} />
   ) : (
     <StyledTopBoxCount>
       <StyledTopBoxCountText>+{item}</StyledTopBoxCountText>

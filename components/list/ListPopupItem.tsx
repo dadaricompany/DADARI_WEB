@@ -36,7 +36,7 @@ const ListPopupItem = ({
       {item && item.defaultLogoPath ? (
         <img
           onClick={deleteDetail(item)}
-          src={`http://52.79.72.35:4000/${item.defaultLogoPath}`}
+          src={`https://dadari-api.com${item.defaultLogoPath}`}
           style={{
             borderRadius: "9px",
             width: "36px",

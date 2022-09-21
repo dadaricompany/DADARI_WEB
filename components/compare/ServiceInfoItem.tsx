@@ -63,7 +63,7 @@ const ServiceInfoItem = ({
           <IconX32 />
         </StyledDeleteItemLogo>
         <Image
-          src={`http://52.79.72.35:4000/${item.detailLogoPath}`}
+          src={`https://dadari-api.com${item.detailLogoPath}`}
           width={130}
           height={130}
           alt={"logo"}
