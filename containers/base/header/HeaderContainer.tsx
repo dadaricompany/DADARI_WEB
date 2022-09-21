@@ -1,6 +1,7 @@
 import { Header } from "components/base";
+import { IconLogo, IconArrowL } from "components/icons";
 import { useRouter } from "next/router";
-import { MouseEvent, useCallback } from "react";
+import { Fragment, MouseEvent, useCallback } from "react";
 
 type Props = {
     children: JSX.Element | JSX.Element[]
@@ -17,9 +18,10 @@ const HeaderContainer: React.FC<Props> = ({ children }) => {
             _serviceName === "list" ? router.replace("/") :
                 router.back();
     }, [])
+    
+    const logoIcon = router.pathname.split("/")[1] === "" ? <IconLogo iWidth={32} iHeight={32} /> : <IconArrowL iWidth={32} iHeight={32} />
 
-
-    return <Header moveLogo={moveLogo}>
+    return <Header moveLogo={moveLogo} logoIcon={logoIcon} >
         {children}
     </Header>;
 };

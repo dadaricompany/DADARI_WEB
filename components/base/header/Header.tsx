@@ -19,13 +19,14 @@ const StyledHeaderLogo = styled.div`
 
 type Props = {
   moveLogo: (e: MouseEvent<HTMLElement>) => void;
-  children: JSX.Element | JSX.Element[]
+  children: JSX.Element | JSX.Element[],
+  logoIcon: JSX.Element | JSX.Element[],
 };
 
-const Header: React.FC<Props> = ({ moveLogo, children }) => {
+const Header: React.FC<Props> = ({ moveLogo, children, logoIcon }) => {
   return <StyledHeader>
     <StyledHeaderLogo onClick={moveLogo}>
-      <IconArrowL iWidth={32} iHeight={32} />
+      {logoIcon}
     </StyledHeaderLogo>
     {children}
   </StyledHeader>
