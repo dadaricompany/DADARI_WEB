@@ -1,13 +1,14 @@
 import { ListPopup, SectionGridTemplate, SectionItem } from "components/list";
 import { useRouter } from "next/router";
-import { Fragment, MouseEvent, useCallback } from "react";
+import { MouseEvent, useCallback } from "react";
 import { useRecoilState } from "recoil";
 import { compareState } from "store/state";
+import { ServiceConvertInterface } from "utils/data/modules/list/ListInterface";
 
-type Props = {
-  item: any
+interface Props {
+  data: ServiceConvertInterface[]
 }
-const SectionContainer: React.FC<Props> = ({ item }) => {
+const SectionContainer = ({ data }: Props) => {
   const [compare, setCompare] = useRecoilState<any>(compareState);
   const router = useRouter();
 
@@ -46,23 +47,13 @@ const SectionContainer: React.FC<Props> = ({ item }) => {
   return (
     <>
       <SectionGridTemplate>
-        {item &&
-          item.map((v: any, i: number) => {
-            return (
-              <Fragment key={i}>
-                <SectionItem
-                  moveDetail={moveDetail}
-                  selectDetail={selectDetail}
-                  item={v}
-                />
-              </Fragment>
-            );
-          })}
+        {data && data.map((v: ServiceConvertInterface, i: number) => <SectionItem key={i}
+          onClickSection={moveDetail}
+          onClickPlusBtn={selectDetail}
+          data={v}
+        />)}
       </SectionGridTemplate>
-
-      {compare.length > 0 && (
-        <ListPopup item={compare} compareDetail={compareDetail} deleteDetail={deleteDetail} />
-      )}
+      {compare.length > 0 && <ListPopup item={compare} compareDetail={compareDetail} deleteDetail={deleteDetail} />}
     </>
   );
 };

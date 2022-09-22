@@ -1,12 +1,15 @@
-import { Fragment, MouseEvent } from "react";
+import { MouseEvent } from "react";
 import styled from "styled-components";
+
+import { CategoryConvertInterface } from "utils/data/modules/list/ListInterface";
+
 import CategoryItem from "./CategoryItem";
+
 const StyledCategoryHeight = styled.div`
   height: 152px;
   display: flex;
   align-items: center;
 `;
-
 const StyledCategoryList = styled.div`
   overflow-x: scroll;
   padding: 12px 20px 28px 20px;
@@ -20,25 +23,24 @@ const StyledScrollCategoryList = styled.div`
     margin-left: 8px;
   }
 `;
+
+interface Props {
+  id: string,
+  data: CategoryConvertInterface[],
+  onClickCategory: (item: any) => (e: MouseEvent<HTMLElement>) => void;
+}
+
 const CategoryList = ({
   id,
-  item,
-  moveList,
-}: {
-  id: any,
-  item: any,
-  moveList: (item: any) => (e: MouseEvent<HTMLElement>) => void;
-}) => {
+  data,
+  onClickCategory,
+}: Props) => {
   return (
     <StyledCategoryHeight>
       <StyledCategoryList>
         <StyledScrollCategoryList>
           {
-            item.map((v: any, i: number) => {
-              return <Fragment key={i}>
-                <CategoryItem item={v} id={id} moveList={moveList} />
-              </Fragment>
-            })
+            data.map((v: CategoryConvertInterface, i: number) => <CategoryItem key={i} data={v} id={id} onClickCategory={onClickCategory} />)
           }
         </StyledScrollCategoryList>
       </StyledCategoryList>

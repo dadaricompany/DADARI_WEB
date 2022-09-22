@@ -1,6 +1,8 @@
-import styled from "styled-components";
 import { MouseEvent } from "react";
+import styled from "styled-components";
 import Image from "next/image";
+
+import { CategoryConvertInterface } from "utils/data/modules/list/ListInterface";
 
 const StyledCategoryItem = styled.div<{ selected: boolean }>`
   width: 70px;
@@ -39,33 +41,34 @@ const StyledCategoryTitle = styled.div<{ selected: boolean }>`
     text-align: center;
     color: #afb9da;
     ${(props) => {
-      return (
-        props.selected && "color:#fff !important; font-weight:500 !important; "
-      );
-    }}
+    return (
+      props.selected && "color:#fff !important; font-weight:500 !important; "
+    );
+  }}
   }
 `;
+interface Props {
+  id: string;
+  data: CategoryConvertInterface;
+  onClickCategory: (item: any) => (e: MouseEvent<HTMLElement>) => void;
+}
 const CategoryItem = ({
   id,
-  item,
-  moveList,
-}: {
-  id: any;
-  item: any;
-  moveList: (item: any) => (e: MouseEvent<HTMLElement>) => void;
-}) => {
+  data,
+  onClickCategory,
+}: Props) => {
   return (
-    <StyledCategoryItem onClick={moveList(item.id)} selected={item.id == id}>
+    <StyledCategoryItem onClick={onClickCategory(data.id)} selected={String(data.id) == id}>
       <StyledCategoryIcon>
         <Image
-          src={`https://dadari-api.com${item.bigLogoPath}`}
+          src={`https://dadari-api.com${data.bigLogoPath}`}
           width={30}
           height={30}
-          alt={"logo"}
+          alt={`${data.nameKr} 카테고리 로고`}
         />
       </StyledCategoryIcon>
-      <StyledCategoryTitle selected={item.id == id}>
-        <span>{item.nameKr}</span>
+      <StyledCategoryTitle selected={String(data.id) == id}>
+        <span>{data.nameKr}</span>
       </StyledCategoryTitle>
     </StyledCategoryItem>
   );

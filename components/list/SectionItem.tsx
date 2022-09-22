@@ -1,7 +1,9 @@
-import { IconPlus } from "components/icons";
-import styled from "styled-components";
 import { MouseEvent } from "react";
 import Image from "next/image";
+import styled from "styled-components";
+
+import { IconPlus } from "components/icons";
+import { ServiceConvertInterface } from "utils/data/modules/list/ListInterface";
 
 const StyledSectionItem = styled.div`
   height: 248px;
@@ -13,7 +15,6 @@ const StyledSectionItem = styled.div`
   align-items: center;
   position: relative;
 `;
-
 const StyledSectionItemTitle = styled.p`
   align-self: flex-start;
   margin: 20px 0 8px 0;
@@ -25,7 +26,6 @@ const StyledSectionItemTitle = styled.p`
   letter-spacing: -0.5px;
   color: #fff;
 `;
-
 const StyledSectionDescripton = styled.p`
   align-self: flex-start;
   font-size: 14px;
@@ -52,26 +52,29 @@ const StyledSectionItemBtn = styled.div`
   border-radius: 8px;
   background-image: linear-gradient(135deg, #ac66ff, #7435ff);
 `;
+interface Props {
+  onClickSection: (item: any) => (e: MouseEvent<HTMLElement>) => void;
+  onClickPlusBtn: (item: any) => (e: MouseEvent<HTMLElement>) => void;
+  data: ServiceConvertInterface;
+}
+
 const SectionItem = ({
-  moveDetail,
-  selectDetail,
-  item,
-}: {
-  moveDetail: (item: any) => (e: MouseEvent<HTMLElement>) => void;
-  selectDetail: (item: any) => (e: MouseEvent<HTMLElement>) => void;
-  item: any;
-}) => {
+  onClickSection,
+  onClickPlusBtn,
+  data,
+}: Props) => {
   return (
-    <StyledSectionItem onClick={moveDetail(item.id)}>
+    <StyledSectionItem onClick={onClickSection(data.id)}>
       <Image
-        src={`https://dadari-api.com${item.listLogoPath}`}
+        src={`https://dadari-api.com${data.listLogoPath}`}
         width={110}
         height={110}
         loading="lazy"
+        alt={`${data.nameKr}의 서비스로고`}
       />
-      <StyledSectionItemTitle>{item.nameKr}</StyledSectionItemTitle>
-      <StyledSectionDescripton>{item.description}</StyledSectionDescripton>
-      <StyledSectionItemBtn onClick={selectDetail(item)}>
+      <StyledSectionItemTitle>{data.nameKr}</StyledSectionItemTitle>
+      <StyledSectionDescripton>{data.description}</StyledSectionDescripton>
+      <StyledSectionItemBtn onClick={onClickPlusBtn(data)}>
         <IconPlus iWidth={32} iHeight={32} />
       </StyledSectionItemBtn>
     </StyledSectionItem>

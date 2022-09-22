@@ -15,7 +15,10 @@ const StyledCategoryGridSection = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 24px 12px;
 `;
-const SectionGridTemplate = ({ children }: any) => {
+interface Props {
+  children: JSX.Element | JSX.Element[]
+}
+const SectionGridTemplate = ({ children }: Props) => {
   return (
     <StyledCategorySection>
       <StyledCategoryGridSection>{children}</StyledCategoryGridSection>
