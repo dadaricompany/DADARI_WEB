@@ -27,7 +27,6 @@ const StyledTopBoxCount = styled.div`
   display: flex;
   justify-content: center;
   z-index: 999;
-  background-image: url(favicon.png);
   background-size: 300px;
 `;
 const StyledTopBoxCountText = styled.span`
@@ -39,6 +38,9 @@ const StyledTopBoxCountText = styled.span`
   letter-spacing: -0.25px;
   text-align: center;
   color: #bcc2d6;
+  display:flex;
+  align-items:center;
+  margin-bottom:1px;
 `;
 
 interface Props {

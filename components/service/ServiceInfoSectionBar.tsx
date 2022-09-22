@@ -110,8 +110,8 @@ const ServiceInfoSectionBar = ({ item }: any) => {
                 datasets: [
                     {
                         data: { data: barData1.data },
-                        backgroundColor: barData1.color,
-                        borderColor: barData1.color,
+                        backgroundColor: '#8246fa',
+                        borderColor: '#8246fa',
                         maxBarThickness: 25
                     },
                 ],
@@ -153,8 +153,8 @@ const ServiceInfoSectionBar = ({ item }: any) => {
                 datasets: [
                     {
                         data: { data: barData2.data },
-                        backgroundColor: barData2.color,
-                        borderColor: barData2.color,
+                        backgroundColor: '#3b55e5',
+                        borderColor: '#3b55e5',
                         maxBarThickness: 25
                     },
                 ],

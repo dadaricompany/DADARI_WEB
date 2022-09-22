@@ -64,7 +64,11 @@ const ServiceInfoSectionDoughnut = ({ item }: any) => {
     if (!item || !item.value.data.length) return;
     item.value["color"] = [];
     for (let i = 0, len = item.value.data.length; i < len; i++) {
-      item.value["color"].push(ChartColor[i]);
+      if(item.value.labels[i] == '기타'){
+        item.value["color"].push('#bcc2d6');
+      }else{
+        item.value["color"].push(ChartColor[i]);
+      }
     }
     setDoughnutData(item.value);
   }, [item]);
@@ -87,7 +91,13 @@ const ServiceInfoSectionDoughnut = ({ item }: any) => {
             borderColor: doughnutData.color,
           },
         ],
-      },
+      },options: {
+        plugins: {
+          tooltip:{
+            enabled:false
+          }
+        }
+      }
     });
     return () => {
       doughnutChart.destroy();

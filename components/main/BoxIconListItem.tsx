@@ -34,6 +34,9 @@ const StyledBoxText = styled.span`
   line-height: 1.38;
   letter-spacing: -0.25px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1px;
   color: #bcc2d6;
 `;
 

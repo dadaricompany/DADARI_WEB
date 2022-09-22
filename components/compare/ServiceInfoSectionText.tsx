@@ -12,12 +12,13 @@ const StyledServiceInfoSectionTextItem = styled.div`
   border-bottom-right-radius: 12px;
   border-bottom-left-radius: 12px;
   display: flex;
+  align-items: center;
 `;
 const StyledServiceInfoSectionTextItemData = styled.div`
   padding: 0 12px;
   width: 50%;
   font-size: 14px;
-  font-weight: normal;
+  font-weight: 350;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.36;
