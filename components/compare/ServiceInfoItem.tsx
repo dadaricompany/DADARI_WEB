@@ -25,7 +25,7 @@ const StyledDeleteItemLogo = styled.div`
   top: -10px;
 `;
 const StyledServiceInfoTitle = styled.p`
-  margin: -10px 0 0 0;
+  margin: -20px 0 0 0;
   font-size: 19px;
   font-weight: bold;
   font-stretch: normal;
@@ -64,8 +64,8 @@ const ServiceInfoItem = ({
         </StyledDeleteItemLogo>
         <Image
           src={`https://dadari-api.com${item.detailLogoPath}`}
-          width={130}
-          height={130}
+          width={140}
+          height={140}
           alt={"logo"}
         />
       </StyledServiceInfoItemLogo>
