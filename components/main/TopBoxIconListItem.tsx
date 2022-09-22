@@ -38,6 +38,9 @@ const StyledTopBoxCountText = styled.span`
   letter-spacing: -0.25px;
   text-align: center;
   color: #bcc2d6;
+  display:flex;
+  align-items:center;
+  margin-bottom:1px;
 `;
 
 interface Props {

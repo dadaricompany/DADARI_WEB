@@ -77,11 +77,19 @@ const ServiceInfoSectionDoughnut = ({ title, items, path }: any) => {
 
     item1["color"] = [];
     for (let i = 0, len = item1.data.length; i < len; i++) {
-      item1["color"].push(ChartColor[i]);
+      if(item1.labels[i] == '기타'){
+        item1["color"].push('#bcc2d6');
+      }else{
+        item1["color"].push(ChartColor[i]);
+      }
     }
     item2["color"] = [];
     for (let i = 0, len = item2.data.length; i < len; i++) {
-      item2["color"].push(ChartColor[i]);
+      if(item2.labels[i] == '기타'){
+        item2["color"].push('#bcc2d6');
+      }else{
+        item2["color"].push(ChartColor[i]);
+      }
     }
     setDoughnutData1(item1);
     setDoughnutData2(item2);
@@ -105,7 +113,13 @@ const ServiceInfoSectionDoughnut = ({ title, items, path }: any) => {
             borderColor: doughnutData1.color,
           },
         ],
-      },
+      },options: {
+        plugins: {
+          tooltip:{
+            enabled:false
+          }
+        }
+      }
     });
     return () => {
       doughnutChart1.destroy();
@@ -131,6 +145,13 @@ const ServiceInfoSectionDoughnut = ({ title, items, path }: any) => {
           },
         ],
       },
+      options: {
+        plugins: {
+          tooltip:{
+            enabled:false
+          }
+        }
+      }
     });
     return () => {
       doughnutChart2.destroy();
