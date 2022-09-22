@@ -17,7 +17,7 @@ const StyledServiceInfoLogo = styled.div`
 const StyledServiceInfoTitle = styled.p`
   z-index:999;
   height: 28px;
-  margin: -10px 0 0 0;
+  margin: -20px 0 0 0;
   font-size: 21px;
   font-weight: bold;
   font-stretch: normal;
@@ -58,8 +58,8 @@ const ServiceInfo = ({ titleKr, titleEng, desc, image }: any) => {
       <StyledServiceInfoLogo>
         <Image
           src={`https://dadari-api.com${image}`}
-          width={130}
-          height={130}
+          width={140}
+          height={140}
           alt={"logo"}
         />
       </StyledServiceInfoLogo>
