@@ -1,7 +1,9 @@
-import { Fragment } from "react";
-import styled from "styled-components";
-import SubCategoryItem from "./SubCategoryItem";
 import { MouseEvent } from "react";
+import styled from "styled-components";
+
+import { HashtagConvertInterface } from "utils/data/modules/list/ListInterface";
+
+import SubCategoryItem from "./SubCategoryItem";
 
 const StyledSubCategoryHeight = styled.div`
   height: 58px;
@@ -9,7 +11,6 @@ const StyledSubCategoryHeight = styled.div`
   align-items: center;
   background: #000;
 `;
-
 const StyledSubCategoryList = styled.div`
   overflow-x: scroll;
   padding: 13px 20px;
@@ -25,30 +26,26 @@ const StyledScrollSubCategoryList = styled.div`
     margin-left: 7px;
   }
 `;
-const SubCategoryList = ({
-  item,
-  onClickHashtags,
-}: {
-  item: any;
+
+interface Props {
+  data: HashtagConvertInterface[];
   onClickHashtags: (e: MouseEvent<HTMLElement>) => void;
-}) => {
+}
+
+const SubCategoryList = ({
+  data,
+  onClickHashtags,
+}: Props) => {
   return (
     <StyledSubCategoryHeight>
       <StyledSubCategoryList>
         <StyledScrollSubCategoryList>
-          {item &&
-            item.length &&
-            item.map((v: any, i: number) => {
-              return (
-                <Fragment key={i}>
-                  <SubCategoryItem
-                    item={v}
-                    id={i}
-                    onClickHashtags={onClickHashtags}
-                  />
-                </Fragment>
-              );
-            })}
+          {data && data.map((v: HashtagConvertInterface, i: number) => <SubCategoryItem
+            key={i}
+            data={v}
+            id={i}
+            onClickHashtags={onClickHashtags}
+          />)}
         </StyledScrollSubCategoryList>
       </StyledSubCategoryList>
     </StyledSubCategoryHeight>

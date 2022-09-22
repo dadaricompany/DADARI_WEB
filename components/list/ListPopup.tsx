@@ -1,4 +1,4 @@
-import { Fragment, MouseEvent } from "react";
+import { MouseEvent } from "react";
 import styled from "styled-components";
 import ListPopupItem from "./ListPopupItem";
 
@@ -41,15 +41,17 @@ const StyeldListPopupBtn = styled.div`
     color: #fff;
   }
 `;
+interface Props {
+  deleteDetail: (item: any) => (e: MouseEvent<HTMLElement>) => void;
+  compareDetail: () => void;
+  item: any;
+}
+
 const ListPopup = ({
   deleteDetail,
   compareDetail,
   item,
-}: {
-  deleteDetail: (item: any) => (e: MouseEvent<HTMLElement>) => void;
-  compareDetail: () => void;
-  item: any;
-}) => {
+}: Props) => {
   return (
     <StyledListPopup>
       <StyledListPopupItemList>

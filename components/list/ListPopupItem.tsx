@@ -23,14 +23,14 @@ const StyledListPopupItemText = styled.p`
   letter-spacing: -0.5px;
   color: #fff;
 `;
-
+interface Props {
+  deleteDetail: (item: any) => (e: MouseEvent<HTMLElement>) => void;
+  item: any;
+}
 const ListPopupItem = ({
   deleteDetail,
   item,
-}: {
-  deleteDetail: (item: any) => (e: MouseEvent<HTMLElement>) => void;
-  item: any;
-}) => {
+}: Props) => {
   return (
     <StyledListPopupItem className="popup_item">
       {item && item.defaultLogoPath ? (
@@ -42,8 +42,6 @@ const ListPopupItem = ({
             width: "36px",
             height: "36px",
           }}
-          width={20}
-          height={20}
           loading="lazy"
           alt=""
         />

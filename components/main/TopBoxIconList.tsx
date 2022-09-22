@@ -18,7 +18,7 @@ const TopBoxIconList = ({ item }: Props) => {
   return (
     <StyledTopBoxIconList>
       {
-        item.map((value: any, index: number) => index < 4 && <TopBoxIconListItem type={index < 3 ? "icon" : "plus"} item={index < 3 ? value : item.length} key={index} />)
+        item.map((value: any, index: number) => index < 4 && <TopBoxIconListItem type={index < 3 ? "icon" : "plus"} item={index < 3 ? value : item.length - 3} key={index} />)
       }
     </StyledTopBoxIconList>
   );

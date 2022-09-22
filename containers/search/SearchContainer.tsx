@@ -51,12 +51,11 @@ const SearchContainer = () => {
       </HeaderContainer>
       <StyledSection>
         {searchList &&
-          searchList?.length &&
           searchList.map((v: any, i: number) => {
             return (
               <Fragment key={i}>
                 <SearchSectionItemContainer item={v} />
-                {searchList?.length > 1 && <StyledSectionGap />}
+                {(searchList?.length > 1 && searchList.length - 1 != i) && <StyledSectionGap />}
               </Fragment>
             );
           })}

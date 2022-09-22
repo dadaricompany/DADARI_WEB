@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { MouseEvent } from "react";
+import { HashtagConvertInterface } from "utils/data/modules/list/ListInterface";
 
 const StyledSubCategoryItem = styled.div`
   border-radius: 25px;
@@ -31,21 +32,24 @@ const StyledSubCategoryItem = styled.div`
     }
   }
 `;
+
+interface Props {
+  data: HashtagConvertInterface;
+  id: number;
+  onClickHashtags: (e: MouseEvent<HTMLElement>) => void;
+}
+
 const SubCategoryItem = ({
-  item,
+  data,
   id,
   onClickHashtags,
-}: {
-  item: any;
-  id: any;
-  onClickHashtags: (e: MouseEvent<HTMLElement>) => void;
-}) => {
+}: Props) => {
   return (
     <StyledSubCategoryItem
       onClick={onClickHashtags}
-      className={item.checked ? "hash-check" : ""}
+      className={data.checked ? "hash-check" : ""}
     >
-      <span id={`hashtags_${id}`}>{item.name}</span>
+      <span id={`hashtags_${id}`}>{data.name}</span>
     </StyledSubCategoryItem>
   );
 };

@@ -19,7 +19,7 @@ const StyledCatchphraseText = styled.p`
   }
 `;
 
-const Catchphrase: React.FC = () => {
+const Catchphrase = () => {
   return (
     <StyledCatchphrase>
       <StyledCatchphraseText>

@@ -41,11 +41,11 @@ const StyledBoxText = styled.span`
 `;
 
 type Props = {
-  type: String,
+  type: string,
   item: any
 };
 
-const BoxIconListItem: React.FC<Props> = ({ type, item }) => {
+const BoxIconListItem = ({ type, item }: Props) => {
   return type == "icon" ? (
     <StyledBoxIcon src={`https://dadari-api.com${item.defaultLogoPath}`} />
   ) : (
