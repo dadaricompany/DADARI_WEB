@@ -33,6 +33,7 @@ const StyledServiceInfoTitle = styled.p`
   line-height: 1.32;
   letter-spacing: -0.5px;
   color: #fff;
+  z-index:999;
 `;
 
 const StyledServiceInfoEngTitle = styled.p`
