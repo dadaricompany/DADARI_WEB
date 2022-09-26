@@ -27,7 +27,8 @@ const ListContainer = () => {
 
   const moveList = useCallback((item: any) => (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    setId(String(item));
+    if(String(id) === String(item)) return;
+    router.push(`/list?id=${item}`)
   }, []);
 
   const onClickHashtags = async (e: MouseEvent<HTMLElement>) => {
