@@ -3,7 +3,6 @@ import { MouseEvent } from "react";
 const StyledServiceInfoPopup = styled.div`
   width: 100vw;
   height: 100vh;
-  z-index: 1;
   z-index: 999999;
   position: absolute;
   max-width:768px;
