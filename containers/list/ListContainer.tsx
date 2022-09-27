@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState, MouseEvent } from "react";
-import { useRouter } from "next/router";
 
 import { ListConverter, ListConverterWithHash } from "utils/data/modules/list/ListConverter";
 import { HashtagConvertInterface, ListResInterface } from "utils/data/modules/list/ListInterface";
@@ -9,6 +8,7 @@ import { selectListList } from "api/modules/list";
 import { Footer } from "components/base";
 import { CategoryList, SubCategoryList } from "components/list";
 import SectionContainer from "./SectionContainer";
+import { useRouter } from "next/dist/client/router";
 
 
 

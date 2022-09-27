@@ -1,5 +1,5 @@
 import { SearchIconModule } from "components/base";
-import { useRouter } from "next/router";
+import { useRouter } from "next/dist/client/router";
 import { MouseEvent, useCallback } from "react";
 
 const SearchIconModuleContainer: React.FC = () => {

@@ -1,7 +1,7 @@
 import Popup from "components/base/core/Popup";
 import { ListPopup, SectionGridTemplate, SectionItem } from "components/list";
-import { useRouter } from "next/router";
-import { MouseEvent, useCallback, useState } from "react";
+import { useRouter } from "next/dist/client/router";
+import { MouseEvent, useCallback, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { compareState } from "store/state";
 import { ServiceConvertInterface } from "utils/data/modules/list/ListInterface";
@@ -13,6 +13,16 @@ const SectionContainer = ({ data }: Props) => {
   const [compare, setCompare] = useRecoilState<any>(compareState);
   const [temp, setTemp] = useState<any>(null);
   const router = useRouter();
+
+  useEffect(()=>{
+    if(compare.length < 2) return;
+    if(compare[0].categoryId != compare[1].categoryId){
+      const _itemPopup = document.getElementById("ComparePopup");
+      if (_itemPopup && _itemPopup.style) {
+        _itemPopup.style.display = "flex";
+      }
+    }
+  },[compare])
 
   const compareDetail = () => {
     if (compare.length != 2) return;
@@ -30,7 +40,7 @@ const SectionContainer = ({ data }: Props) => {
     if (_itemPopup && _itemPopup.style) {
       _itemPopup.style.display = "none";
     }
-    setTemp(null)
+    setCompare([compare[0]])
   }
   const confirmCompare = (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -38,9 +48,7 @@ const SectionContainer = ({ data }: Props) => {
     if (_itemPopup && _itemPopup.style) {
       _itemPopup.style.display = "none";
     }
-    setCompare([
-      temp
-    ]);
+    setCompare([compare[1]])
   }
 
   const selectDetail = (item: any) => (e: MouseEvent<HTMLElement>) => {
@@ -48,28 +56,15 @@ const SectionContainer = ({ data }: Props) => {
     e.stopPropagation();
     if (compare.length > 1) return;
     if (compare.filter((v: any) => v.id == item.id).length) return;
-    if (compare.filter((v: any) => v.categoryId != item.categoryId).length) {
-      const _itemPopup = document.getElementById("ComparePopup");
-      setTemp({
+    setCompare([
+      ...compare,
+      {
         id: item.id,
         categoryId: item.categoryId,
         defaultLogoPath: item.defaultLogoPath,
         nameKr: item.nameKr,
-      })
-      if (_itemPopup && _itemPopup.style) {
-        _itemPopup.style.display = "flex";
-      }
-    } else {
-      setCompare([
-        ...compare,
-        {
-          id: item.id,
-          categoryId: item.categoryId,
-          defaultLogoPath: item.defaultLogoPath,
-          nameKr: item.nameKr,
-        },
-      ]);
-    }
+      },
+    ]);
   };
 
   const deleteDetail = (item: any) => (e: MouseEvent<HTMLElement>) => {

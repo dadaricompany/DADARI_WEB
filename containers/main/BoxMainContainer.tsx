@@ -1,8 +1,8 @@
 import { MouseEvent, useCallback } from "react"
-import { useRouter } from "next/router";
 
 import { TopBox } from "components/main";
 import { MainConvertInterface } from "utils/data/modules/main/MainInterface";
+import { useRouter } from "next/dist/client/router";
 
 interface Props {
   data: MainConvertInterface

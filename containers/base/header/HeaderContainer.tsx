@@ -1,6 +1,6 @@
 import { Header } from "components/base";
 import { IconLogo, IconArrowL } from "components/icons";
-import { useRouter } from "next/router";
+import { useRouter } from "next/dist/client/router";
 import { Fragment, MouseEvent, useCallback } from "react";
 
 type Props = {
