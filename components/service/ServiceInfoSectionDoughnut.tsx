@@ -34,9 +34,13 @@ const StyledDoughnutDsec = styled.p`
   color: #fff;
   opacity: 0.9;
 `;
+const StyledDoughnutContentWrap = styled.div`
+  width:fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`
 const StyledDoughnutContent = styled.div`
-  width: 100%;
-  padding: 0 95px;
   display: flex;
   align-items: center;
 `;
@@ -64,9 +68,9 @@ const ServiceInfoSectionDoughnut = ({ item }: any) => {
     if (!item || !item.value.data.length) return;
     item.value["color"] = [];
     for (let i = 0, len = item.value.data.length; i < len; i++) {
-      if(item.value.labels[i] == '기타'){
+      if (item.value.labels[i] == '기타') {
         item.value["color"].push('#bcc2d6');
-      }else{
+      } else {
         item.value["color"].push(ChartColor[i]);
       }
     }
@@ -91,10 +95,10 @@ const ServiceInfoSectionDoughnut = ({ item }: any) => {
             borderColor: doughnutData.color,
           },
         ],
-      },options: {
+      }, options: {
         plugins: {
-          tooltip:{
-            enabled:false
+          tooltip: {
+            enabled: false
           }
         }
       }
@@ -106,7 +110,7 @@ const ServiceInfoSectionDoughnut = ({ item }: any) => {
   return (
     doughnutData && (
       <StyledServiceInfoSectionDoughnut>
-        <ServiceInfoSectionTitle title={item.comparisonItem.name} path={item.comparisonItem.imgPath}/>
+        <ServiceInfoSectionTitle title={item.comparisonItem.name} path={item.comparisonItem.imgPath} />
         <StyledServiceInfoSectionDoughnutItem>
           <canvas id="doughnutChart" width="80" height="80" />
           <StyledDoughnutDsec>
@@ -119,28 +123,31 @@ const ServiceInfoSectionDoughnut = ({ item }: any) => {
               .toLocaleString()}
             개
           </StyledDoughnutDsec>
-          {doughnutData.data.map((v: any, i: number) => {
-            return (
-              <Fragment key={i}>
-                <StyledDoughnutContent>
-                  <StyledDoughnutContentColor color={doughnutData.color[i]} />
-                  <StyledDoughnutContentText>
-                    {doughnutData.labels[i]} (
-                    {Math.floor(
-                      (Number(v) /
-                        doughnutData.data.reduce(
-                          (cur: number, acc: number) =>
-                            Number(cur) + Number(acc),
-                          0
-                        )) *
+          <StyledDoughnutContentWrap>
+            {doughnutData.data.map((v: any, i: number) => {
+              return (
+                <Fragment key={i}>
+                  <StyledDoughnutContent>
+                    <StyledDoughnutContentColor color={doughnutData.color[i]} />
+                    <StyledDoughnutContentText>
+                      {doughnutData.labels[i]} (
+                      {Math.floor(
+                        (Number(v) /
+                          doughnutData.data.reduce(
+                            (cur: number, acc: number) =>
+                              Number(cur) + Number(acc),
+                            0
+                          )) *
                         100
-                    )}
-                    %)
-                  </StyledDoughnutContentText>
-                </StyledDoughnutContent>
-              </Fragment>
-            );
-          })}
+                      )}
+                      %)
+                    </StyledDoughnutContentText>
+                  </StyledDoughnutContent>
+
+                </Fragment>
+              );
+            })}
+          </StyledDoughnutContentWrap>
         </StyledServiceInfoSectionDoughnutItem>
       </StyledServiceInfoSectionDoughnut>
     )

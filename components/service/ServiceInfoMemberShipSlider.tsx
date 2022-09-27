@@ -20,7 +20,7 @@ const StyledServiceInfoMemberShipSliderOne = styled.div<{ item: any }>`
   }
   input[type="radio"]:nth-child(1):checked ~ .toggle_option_slider {
     ::after {
-      content: "${(props) => props.item[0].name}";
+      content: "단일 멤버쉽";
     }
     left: 0;
   }
@@ -34,20 +34,18 @@ const StyledServiceInfoMemberShipSliderOne = styled.div<{ item: any }>`
     width: 100%;
     height: 38px;
     border-radius: 22px;
-    box-shadow: 0 2px 20px 0 rgba(130, 70, 250, 0.58), inset 1px 1px 2px 0 rgba(255, 255, 255, 0.3); 
-    background-color: #8246fa;
     position: absolute;
     transition: all 0.4s ease;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
+    color: #bcc2d6;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
-    line-height: 1.2;
-    letter-spacing: -0.29px;
-    font-size: 15px;
+    line-height: 1.38;
+    letter-spacing: -0.25px;
+    font-size: 13px;
   }
 `;
 const StyledServiceInfoMemberShipSliderTwo = styled.div<{ item: any }>`
@@ -122,7 +120,7 @@ const StyledServiceInfoMemberShipSliderThree = styled.div<{ item: any }>`
     display: none;
   }
   ${(props) => {
-        return css`
+    return css`
       input[type="radio"]:nth-child(1):checked ~ .toggle_option_slider {
         ::after {
           content: "${props.item[0].name}";
@@ -142,7 +140,7 @@ const StyledServiceInfoMemberShipSliderThree = styled.div<{ item: any }>`
         left: 66.7%;
       }
     `;
-    }};
+  }};
 
   label {
     flex-grow: 1;
@@ -188,7 +186,7 @@ const StyledServiceInfoMemberShipSliderFour = styled.div<{ item: any }>`
     display: none;
   }
   ${(props) => {
-        return css`
+    return css`
       input[type="radio"]:nth-child(1):checked ~ .toggle_option_slider {
         ::after {
           content: "${props.item[0].name}";
@@ -214,7 +212,7 @@ const StyledServiceInfoMemberShipSliderFour = styled.div<{ item: any }>`
         left: 75%;
       }
     `;
-    }};
+  }};
 
   label {
     flex-grow: 1;
@@ -245,164 +243,164 @@ const StyledServiceInfoMemberShipSliderFour = styled.div<{ item: any }>`
 `;
 
 const changeState = (e: any) => {
-    e.currentTarget.control.checked = true;
+  e.currentTarget.control.checked = true;
 };
 
 const ServiceInfoMemberShipSlider = ({ item, changeMemberShip }: { item: any, changeMemberShip: (e: MouseEvent<HTMLElement>) => void; }) => {
-    return item && item.length && item.length == 1 ? (
-        <StyledServiceInfoMemberShipSliderOne item={item}>
-            {item.map((v: any, i: number) => {
-                return i == 0 ? (
-                    <Fragment key={i}>
-                        <input
-                            type="radio"
-                            className="toggle_option"
-                            id={"toggle" + i}
-                            name="toggle_option"
-                            defaultChecked
-                        />
-                    </Fragment>
-                ) : (
-                    <Fragment key={i}>
-                        <input
-                            type="radio"
-                            className="toggle_option"
-                            id={"toggle" + i}
-                            name="toggle_option"
-                        />
-                    </Fragment>
-                );
-            })}
-            {item.map((v: any, i: number) => {
-                return (
-                    <Fragment key={i}>
-                        <label htmlFor={"toggle" + i} onClick={(e: any) => {
-                            changeState(e);
-                            changeMemberShip(e);
-                        }}>
-                            <p></p>
-                        </label>
-                    </Fragment>
-                );
-            })}
-            <div className="toggle_option_slider"></div>
-        </StyledServiceInfoMemberShipSliderOne>
-    ) : item.length == 2 ? (
-        <StyledServiceInfoMemberShipSliderTwo item={item}>
-            {item.map((v: any, i: number) => {
-                return i == 0 ? (
-                    <Fragment key={i}>
-                        <input
-                            type="radio"
-                            className="toggle_option"
-                            id={"toggle" + i}
-                            name="toggle_option"
-                            defaultChecked
-                        />
-                    </Fragment>
-                ) : (
-                    <Fragment key={i}>
-                        <input
-                            type="radio"
-                            className="toggle_option"
-                            id={"toggle" + i}
-                            name="toggle_option"
-                        />
-                    </Fragment>
-                );
-            })}
-            {item.map((v: any, i: number) => {
-                return (
-                    <Fragment key={i}>
-                        <label htmlFor={"toggle" + i} onClick={(e: any) => {
-                            changeState(e);
-                            changeMemberShip(e);
-                        }}>
-                            <p></p>
-                        </label>
-                    </Fragment>
-                );
-            })}
-            <div className="toggle_option_slider"></div>
-        </StyledServiceInfoMemberShipSliderTwo>
-    ) : item && item.length && item.length == 3 ? (
-        <StyledServiceInfoMemberShipSliderThree item={item}>
-            {item.map((v: any, i: number) => {
-                return i == 0 ? (
-                    <Fragment key={i}>
-                        <input
-                            type="radio"
-                            className="toggle_option"
-                            id={"toggle" + i}
-                            name="toggle_option"
-                            defaultChecked
-                        />
-                    </Fragment>
-                ) : (
-                    <Fragment key={i}>
-                        <input
-                            type="radio"
-                            className="toggle_option"
-                            id={"toggle" + i}
-                            name="toggle_option"
-                        />
-                    </Fragment>
-                );
-            })}
-            {item.map((v: any, i: number) => {
-                return (
-                    <Fragment key={i}>
-                        <label htmlFor={"toggle" + i} onClick={(e: any) => {
-                            changeState(e);
-                            changeMemberShip(e);
-                        }}>
-                            <p></p>
-                        </label>
-                    </Fragment>
-                );
-            })}
-            <div className="toggle_option_slider"></div>
-        </StyledServiceInfoMemberShipSliderThree>
-    ) : item.length == 4 ? (
-        <StyledServiceInfoMemberShipSliderFour item={item}>
-            {item.map((v: any, i: number) => {
-                return i == 0 ? (
-                    <Fragment key={i}>
-                        <input
-                            type="radio"
-                            className="toggle_option"
-                            id={"toggle" + i}
-                            name="toggle_option"
-                            defaultChecked
-                        />
-                    </Fragment>
-                ) : (
-                    <Fragment key={i}>
-                        <input
-                            type="radio"
-                            className="toggle_option"
-                            id={"toggle" + i}
-                            name="toggle_option"
-                        />
-                    </Fragment>
-                );
-            })}
-            {item.map((v: any, i: number) => {
-                return (
-                    <Fragment key={i}>
-                        <label htmlFor={"toggle" + i} onClick={(e: any) => {
-                            changeState(e);
-                            changeMemberShip(e);
-                        }}>
-                            <p></p>
-                        </label>
-                    </Fragment>
-                );
-            })}
-            <div className="toggle_option_slider"></div>
-        </StyledServiceInfoMemberShipSliderFour>
-    ) : (
-        <></>
-    );
+  return item && item.length && item.length == 1 ? (
+    <StyledServiceInfoMemberShipSliderOne item={item}>
+      {item.map((v: any, i: number) => {
+        return i == 0 ? (
+          <Fragment key={i}>
+            <input
+              type="radio"
+              className="toggle_option"
+              id={"toggle" + i}
+              name="toggle_option"
+              defaultChecked
+            />
+          </Fragment>
+        ) : (
+          <Fragment key={i}>
+            <input
+              type="radio"
+              className="toggle_option"
+              id={"toggle" + i}
+              name="toggle_option"
+            />
+          </Fragment>
+        );
+      })}
+      {item.map((v: any, i: number) => {
+        return (
+          <Fragment key={i}>
+            <label htmlFor={"toggle" + i} onClick={(e: any) => {
+              changeState(e);
+              changeMemberShip(e);
+            }}>
+              <p></p>
+            </label>
+          </Fragment>
+        );
+      })}
+      <div className="toggle_option_slider"></div>
+    </StyledServiceInfoMemberShipSliderOne>
+  ) : item.length == 2 ? (
+    <StyledServiceInfoMemberShipSliderTwo item={item}>
+      {item.map((v: any, i: number) => {
+        return i == 0 ? (
+          <Fragment key={i}>
+            <input
+              type="radio"
+              className="toggle_option"
+              id={"toggle" + i}
+              name="toggle_option"
+              defaultChecked
+            />
+          </Fragment>
+        ) : (
+          <Fragment key={i}>
+            <input
+              type="radio"
+              className="toggle_option"
+              id={"toggle" + i}
+              name="toggle_option"
+            />
+          </Fragment>
+        );
+      })}
+      {item.map((v: any, i: number) => {
+        return (
+          <Fragment key={i}>
+            <label htmlFor={"toggle" + i} onClick={(e: any) => {
+              changeState(e);
+              changeMemberShip(e);
+            }}>
+              <p></p>
+            </label>
+          </Fragment>
+        );
+      })}
+      <div className="toggle_option_slider"></div>
+    </StyledServiceInfoMemberShipSliderTwo>
+  ) : item && item.length && item.length == 3 ? (
+    <StyledServiceInfoMemberShipSliderThree item={item}>
+      {item.map((v: any, i: number) => {
+        return i == 0 ? (
+          <Fragment key={i}>
+            <input
+              type="radio"
+              className="toggle_option"
+              id={"toggle" + i}
+              name="toggle_option"
+              defaultChecked
+            />
+          </Fragment>
+        ) : (
+          <Fragment key={i}>
+            <input
+              type="radio"
+              className="toggle_option"
+              id={"toggle" + i}
+              name="toggle_option"
+            />
+          </Fragment>
+        );
+      })}
+      {item.map((v: any, i: number) => {
+        return (
+          <Fragment key={i}>
+            <label htmlFor={"toggle" + i} onClick={(e: any) => {
+              changeState(e);
+              changeMemberShip(e);
+            }}>
+              <p></p>
+            </label>
+          </Fragment>
+        );
+      })}
+      <div className="toggle_option_slider"></div>
+    </StyledServiceInfoMemberShipSliderThree>
+  ) : item.length == 4 ? (
+    <StyledServiceInfoMemberShipSliderFour item={item}>
+      {item.map((v: any, i: number) => {
+        return i == 0 ? (
+          <Fragment key={i}>
+            <input
+              type="radio"
+              className="toggle_option"
+              id={"toggle" + i}
+              name="toggle_option"
+              defaultChecked
+            />
+          </Fragment>
+        ) : (
+          <Fragment key={i}>
+            <input
+              type="radio"
+              className="toggle_option"
+              id={"toggle" + i}
+              name="toggle_option"
+            />
+          </Fragment>
+        );
+      })}
+      {item.map((v: any, i: number) => {
+        return (
+          <Fragment key={i}>
+            <label htmlFor={"toggle" + i} onClick={(e: any) => {
+              changeState(e);
+              changeMemberShip(e);
+            }}>
+              <p></p>
+            </label>
+          </Fragment>
+        );
+      })}
+      <div className="toggle_option_slider"></div>
+    </StyledServiceInfoMemberShipSliderFour>
+  ) : (
+    <></>
+  );
 };
 export default ServiceInfoMemberShipSlider;

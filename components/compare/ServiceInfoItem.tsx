@@ -13,8 +13,8 @@ const StyledServiceInfoItem = styled.div`
 `;
 const StyledServiceInfoItemLogo = styled.div`
   margin-top: 40px;
-  width: 130px;
-  height: 130px;
+  width: 140px;
+  height: 140px;
   position:relative;
   
 `;

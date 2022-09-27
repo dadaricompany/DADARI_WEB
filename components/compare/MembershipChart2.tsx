@@ -33,7 +33,7 @@ const StyledMembershipChart2One = styled.div<{ item: any }>`
   }
   input[name="toggle_option2"]:nth-child(1):checked ~ .toggle_option_slider2 {
     ::after {
-      content: "${(props) => props.item[0].name}";
+      content: "단일 멤버쉽"
     }
     left: 0;
   }
@@ -47,20 +47,17 @@ const StyledMembershipChart2One = styled.div<{ item: any }>`
     width: 100%;
     height: 34px;
     border-radius: 22px;
-    box-shadow: 0 2px 20px 0 rgba(130, 70, 250, 0.58),
-      inset 1px 1px 2px 0 rgba(255, 255, 255, 0.3);
-    background-color: #8246fa;
     position: absolute;
     transition: all 0.4s ease;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
+    color: #bcc2d6;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
-    line-height: 1.2;
-    letter-spacing: -0.29px;
+    line-height: 1.38;
+    letter-spacing: -0.25px;
     font-size: 13px;
   }
 `;

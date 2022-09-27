@@ -4,6 +4,7 @@ import { debounce } from "lodash-es";
 import { selectSearchList } from "api/modules/search";
 import SearchSectionItemContainer from "./SearchSectionItemContainer";
 import { HeaderContainer, SearchBoxModuleContainer } from "containers/base";
+import NoData from "components/search/NoData";
 
 const StyledSection = styled.main`
   flex-grow: 1;
@@ -19,6 +20,7 @@ const StyledSectionGap = styled.div`
 `;
 
 const SearchContainer = () => {
+  const [init, setInit] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [searchList, setSearchList] = useState<Array<any> | null>(null);
 
@@ -33,6 +35,7 @@ const SearchContainer = () => {
   const search = useCallback(
     debounce(async (searchText: string) => {
       const { data } = await selectSearchList(searchText);
+      setInit(true);
       setSearchList(data);
     }, 800),
     []
@@ -50,7 +53,7 @@ const SearchContainer = () => {
         <SearchBoxModuleContainer onChangeSearchText={onChangeSearchText} />
       </HeaderContainer>
       <StyledSection>
-        {searchList &&
+        {searchList && searchList.length ?
           searchList.map((v: any, i: number) => {
             return (
               <Fragment key={i}>
@@ -58,7 +61,7 @@ const SearchContainer = () => {
                 {(searchList?.length > 1 && searchList.length - 1 != i) && <StyledSectionGap />}
               </Fragment>
             );
-          })}
+          }) : init&&<NoData />}
       </StyledSection>
     </>
   );
