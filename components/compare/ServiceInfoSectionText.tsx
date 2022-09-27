@@ -39,7 +39,7 @@ const ServiceInfoSectionText = ({ title, items, path }: any) => {
         <StyledServiceInfoSectionTextItemData>
           {items[0]}
         </StyledServiceInfoSectionTextItemData>
-        <StyledDivider />
+        <StyledDivider>&nbsp;</StyledDivider>
         <StyledServiceInfoSectionTextItemData>
           {items[1]}
         </StyledServiceInfoSectionTextItemData>
