@@ -24,53 +24,21 @@ const ServiceFooterContainer = ({
       _itemPopup.style.display = "flex";
     }
   };
-  const cacncelCompare = (e: MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-    const _itemPopup = document.getElementById("ComparePopup");
-    if (_itemPopup && _itemPopup.style) {
-      _itemPopup.style.display = "none";
-    }
-    setTemp(null)
-  }
-  const confirmCompare = (e: MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-    const _itemPopup = document.getElementById("ComparePopup");
-    if (_itemPopup && _itemPopup.style) {
-      _itemPopup.style.display = "none";
-    }
-    setCompare([
-      temp
-    ]);
-    Router.back();
-  }
   const selectCmpare = (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
     e.stopPropagation();
     if (compare.length > 1) return;
     if (compare.filter((v: any) => v.id == item.id).length) return;
-    if (compare.filter((v: any) => v.categoryId != item.categoryId).length) {
-      const _itemPopup = document.getElementById("ComparePopup");
-      setTemp({
+    setCompare([
+      ...compare,
+      {
         id: item.id,
         categoryId: item.categoryId,
         defaultLogoPath: item.defaultLogoPath,
         nameKr: item.nameKr,
-      })
-      if (_itemPopup && _itemPopup.style) {
-        _itemPopup.style.display = "flex";
-      }
-    } else {
-      setCompare([
-        ...compare,
-        {
-          id: item.id,
-          categoryId: item.categoryId,
-          defaultLogoPath: item.defaultLogoPath,
-          nameKr: item.nameKr,
-        },
-      ]);
-      Router.back();
-    }
+      },
+    ]);
+    Router.back();
   };
 
   const closePopup = (e: MouseEvent<HTMLElement>) => {
@@ -84,7 +52,6 @@ const ServiceFooterContainer = ({
     <>
       <ServiceInfoFloat openPopup={openPopup} selectCmpare={selectCmpare} />
       <ServiceInfoPopup closePopup={closePopup} goToURL={goToURL} url={url} />
-      <Popup onClickCancel={cacncelCompare} onClickConfirm={confirmCompare}></Popup>
     </>
   );
 };

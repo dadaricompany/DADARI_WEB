@@ -1,5 +1,7 @@
 ### 다다리 - 구독비교 서비스 1차 OPEN
 #### (OPENING DAY : 2022-09-22)
+<strong> NOW : 리팩토링중 BASE / MAIN (컴포넌트 / 컨테이너 정리완) </strong><br/>
+<strong> 서비스 , 리스트 차주 진행 차차주 검색진행</strong>
 ---
 
 #### 1차 OPEN 기능(NOW)
