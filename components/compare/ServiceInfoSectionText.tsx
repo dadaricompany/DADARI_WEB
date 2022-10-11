@@ -12,9 +12,9 @@ const StyledServiceInfoSectionTextItem = styled.div`
   border-bottom-right-radius: 12px;
   border-bottom-left-radius: 12px;
   display: flex;
-  align-items: center;
 `;
 const StyledServiceInfoSectionTextItemData = styled.div`
+  align-self:center;
   padding: 0 12px;
   width: 50%;
   font-size: 14px;
@@ -39,7 +39,7 @@ const ServiceInfoSectionText = ({ title, items, path }: any) => {
         <StyledServiceInfoSectionTextItemData>
           {items[0]}
         </StyledServiceInfoSectionTextItemData>
-        <StyledDivider />
+        <StyledDivider>&nbsp;</StyledDivider>
         <StyledServiceInfoSectionTextItemData>
           {items[1]}
         </StyledServiceInfoSectionTextItemData>
